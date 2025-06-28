@@ -1,55 +1,190 @@
 <x-app-layout>
-    <div class="max-w-2xl mx-auto p-6 bg-white rounded-md shadow-md">
-        <div class="flex items-center space-x-6 mb-8">
+    <style>
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+    </style>
+
+     <div class="relative h-64 rounded-lg overflow-hidden shadow-lg mb-8 ">
+        <img src="{{ asset('storage/images/prof1.jpg') }}" alt="Header background" class="absolute inset-0 w-full h-full object-cover brightness-75">
+        
+        @php
+            $primaryCategoryName = $user->categories->first()->name ?? 'Professional';
+        @endphp
+
+        <div class="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4">
+            <h1 class="text-5xl font-bold">{{ $user->name }} — {{ $primaryCategoryName }}</h1>
+            <p class="mt-2 text-xl max-w-3xl">You have found an expert.{{ strtolower($primaryCategoryName) }}.You can communicate with him/her directly and solve whatever you need..</p>
+        </div>
+    </div>
+
+    <div class="max-w-2xl mx-auto p-6 m-6 md:p-8 bg-white rounded-lg shadow-md">
+        {{-- Avatar & Name --}}
+        <div class="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6 mb-8">
             @if($user->avatar)
-                <img src="{{ asset('storage/' . $user->avatar) }}" alt="Avatar" class="w-24 h-24 rounded-full object-cover border-2 border-gray-300">
+                <img src="{{ asset('storage/' . $user->avatar) }}" alt="Avatar" title="{{ $user->name }}"
+                    class="w-24 h-24 rounded-full object-cover border-2 border-gray-300" />
             @else
-                <div class="w-24 h-24 rounded-full bg-gray-300 flex items-center justify-center text-gray-700 text-3xl font-semibold uppercase border-2 border-gray-300">
+                <div class="w-24 h-24 rounded-full bg-gradient-to-tr from-indigo-400 to-blue-500 text-white flex items-center justify-center text-3xl font-semibold uppercase border-2 border-gray-300"
+                    title="{{ $user->name }}">
                     {{ substr($user->name, 0, 1) }}
                 </div>
             @endif
 
-            <div class="flex flex-col">
-                <h1 class="text-3xl font-bold text-gray-900">{{ $user->name }}</h1>
+            <div class="flex flex-col text-center sm:text-left">
+                <h1 class="text-3xl font-bold text-gray-900 flex items-center gap-2">
+                    {{ $user->name }}
+                    @if($user->is_verified)
+                        <span
+                            class="inline-flex items-center gap-1 px-2 py-1 text-xs font-semibold bg-green-100 text-green-800 rounded-full"
+                            style="animation: pulse 2s infinite;">
+                            <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                            Verified
+                        </span>
+                    @endif
+                </h1>
+
                 @if($user->bio)
                     <p class="text-gray-600 mt-2 whitespace-pre-line max-w-xl">{{ $user->bio }}</p>
+                @endif
+
+                @if($user->categories->count())
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        @foreach($user->categories as $category)
+                            <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">
+                                {{ $category->name }}
+                            </span>
+                        @endforeach
+                    </div>
                 @endif
             </div>
         </div>
 
+        {{-- Links --}}
         <section class="mb-8">
             <h2 class="text-2xl font-semibold mb-4 text-gray-800">Links</h2>
 
             @if($links->count())
                 <ul class="space-y-3">
                     @foreach($links as $link)
-                        <li class="p-3 border rounded hover:shadow hover:border-blue-500 transition duration-200">
-                            <a href="{{ Str::startsWith($link->url, ['http://', 'https://']) ? $link->url : 'https://' . $link->url }}" target="_blank" class="text-blue-600 hover:underline font-medium">
+                        <li
+                            class="p-3 border rounded hover:bg-blue-50 hover:shadow transition duration-200 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M13.828 10.172a4 4 0 015.657 5.657l-1.414 1.414a4 4 0 01-5.657 0l-1.414-1.414" />
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M10.172 13.828a4 4 0 01-5.657-5.657l1.414-1.414a4 4 0 015.657 0l1.414 1.414" />
+                            </svg>
+                            <a href="{{ Str::startsWith($link->url, ['http://', 'https://']) ? $link->url : 'https://' . $link->url }}"
+                                target="_blank" class="text-blue-600 hover:underline font-medium" rel="noopener noreferrer">
                                 {{ $link->title }}
                             </a>
                         </li>
                     @endforeach
                 </ul>
             @else
-                <p class="text-gray-600 mb-4">Ο επαγγελματίας δεν έχει προσθέσει σελίδα. Μπορείτε να επικοινωνήσετε μέσω email:</p>
+                <p class="text-gray-600 mb-4">The professional has not added any pages. You can contact them via email:</p>
                 <p class="text-blue-700 underline">{{ $user->email }}</p>
             @endif
         </section>
 
-        <section class="space-y-2">
+        {{-- Contact Details --}}
+        <section class="space-y-3 mt-8 border-t pt-4">
             @if($user->public_email)
-                <p><strong>Email:</strong> <a href="mailto:{{ $user->public_email }}" class="text-blue-600 underline">{{ $user->public_email }}</a></p>
+                <div class="flex items-center gap-2">
+                    <span class="font-semibold text-gray-700">Email:</span>
+                    <a href="mailto:{{ $user->public_email }}" class="text-blue-600 underline">{{ $user->public_email }}</a>
+                    <button onclick="copyEmail('{{ $user->public_email }}')" aria-label="Copy email to clipboard"
+                        class="text-sm text-gray-500 hover:text-blue-600"><svg xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75" />
+                        </svg>
+                    </button>
+
+
+                </div>
+
+
             @endif
 
             @if($user->phone)
-                <p><strong>Τηλέφωνο:</strong> {{ $user->phone }}</p>
+                <p><span class="font-semibold text-gray-700">Phone:</span> {{ $user->phone }}</p>
             @endif
         </section>
 
-        <div class="mt-10">
-            <a href="{{ route('dashboard') }}" class="inline-block text-blue-600 hover:underline font-semibold">
-                ← Επεξεργασία προφίλ
+        {{-- Contact Button --}}
+        @if($user->public_email)
+            <a href="mailto:{{ $user->public_email }}"
+                class="inline-block mt-6 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-300">
+                Contact {{ $user->name }}
             </a>
-        </div>
+        @endif
     </div>
+
+
+    <!-- Toast notification -->
+    <div id="toast"
+        class="fixed bottom-6 right-6 bg-green-600 text-white px-4 py-2 rounded shadow-lg opacity-0 pointer-events-none transform translate-x-20 transition-all duration-300 flex items-center gap-3 max-w-xs">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+        <span>Email copied to clipboard!</span>
+        <button aria-label="Close toast" onclick="hideToast()" class="ml-auto focus:outline-none hover:text-gray-200">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+    </div>
+
+
+    {{-- JS για αντιγραφή email --}}
+    <script>
+        const toast = document.getElementById('toast');
+        let toastTimeout;
+
+        function showToast() {
+            // Καθαρίζουμε τυχόν προηγούμενα timeouts
+            clearTimeout(toastTimeout);
+
+            toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-x-20');
+            toast.classList.add('opacity-100', 'translate-x-0');
+
+            // Αυτόματο κλείσιμο μετά από 3.5 δευτερόλεπτα
+            toastTimeout = setTimeout(hideToast, 3500);
+        }
+
+        function hideToast() {
+            toast.classList.add('translate-x-20', 'opacity-0');
+            toast.classList.remove('opacity-100');
+
+            // Μετα το animation (300ms), κάνουμε pointer-events none για να μη μπλοκάρει
+            setTimeout(() => {
+                toast.classList.add('pointer-events-none');
+            }, 300);
+        }
+
+        function copyEmail(email) {
+            navigator.clipboard.writeText(email).then(() => {
+                showToast();
+            });
+        }
+    </script>
+
+
+
 </x-app-layout>
