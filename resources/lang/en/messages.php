@@ -1,0 +1,61 @@
+<?php
+
+return [
+
+   'home' => 'Home',
+    'find_professionals' => 'Find Professionals',
+    'my_profile' => 'My Profile',
+    'edit_profile' => 'Edit Profile',
+    'logout' => 'Logout',
+    'login' => 'Log in',
+    'register' => 'Register',
+    'language_english' => 'English',
+    'language_german' => 'Deutsch',
+    'open_user_menu' => 'Open user menu',
+    'open_main_menu' => 'Open main menu',
+    'logo_alt' => 'Logo',
+    
+
+        'app_title' => 'Laravel',
+  
+    'tagline' => 'Find trusted professionals. Get the job done.',
+  
+    'no_video_support' => 'Your browser does not support the video tag.',
+    'discover_title' => 'Discover Skilled Professionals',
+    'discover_subtitle' => 'Connect with experts across industries — fast and easy.',
+    'search_placeholder' => 'Search professionals...',
+    'filter_button' => 'Filter',
+    'apply_filters' => 'Apply Filters',
+    'reset_filters' => 'Reset Filters',
+    'only_verified' => 'Only Verified Professionals',
+    'verified_badge' => 'Verified',
+    'no_results' => 'No professionals were found.',
+    'testimonials_title' => 'What Our Users Say',
+        'header_background' => 'Header background',
+    'professional' => 'Professional',
+    'found_expert' => 'You have found an expert :category. You can communicate with him/her directly and solve whatever you need.',
+    'avatar_of' => 'Avatar of :name',
+    'verified' => 'Verified',
+    'links' => 'Links',
+    'no_links_contact' => 'The professional has not added any pages. You can contact them via email: :email',
+    'email' => 'Email',
+    'copy_email' => 'Copy email to clipboard',
+    'phone' => 'Phone',
+    'contact' => 'Contact',
+    'email_copied' => 'Email copied to clipboard!',
+    'close_toast' => 'Close toast notification',
+     'view_public_profile' => 'View your public profile',
+    'profile_information' => 'Profile Information',
+    'update_profile' => "Update your account's profile information and email address.",
+    'avatar' => 'Avatar',
+    'name' => 'Name',
+
+    'title_placeholder' => 'Title',
+    'url_placeholder' => 'URL',
+    'add_link' => 'Your Website',
+ 
+    'bio' => 'Short Bio',
+    'categories' => 'Categories',
+    'save' => 'Save',
+    'saved' => 'Saved.',
+];

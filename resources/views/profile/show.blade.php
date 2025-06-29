@@ -1,28 +1,23 @@
 <x-app-layout>
     <style>
         @keyframes pulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.1);
-            }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
     </style>
 
-     <div class="relative h-64 rounded-lg overflow-hidden shadow-lg mb-8 ">
-        <img src="{{ asset('storage/images/prof1.jpg') }}" alt="Header background" class="absolute inset-0 w-full h-full object-cover brightness-75">
+    <div class="relative h-64 rounded-lg overflow-hidden shadow-lg mb-8 ">
+        <img src="{{ asset('storage/images/prof1.jpg') }}" alt="{{ __('messages.header_background') }}" class="absolute inset-0 w-full h-full object-cover brightness-75">
         
         @php
-            $primaryCategoryName = $user->categories->first()->name ?? 'Professional';
+            $primaryCategoryName = $user->categories->first()->name ?? __('messages.professional');
         @endphp
 
         <div class="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4">
             <h1 class="text-5xl font-bold">{{ $user->name }} — {{ $primaryCategoryName }}</h1>
-            <p class="mt-2 text-xl max-w-3xl">You have found an expert.{{ strtolower($primaryCategoryName) }}.You can communicate with him/her directly and solve whatever you need..</p>
+            <p class="mt-2 text-xl max-w-3xl">
+                {{ __('messages.found_expert', ['category' => strtolower($primaryCategoryName)]) }}
+            </p>
         </div>
     </div>
 
@@ -30,7 +25,8 @@
         {{-- Avatar & Name --}}
         <div class="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6 mb-8">
             @if($user->avatar)
-                <img src="{{ asset('storage/' . $user->avatar) }}" alt="Avatar" title="{{ $user->name }}"
+                <img src="{{ asset('storage/' . $user->avatar) }}" alt="{{ __('messages.avatar_of', ['name' => $user->name]) }}"
+                    title="{{ $user->name }}"
                     class="w-24 h-24 rounded-full object-cover border-2 border-gray-300" />
             @else
                 <div class="w-24 h-24 rounded-full bg-gradient-to-tr from-indigo-400 to-blue-500 text-white flex items-center justify-center text-3xl font-semibold uppercase border-2 border-gray-300"
@@ -50,7 +46,7 @@
                                 viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                             </svg>
-                            Verified
+                            {{ __('messages.verified') }}
                         </span>
                     @endif
                 </h1>
@@ -73,7 +69,7 @@
 
         {{-- Links --}}
         <section class="mb-8">
-            <h2 class="text-2xl font-semibold mb-4 text-gray-800">Links</h2>
+            <h2 class="text-2xl font-semibold mb-4 text-gray-800">{{ __('messages.links') }}</h2>
 
             @if($links->count())
                 <ul class="space-y-3">
@@ -95,8 +91,7 @@
                     @endforeach
                 </ul>
             @else
-                <p class="text-gray-600 mb-4">The professional has not added any pages. You can contact them via email:</p>
-                <p class="text-blue-700 underline">{{ $user->email }}</p>
+                <p class="text-gray-600 mb-4">{{ __('messages.no_links_contact', ['email' => $user->email]) }}</p>
             @endif
         </section>
 
@@ -104,36 +99,32 @@
         <section class="space-y-3 mt-8 border-t pt-4">
             @if($user->public_email)
                 <div class="flex items-center gap-2">
-                    <span class="font-semibold text-gray-700">Email:</span>
+                    <span class="font-semibold text-gray-700">{{ __('messages.email') }}:</span>
                     <a href="mailto:{{ $user->public_email }}" class="text-blue-600 underline">{{ $user->public_email }}</a>
-                    <button onclick="copyEmail('{{ $user->public_email }}')" aria-label="Copy email to clipboard"
-                        class="text-sm text-gray-500 hover:text-blue-600"><svg xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <button onclick="copyEmail('{{ $user->public_email }}')" aria-label="{{ __('messages.copy_email') }}"
+                        class="text-sm text-gray-500 hover:text-blue-600">
+                        <!-- SVG icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75" />
                         </svg>
                     </button>
-
-
                 </div>
-
-
             @endif
 
             @if($user->phone)
-                <p><span class="font-semibold text-gray-700">Phone:</span> {{ $user->phone }}</p>
+                <p><span class="font-semibold text-gray-700">{{ __('messages.phone') }}:</span> {{ $user->phone }}</p>
             @endif
         </section>
 
         {{-- Contact Button --}}
         @if($user->public_email)
             <a href="mailto:{{ $user->public_email }}"
-                class="inline-block mt-6 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-300">
-                Contact {{ $user->name }}
+                class="inline-block mt-6 bg-slate-800 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-300">
+                {{ __('messages.contact') }} {{ $user->name }}
             </a>
         @endif
     </div>
-
 
     <!-- Toast notification -->
     <div id="toast"
@@ -142,8 +133,8 @@
             stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
         </svg>
-        <span>Email copied to clipboard!</span>
-        <button aria-label="Close toast" onclick="hideToast()" class="ml-auto focus:outline-none hover:text-gray-200">
+        <span>{{ __('messages.email_copied') }}</span>
+        <button aria-label="{{ __('messages.close_toast') }}" onclick="hideToast()" class="ml-auto focus:outline-none hover:text-gray-200">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -151,28 +142,21 @@
         </button>
     </div>
 
-
     {{-- JS για αντιγραφή email --}}
     <script>
         const toast = document.getElementById('toast');
         let toastTimeout;
 
         function showToast() {
-            // Καθαρίζουμε τυχόν προηγούμενα timeouts
             clearTimeout(toastTimeout);
-
             toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-x-20');
             toast.classList.add('opacity-100', 'translate-x-0');
-
-            // Αυτόματο κλείσιμο μετά από 3.5 δευτερόλεπτα
             toastTimeout = setTimeout(hideToast, 3500);
         }
 
         function hideToast() {
             toast.classList.add('translate-x-20', 'opacity-0');
             toast.classList.remove('opacity-100');
-
-            // Μετα το animation (300ms), κάνουμε pointer-events none για να μη μπλοκάρει
             setTimeout(() => {
                 toast.classList.add('pointer-events-none');
             }, 300);
@@ -184,7 +168,5 @@
             });
         }
     </script>
-
-
 
 </x-app-layout>

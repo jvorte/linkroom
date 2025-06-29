@@ -1,18 +1,29 @@
 <?php
 
 namespace App\Http\Middleware;
-
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
+use Symfony\Component\HttpFoundation\Response;
 
 class SetLocale
 {
     public function handle(Request $request, Closure $next)
     {
-        if (session()->has('locale') && in_array(session('locale'), ['el', 'en', 'de'])) {
-            App::setLocale(session('locale'));
+        // Προσπάθησε να πάρεις locale από query (?lang=de ή ?lang=en)
+        $locale = $request->get('lang');
+
+        // Εναλλακτικά μπορείς να διαβάσεις από session/cookie
+        if (!in_array($locale, ['en', 'de'])) {
+            $locale = 'en'; // default
         }
+           if (Session::has('locale')) {
+            App::setLocale(Session::get('locale'));
+        }
+
+        App::setLocale($locale);
+
         return $next($request);
     }
 }

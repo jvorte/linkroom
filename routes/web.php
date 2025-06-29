@@ -3,6 +3,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfessionalController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use App\Http\Controllers\LocaleController;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\App;
 
 
 // Δημόσιες Σελίδες
@@ -27,5 +31,14 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update'); // Ενοποιημένο update
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+Route::post('/locale', function (Request $request) {
+    $locale = $request->input('locale');
+    if (in_array($locale, ['en', 'de'])) {
+        session(['locale' => $locale]);
+    }
+    return redirect()->back();
+})->name('locale.switch');
 
 require __DIR__.'/auth.php';
