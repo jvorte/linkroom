@@ -3,12 +3,9 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-use Illuminate\Cookie\Middleware\EncryptCookies;
-use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
-use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
-use Illuminate\Session\Middleware\StartSession;
-use Illuminate\View\Middleware\ShareErrorsFromSession;
+
 use Illuminate\Routing\Middleware\SubstituteBindings;
+
 
 class Kernel extends HttpKernel
 {
@@ -35,18 +32,17 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
     'web' => [
-        EncryptCookies::class,
-        AddQueuedCookiesToResponse::class,
-        StartSession::class,
-        ShareErrorsFromSession::class,
-        VerifyCsrfToken::class,
-        SubstituteBindings::class,
-        // εδώ βάλε και το δικό σου SetLocale
-        \App\Http\Middleware\SetLocale::class,
+        \App\Http\Middleware\EncryptCookies::class,
+        \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+        \Illuminate\Session\Middleware\StartSession::class,   // ΠΡΩΤΟ
+        \App\Http\Middleware\SetLocale::class,                 // ΔΕΥΤΕΡΟ
+        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        \Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class,
+        \Illuminate\Routing\Middleware\SubstituteBindings::class,
     ],
  'api' => [
         'throttle:api',
-        \Illuminate\Routing\Middleware\SubstituteBindings::class,
+      SubstituteBindings::class,
     ],
     ];
 

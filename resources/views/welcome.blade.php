@@ -54,9 +54,9 @@
         <p class="text-lg lg:text-xl mb-8 drop-shadow-md max-w-xl">
             {{ __('messages.tagline') }}
         </p>
-        <a href="{{ route('professionals.index') }}" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-md text-white font-semibold transition">
-            {{ __('messages.find_professionals') }}
-        </a>
+      <a href="{{ route('professionals.index', ['lang' => app()->getLocale()]) }}" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-md text-white font-semibold transition">
+    {{ __('messages.find_professionals') }}
+</a>
     </main>
 
     @if (Route::has('login'))

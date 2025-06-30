@@ -1,8 +1,12 @@
 <?php
 
 return [
+  'profile' => 'My Profile',
+ 'remote_available' => 'Available for remote work',
+'only_remote' => 'Only remote professionals',
 
-   'home' => 'Home',
+  'discover_profile' => 'Create your profile — let the world know you better!',
+    'home' => 'Home',
     'find_professionals' => 'Find Professionals',
     'my_profile' => 'My Profile',
     'edit_profile' => 'Edit Profile',
@@ -14,12 +18,9 @@ return [
     'open_user_menu' => 'Open user menu',
     'open_main_menu' => 'Open main menu',
     'logo_alt' => 'Logo',
-    
-
-        'app_title' => 'Laravel',
-  
+    'language_switcher' => 'Choose Language',
+    'app_title' => 'Laravel',
     'tagline' => 'Find trusted professionals. Get the job done.',
-  
     'no_video_support' => 'Your browser does not support the video tag.',
     'discover_title' => 'Discover Skilled Professionals',
     'discover_subtitle' => 'Connect with experts across industries — fast and easy.',
@@ -31,7 +32,7 @@ return [
     'verified_badge' => 'Verified',
     'no_results' => 'No professionals were found.',
     'testimonials_title' => 'What Our Users Say',
-        'header_background' => 'Header background',
+    'header_background' => 'Header background',
     'professional' => 'Professional',
     'found_expert' => 'You have found an expert :category. You can communicate with him/her directly and solve whatever you need.',
     'avatar_of' => 'Avatar of :name',
@@ -44,16 +45,14 @@ return [
     'contact' => 'Contact',
     'email_copied' => 'Email copied to clipboard!',
     'close_toast' => 'Close toast notification',
-     'view_public_profile' => 'View your public profile',
+    'view_public_profile' => 'View your public profile',
     'profile_information' => 'Profile Information',
     'update_profile' => "Update your account's profile information and email address.",
     'avatar' => 'Avatar',
     'name' => 'Name',
-
     'title_placeholder' => 'Title',
     'url_placeholder' => 'URL',
     'add_link' => 'Your Website',
- 
     'bio' => 'Short Bio',
     'categories' => 'Categories',
     'save' => 'Save',

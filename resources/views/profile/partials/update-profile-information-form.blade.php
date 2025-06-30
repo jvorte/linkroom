@@ -19,12 +19,14 @@
 
         {{-- Avatar --}}
         <div>
+            
             <label class="block mb-2 font-semibold">{{ __('messages.avatar') }}</label>
+                @if($user->avatar)
+                <img src="{{ asset('storage/' . $user->avatar) }}" alt="Avatar" class="w-20 h-20 m-1 rounded-full">
+            @endif
             <input type="file" name="avatar" accept="image/*" class="mb-4 border border-gray-300 rounded px-3 py-2">
 
-            @if($user->avatar)
-                <img src="{{ asset('storage/' . $user->avatar) }}" alt="Avatar" class="w-20 h-20 rounded-full">
-            @endif
+        
         </div>
 
         {{-- Name --}}
@@ -108,6 +110,14 @@
                 class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-400">{{ old('bio', $user->bio) }}</textarea>
             <x-input-error class="mt-2" :messages="$errors->get('bio')" />
         </div>
+        {{-- Remote work --}}
+<div class="flex items-center mt-4">
+    <input type="checkbox" id="remote" name="remote" value="1" {{ old('remote', $user->remote) ? 'checked' : '' }} class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">
+    <label for="remote" class="ml-2 block text-sm text-gray-700">
+        {{ __('messages.remote_available') }}
+    </label>
+</div>
+
 
         {{-- Categories --}}
         <div>

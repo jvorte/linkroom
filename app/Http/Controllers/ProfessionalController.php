@@ -22,6 +22,9 @@ class ProfessionalController extends Controller
                 });
             }
         }
+        if ($request->boolean('remote_only')) {
+    $query->where('remote', true);
+}
 
         if ($request->boolean('verified_only')) {
             $query->where('is_verified', true);

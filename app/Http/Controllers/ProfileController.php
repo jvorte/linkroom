@@ -71,6 +71,7 @@ public function updateProfile(Request $request)
         'categories.*' => 'exists:categories,id',
         'public_email' => 'nullable|email|max:255',
         'phone' => 'nullable|string|max:50',
+           'remote' => 'sometimes|boolean',
         'links' => 'nullable|array',
         'links.*.id' => 'nullable|exists:links,id',
         'links.*.title' => 'required_with:links.*.url|string|max:255',
@@ -86,7 +87,8 @@ public function updateProfile(Request $request)
 
     // Sync categories
     $user->categories()->sync($request->categories ?? []);
-
+$user->remote = $request->has('remote') ? true : false;
+$user->save();
     // Handle links
     $existingLinkIds = $user->links()->pluck('id')->toArray();
     $submittedLinkIds = collect($request->links ?? [])->pluck('id')->filter()->toArray();
