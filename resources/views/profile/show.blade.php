@@ -7,7 +7,7 @@
     </style>
 
     <div class="relative h-64 rounded-lg overflow-hidden shadow-lg mb-8 ">
-        <img src="{{ asset('storage/images/prof1.jpg') }}" alt="{{ __('messages.header_background') }}" class="absolute inset-0 w-full h-full object-cover brightness-75">
+        <img src="{{ asset('storage/images/profile1.jpg') }}" alt="{{ __('messages.header_background') }}" class="absolute inset-0 w-full h-full object-cover brightness-75">
         
         @php
             $primaryCategoryName = $user->categories->first()->name ?? __('messages.professional');
@@ -54,6 +54,8 @@
                 @if($user->bio)
                     <p class="text-gray-600 mt-2 whitespace-pre-line max-w-xl">{{ $user->bio }}</p>
                 @endif
+
+                
 
                 @if($user->categories->count())
                     <div class="mt-4 flex flex-wrap gap-2">
@@ -115,6 +117,9 @@
             @if($user->phone)
                 <p><span class="font-semibold text-gray-700">{{ __('messages.phone') }}:</span> {{ $user->phone }}</p>
             @endif
+                       @if($user->remote)
+                            <p class="text-gray-600 mt-2  italic text-md"><i class="fa-solid fa-satellite-dish"></i>Available for remote work</p>
+                        @endif
         </section>
 
         {{-- Contact Button --}}

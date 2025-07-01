@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Str;
 use App\Models\Category;
+use App\Models\ContactMessage;
+use App\Models\NewsletterSubscription;
 
 class DashboardController extends Controller
 {
@@ -17,12 +19,26 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $user = auth()->user();
+        $user = Auth::user();
         $links = $user->links()->orderBy('order')->get();
         $allCategories = Category::all();
 
         return view('dashboard.index', compact('links', 'allCategories'));
     }
+    public function home()
+    {
+      
+
+        return view('home');
+    }
+
+public function admin()
+{
+    $messages = ContactMessage::latest()->get();
+    $subscriptions = NewsletterSubscription::latest()->get();
+
+    return view('admin.index', compact('messages', 'subscriptions'));
+}
 
     
     public function store(Request $request)

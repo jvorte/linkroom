@@ -10,7 +10,7 @@ class ProfessionalController extends Controller
 {
     public function index(Request $request)
     {
-        $query = User::query()->with('categories')->whereHas('links');
+        $query = User::query()->with('categories');
 
         if ($request->has('categories')) {
             $selectedSlugs = $request->input('categories', []);

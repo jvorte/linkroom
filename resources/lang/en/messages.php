@@ -57,4 +57,43 @@ return [
     'categories' => 'Categories',
     'save' => 'Save',
     'saved' => 'Saved.',
+
+    'quick_links' => 'Quick Links',
+    'newsletter_title' => 'Newsletter',
+    'subscribe' => 'Subscribe',
+    'email_placeholder' => 'Your email',
+    'contact_us' => 'Contact Us',
+    'all_rights_reserved' => 'All rights reserved.',
+
+    'footer_description' => 'The best platform to find professionals near you.',
+
+
+    'contact_us' => 'Contact',
+'contact_success' => 'Your message was sent successfully!',
+'send' => 'Send',
+'message' => 'Message',
+'name' => 'Name',
+'email' => 'Email',
+'contact' => 'Contact Us',
+'contact_subtitle' => 'Feel free to reach out — we’re here to help you.',
+'admin' => 'Admin',
+'admin_dashboard' => 'Admin Dashboard',
+'contact_messages' => 'Contact Messages',
+'no_contact_messages' => 'No contact messages yet.',
+'newsletter_subscriptions' => 'Newsletter Subscriptions',
+'no_subscriptions' => 'No newsletter subscriptions yet.',
+// resources/lang/en/messages.php
+'welcome_title' => 'Welcome to LinkRoom!',
+'welcome_subtitle' => 'A smart way to connect professionals and clients.',
+'section_discover_title' => 'Why LinkRoom?',
+'section_discover_sub' => 'We make finding and being found easier than ever.',
+'card_search' => 'Smart Search',
+'card_search_text' => 'Filter by skills, categories, or remote availability.',
+'card_verify' => 'Verified Profiles',
+'card_verify_text' => 'Trust professionals with confirmed data.',
+'card_connect' => 'Global Connections',
+'card_connect_text' => 'Join a growing community with multilingual support.',
+'explore_now' => 'Explore Now',
+ 'contact_intro' => 'If you have any questions or suggestions, feel free to contact us by filling out the form below.',
+
 ];

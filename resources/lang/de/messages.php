@@ -62,4 +62,42 @@ return [
    'categories' => 'Kategorien',
    'save' => 'Speichern',
    'saved' => 'Gespeichert.',
+
+'footer_description' => 'Die beste Plattform, um Fachleute in Ihrer Nähe zu finden.',
+
+
+    'quick_links' => 'Quick Links',
+    'newsletter_title' => 'Newsletter',
+    'subscribe' => 'Subscribe',
+    'email_placeholder' => 'Your email',
+    'contact_us' => 'Contact Us',
+    'all_rights_reserved' => 'All rights reserved.',
+
+ 'contact_us' => 'Kontakt',
+'contact_success' => 'Ihre Nachricht wurde erfolgreich gesendet!',
+'send' => 'Senden',
+'message' => 'Nachricht',
+'name' => 'Name',
+
+'contact' => 'Kontakt',
+'contact_subtitle' => 'Kontaktieren Sie uns gerne – wir helfen Ihnen weiter.',
+'admin' => 'Admin',
+'admin_dashboard' => 'Admin Dashboard',
+'contact_messages' => 'Contact Messages',
+'no_contact_messages' => 'No contact messages yet.',
+'newsletter_subscriptions' => 'Newsletter Subscriptions',
+'no_subscriptions' => 'No newsletter subscriptions yet.',
+// resources/lang/en/messages.php
+'welcome_title' => 'Willkommen bei LinkRoom!',
+'welcome_subtitle' => 'Eine clevere Möglichkeit, Fachkräfte und Kunden zu vernetzen.',
+'section_discover_title' => 'Warum LinkRoom?',
+'section_discover_sub' => 'Wir machen Finden und Gefundenwerden so einfach wie nie zuvor.',
+'card_search' => 'Intelligente Suche',
+'card_search_text' => 'Filtern Sie nach Fähigkeiten, Kategorien oder Remote-Verfügbarkeit.',
+'card_verify' => 'Verifizierte Profile',
+'card_verify_text' => 'Vertrauen Sie Fachkräften mit bestätigten Daten.',
+'card_connect' => 'Globale Verbindungen',
+'card_connect_text' => 'Werden Sie Teil einer wachsenden Community mit mehrsprachigem Support.',
+'explore_now' => 'Jetzt entdecken',
+  'contact_intro' => 'Wenn Sie Fragen oder Vorschläge haben, können Sie uns gerne über das folgende Formular kontaktieren.',
 ];

@@ -1,12 +1,13 @@
 <x-app-layout>
     <div class="relative h-64 overflow-hidden shadow-lg mb-8">
-        <img src="{{ asset('storage/images/prof4.jpg') }}" alt="Header background"
+        <img src="{{ asset('storage/images/1.jpg') }}" alt="Header background"
             class="absolute inset-0 w-full h-full object-cover brightness-75">
         <div class="relative z-10 flex flex-col items-center justify-center h-full text-white text-center">
             <h1 class="text-5xl font-bold">{{ __('messages.discover_title') }}</h1>
             <p class="mt-2 text-xl">{{ __('messages.discover_subtitle') }}</p>
         </div>
     </div>
+    
     {{-- {{ session('locale') }} --}}
     <div class="max-w-6xl mx-auto px-4 py-6">
         <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
@@ -87,7 +88,7 @@
         @if($professionals->count())
             <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach($professionals as $user)
-                    <li class="relative border rounded-lg p-5 shadow-xl bg-white hover:shadow-md transition fade-in-up">
+                    <li class="relative border rounded-lg p-5 shadow-xl bg-white hover:shadow-md transition fade-in-up min-h-[200px] pb-12">
                         @if($user->is_verified)
                             <div class="absolute top-2 right-2 bg-green-200 text-black text-[13px] px-1.5 py-0.5 rounded-full font-semibold shadow flex items-center gap-1"
                                 style="animation: pulse 2s infinite;">
@@ -104,9 +105,11 @@
                             <img src="{{ asset('storage/' . $user->avatar) }}" alt="Avatar" class="w-20 h-20 rounded-full">
                         @endif
 
+                        
+
                         <a href="{{ route('profile.show', ['slug' => $user->slug, 'lang' => app()->getLocale()]) }}"
-                            class="block text-xl font-semibold text-blue-700 hover:underline">
-                            {{ $user->name }}
+                            class="block text-xl font-semibold text-slate-700 hover:underline my-3">
+                            {{ $user->name }} <i class="fa-solid fa-eye"></i>
                         </a>
 
 
@@ -114,9 +117,13 @@
                             <p class="text-gray-600 mt-2 text-sm">{{ Str::limit($user->bio, 100) }}</p>
                         @endif
 
-                        <div class="mt-3 flex flex-wrap gap-1">
+                             @if($user->remote)
+                            <p class="text-gray-600 mt-2 text-sm italic "><i class="fa-solid fa-satellite-dish"></i>Available for remote work</p>
+                        @endif
+
+                        <div class="absolute bottom-2 left-5 right-5 flex flex-wrap gap-1">
                             @foreach($user->categories as $cat)
-                                <span class="bg-slate-800 text-white text-sm px-2 py-1 rounded">{{ $cat->name }}</span>
+                                <span class="bg-slate-900  text-white text-sm px-2 py-1 rounded">{{ $cat->name }}</span>
                             @endforeach
                         </div>
                     </li>
@@ -132,12 +139,6 @@
         @endif
     </div>
 
-    <div class="mt-12 bg-gray-50 p-6 rounded">
-        <h2 class="text-xl font-semibold text-center mb-4">{{ __('messages.testimonials_title') }}</h2>
-        <div class="max-w-6xl mx-auto px-4 py-6 grid sm:grid-cols-2 md:grid-cols-3 gap-6 text-sm text-gray-600">
-            <blockquote>“Super easy to use — I quickly found what I needed.” — Maria</blockquote>
-            <blockquote>“As a professional, it helped me reach new clients fast.” — Nick</blockquote>
-            <blockquote>“The best platform to connect with trusted professionals.” — Eleni</blockquote>
-        </div>
-    </div>
+
+
 </x-app-layout>

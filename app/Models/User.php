@@ -59,6 +59,8 @@ protected $fillable = [
     'public_email',
     'phone',
     'avatar',
+     'remote',
+    'is_verified',
 ];
 
 

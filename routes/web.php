@@ -1,23 +1,34 @@
 <?php
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ProfessionalController;
+
+use App\Http\Controllers\{ProfileController, DashboardController, ProfessionalController, NewsletterController, LocaleController, ContactFormController};
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use App\Http\Controllers\LocaleController;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\App;
-
 
 // Δημόσιες Σελίδες
 Route::get('/', fn() => view('welcome'));
+Route::get('/home', [DashboardController::class, 'home'])->name('home');
 Route::get('/professionals', [ProfessionalController::class, 'index'])->name('professionals.index');
-Route::get('/u/{slug}', [ProfileController::class, 'show'])->name('profile.show'); // μόνο ένα show route
+Route::get('/u/{slug}', [ProfileController::class, 'show'])->name('profile.show');
 
-// Αυθεντικοποιημένοι Χρήστες
+// Contact
+Route::get('/contact', [ContactFormController::class, 'show'])->name('contact');
+Route::post('/contact', [ContactFormController::class, 'submit'])->name('contact.submit');
+
+// Newsletter
+Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
+
+// Locale Switcher
+Route::get('/locale/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'de'])) {
+        session(['locale' => $locale]);
+    }
+    return redirect()->back();
+})->name('locale.switch');
+
+// Protected Routes
 Route::middleware(['auth'])->group(function () {
-    
-    // Dashboard για διαχείριση links
+
+    // Dashboard
     Route::prefix('dashboard')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::post('/links', [DashboardController::class, 'store'])->name('dashboard.links.store');
@@ -26,19 +37,13 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/links/reorder', [DashboardController::class, 'reorder'])->name('dashboard.links.reorder');
     });
 
-    // Προφίλ χρήστη (προβολή/επεξεργασία)
+    // Προφίλ
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::put('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update'); // Ενοποιημένο update
+    Route::put('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // Admin (προσωρινός έλεγχος με role στον controller)
+    Route::get('/admin', [DashboardController::class, 'admin'])->name('admin.index');
 });
 
-
-Route::post('/locale', function (Request $request) {
-    $locale = $request->input('locale');
-    if (in_array($locale, ['en', 'de'])) {
-        session(['locale' => $locale]);
-    }
-    return redirect()->back();
-})->name('locale.switch');
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
