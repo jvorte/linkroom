@@ -68,3 +68,13 @@ i.fa-solid {
   color: #1E293B;
 
 }
+.favorite-btn {
+    cursor: pointer;
+    /* font-size: 16px; */
+    line-height: 1;
+    user-select: none;
+}
+.favorite-btn:hover {
+    background-color: #fee2e2; /* ανοιχτό κόκκινο */
+}
+

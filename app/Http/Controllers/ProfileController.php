@@ -76,6 +76,7 @@ public function updateProfile(Request $request)
         'links.*.id' => 'nullable|exists:links,id',
         'links.*.title' => 'required_with:links.*.url|string|max:255',
         'links.*.url' => 'required_with:links.*.title|url|max:255',
+          'country' => 'nullable|string|max:255',
     ]);
 
     if ($request->hasFile('avatar')) {

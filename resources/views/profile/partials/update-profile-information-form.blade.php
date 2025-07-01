@@ -133,6 +133,19 @@
             </select>
             <x-input-error class="mt-2" :messages="$errors->get('categories')" />
         </div>
+        <div>
+            
+    <x-input-label for="country" :value="__('messages.country')" />
+    <select id="country" name="country" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-400">
+        @foreach(['GR' => 'Greece', 'DE' => 'Germany', 'US' => 'USA', 'FR' => 'France'] as $code => $name)
+            <option value="{{ $code }}" {{ old('country', $user->country) == $code ? 'selected' : '' }}>
+                {{ $name }}
+            </option>
+        @endforeach
+    </select>
+    <x-input-error class="mt-2" :messages="$errors->get('country')" />
+</div>
+
 
         {{-- Submit --}}
         <div class="flex items-center gap-4">

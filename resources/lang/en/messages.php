@@ -95,5 +95,8 @@ return [
 'card_connect_text' => 'Join a growing community with multilingual support.',
 'explore_now' => 'Explore Now',
  'contact_intro' => 'If you have any questions or suggestions, feel free to contact us by filling out the form below.',
+'all_countries' => 'All countries', 
+   'country' => 'Country',
+    'only_favorites' => 'Only favorites',
 
 ];

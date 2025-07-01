@@ -120,6 +120,7 @@
                        @if($user->remote)
                             <p class="text-gray-600 mt-2  italic text-md"><i class="fa-solid fa-satellite-dish"></i>Available for remote work</p>
                         @endif
+                          <p class="text-gray-600 mt-2 text-sm italic "> {{ __('messages.country') }}: {{ $professional->country ?? '-' }}</p>
         </section>
 
         {{-- Contact Button --}}

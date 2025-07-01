@@ -11,39 +11,53 @@ use App\Models\Category;
 
 class User extends Authenticatable
 {
-   
-   
-   
-   protected static function booted()
+
+  // Χρήστης που κάνει favorite επαγγελματίες
+// Σχέση με τους επαγγελματίες που έχει κάνει favorite ο χρήστης
+public function favoriteProfessionals()
 {
-    static::saving(function ($user) {
-        if (empty($user->slug)) {
-            $user->slug = Str::slug($user->name);
+    return $this->belongsToMany(User::class, 'favorite_professionals', 'user_id', 'professional_id')
+                ->withTimestamps();
+}
 
-            // Αν υπάρχει ήδη το slug, πρόσθεσε αριθμό για μοναδικότητα
-            $count = 1;
-            $baseSlug = $user->slug;
+// Σχέση με τους χρήστες που έχουν κάνει favorite αυτόν τον επαγγελματία
+public function favoritedByUsers()
+{
+    return $this->belongsToMany(User::class, 'favorite_professionals', 'professional_id', 'user_id')
+                ->withTimestamps();
+}
 
-            while (static::where('slug', $user->slug)->where('id', '!=', $user->id)->exists()) {
-                $user->slug = $baseSlug . '-' . $count++;
+
+    protected static function booted()
+    {
+        static::saving(function ($user) {
+            if (empty($user->slug)) {
+                $user->slug = Str::slug($user->name);
+
+                // Αν υπάρχει ήδη το slug, πρόσθεσε αριθμό για μοναδικότητα
+                $count = 1;
+                $baseSlug = $user->slug;
+
+                while (static::where('slug', $user->slug)->where('id', '!=', $user->id)->exists()) {
+                    $user->slug = $baseSlug . '-' . $count++;
+                }
             }
-        }
-    });
-}
+        });
+    }
 
-public function categories()
-{
-    return $this->belongsToMany(Category::class);
-}
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
 
-   
+
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
     public function links()
-{
-    return $this->hasMany(Link::class)->orderBy('order');
-}
+    {
+        return $this->hasMany(Link::class)->orderBy('order');
+    }
 
 
     /**
@@ -51,17 +65,18 @@ public function categories()
      *
      * @var list<string>
      */
-protected $fillable = [
-    'name',
-    'email',
-    'password',
-    'bio',
-    'public_email',
-    'phone',
-    'avatar',
-     'remote',
-    'is_verified',
-];
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'bio',
+        'public_email',
+        'phone',
+        'avatar',
+        'remote',
+        'is_verified',
+        'country',
+    ];
 
 
     /**

@@ -3,6 +3,7 @@
 use App\Http\Controllers\{ProfileController, DashboardController, ProfessionalController, NewsletterController, LocaleController, ContactFormController};
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\FavoriteController;
 
 // Δημόσιες Σελίδες
 Route::get('/', fn() => view('welcome'));
@@ -44,6 +45,12 @@ Route::middleware(['auth'])->group(function () {
 
     // Admin (προσωρινός έλεγχος με role στον controller)
     Route::get('/admin', [DashboardController::class, 'admin'])->name('admin.index');
+});
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('/professionals/{professional}/favorite', [FavoriteController::class, 'toggle'])
+        ->name('professionals.favorite.toggle');
 });
 
 require __DIR__ . '/auth.php';

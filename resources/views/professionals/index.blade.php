@@ -7,8 +7,7 @@
             <p class="mt-2 text-xl">{{ __('messages.discover_subtitle') }}</p>
         </div>
     </div>
-    
-    {{-- {{ session('locale') }} --}}
+
     <div class="max-w-6xl mx-auto px-4 py-6">
         <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
             <form method="GET" action="{{ route('professionals.index', ['lang' => app()->getLocale()]) }}"
@@ -43,17 +42,21 @@
             <div class="bg-white w-full max-w-2xl mx-auto rounded-lg shadow-lg p-6 relative">
                 <button class="absolute top-2 right-3 text-gray-500 hover:text-black text-2xl"
                     onclick="document.getElementById('filterModal').classList.add('hidden')">&times;</button>
-                <form method="GET" action="{{ route('professionals.index', ['lang' => app()->getLocale()]) }}">
 
+                <!-- ΕΝΙΑΙΑ ΦΟΡΜΑ ΦΙΛΤΡΩΝ -->
+                <form method="GET" action="{{ route('professionals.index', ['lang' => app()->getLocale()]) }}">
                     <h2 class="text-lg font-bold mb-4 text-center">Filter by Categories</h2>
                     <div class="mb-4 grid grid-cols-2 sm:grid-cols-3 gap-2 max-h-48 overflow-y-auto">
                         @foreach($allCategories as $category)
                             <label class="flex items-center space-x-2">
-                                <input type="checkbox" name="categories[]" value="{{ $category->slug }}" {{ request()->input('categories') && in_array($category->slug, request()->input('categories')) ? 'checked' : '' }} class="form-checkbox text-blue-600">
+                                <input type="checkbox" name="categories[]" value="{{ $category->slug }}"
+                                    {{ request()->input('categories') && in_array($category->slug, request()->input('categories')) ? 'checked' : '' }}
+                                    class="form-checkbox text-blue-600">
                                 <span class="text-sm">{{ $category->name }}</span>
                             </label>
                         @endforeach
                     </div>
+
                     <div class="mt-4 border-t pt-4">
                         <label class="flex items-center space-x-2">
                             <input type="checkbox" name="remote_only" value="1" {{ request('remote_only') ? 'checked' : '' }} class="form-checkbox text-blue-600">
@@ -66,14 +69,30 @@
                             <input type="checkbox" name="verified_only" value="1" {{ request('verified_only') ? 'checked' : '' }} class="form-checkbox text-green-600">
                             <span class="text-sm text-gray-700">{{ __('messages.only_verified') }}</span>
                         </label>
+                    </div>
+                    <div class="mt-4 border-t pt-4">
+    <label class="flex items-center space-x-2">
+        <input type="checkbox" name="favorites_only" value="1" {{ request('favorites_only') ? 'checked' : '' }} class="form-checkbox text-pink-600">
+        <span class="text-sm text-gray-700">{{ __('messages.only_favorites') }}</span>
+    </label>
+</div>
+
+
+                    <div class="mt-4 border-t pt-4">
+                  <select name="country" class="border rounded px-3 py-2 w-full">
+   <option value="">{{ __('messages.all_countries') }}</option>
+    @foreach(['GR' => 'Greece', 'DE' => 'Germany', 'US' => 'USA', 'FR' => 'France'] as $code => $name)
+        <option value="{{ $code }}" {{ request('country') == $code ? 'selected' : '' }}>
+            {{ $name }}
+        </option>
+    @endforeach
+</select>
 
                     </div>
 
                     <div class="flex justify-between mt-4">
-                        <button type="submit"
-                            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">{{ __('messages.apply_filters') }}</button>
-                        <button type="button" onclick="resetFilters()"
-                            class="text-red-500 hover:underline text-sm">{{ __('messages.reset_filters') }}</button>
+                        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">{{ __('messages.apply_filters') }}</button>
+                        <button type="button" onclick="resetFilters()" class="text-red-500 hover:underline text-sm">{{ __('messages.reset_filters') }}</button>
                     </div>
                 </form>
             </div>
@@ -82,6 +101,7 @@
         <script>
             function resetFilters() {
                 document.querySelectorAll('#filterModal input[type=checkbox]').forEach(cb => cb.checked = false);
+                document.querySelector('#filterModal select[name="country"]').value = '';
             }
         </script>
 
@@ -101,38 +121,65 @@
                             </div>
                         @endif
 
-                        @if($user->avatar)
-                            <img src="{{ asset('storage/' . $user->avatar) }}" alt="Avatar" class="w-20 h-20 rounded-full">
-                        @endif
+                     @if($user->avatar)
+    <div class="relative inline-block">
+        <img src="{{ asset('storage/' . $user->avatar) }}" alt="Avatar" class="w-20 h-20 rounded-full">
+        
+        {{-- Κουμπί Favorite κάτω δεξιά --}}
+                    @auth
+                <button
+                class="favorite-btn absolute bottom-0 right-0 bg-white rounded-full p-1 hover:bg-red-100 text-red-500 transition"
+                data-id="{{ $user->id }}"
+                aria-pressed="{{ auth()->user()->favoriteProfessionals->contains($user->id) ? 'true' : 'false' }}"
+                style="width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;"
+            >
+                @if(auth()->user()->favoriteProfessionals->contains($user->id))
+                    ❤️
+                @else
+                    🤍
+                @endif
+            </button>
 
-                        
+                    @endauth
+                </div>
+            @endif
+
 
                         <a href="{{ route('profile.show', ['slug' => $user->slug, 'lang' => app()->getLocale()]) }}"
                             class="block text-xl font-semibold text-slate-700 hover:underline my-3">
                             {{ $user->name }} <i class="fa-solid fa-eye"></i>
                         </a>
 
-
                         @if($user->bio)
                             <p class="text-gray-600 mt-2 text-sm">{{ Str::limit($user->bio, 100) }}</p>
                         @endif
 
-                             @if($user->remote)
+                        @if($user->remote)
                             <p class="text-gray-600 mt-2 text-sm italic "><i class="fa-solid fa-satellite-dish"></i>Available for remote work</p>
                         @endif
+
+                  @php
+                    $countries = ['GR' => 'Greece', 'DE' => 'Germany', 'US' => 'USA', 'FR' => 'France'];
+                @endphp
+
+                <p class="text-gray-600 mt-2 text-sm italic ">
+                    {{ __('messages.country') }}: {{ $countries[$user->country] ?? $user->country ?? '-' }}
+                </p>
 
                         <div class="absolute bottom-2 left-5 right-5 flex flex-wrap gap-1">
                             @foreach($user->categories as $cat)
                                 <span class="bg-slate-900  text-white text-sm px-2 py-1 rounded">{{ $cat->name }}</span>
                             @endforeach
                         </div>
+
+
+                        
                     </li>
                 @endforeach
             </ul>
 
             <div class="mt-8">
-                {{ $professionals->appends(['lang' => app()->getLocale()])->links() }}
-
+                {{ $professionals->appends(request()->except('page'))->links() }}
             </div>
         @else
             <p class="text-gray-600">{{ __('messages.no_results') }}</p>
@@ -140,5 +187,38 @@
     </div>
 
 
+    <script>
+    document.querySelectorAll('.favorite-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const professionalId = this.dataset.id;
+            const token = '{{ csrf_token() }}';
+            const self = this;
+
+            fetch(`/professionals/${professionalId}/favorite`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': token,
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({})
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'added') {
+                    self.innerHTML = '❤️';
+                    self.setAttribute('aria-pressed', 'true');
+                } else if (data.status === 'removed') {
+                    self.innerHTML = '🤍';
+                    self.setAttribute('aria-pressed', 'false');
+                }
+            })
+            .catch(err => {
+                alert('Something went wrong.');
+                console.error(err);
+            });
+        });
+    });
+</script>
 
 </x-app-layout>

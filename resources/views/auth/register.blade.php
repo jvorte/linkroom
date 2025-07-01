@@ -43,6 +43,21 @@
                 class="block w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
         </div>
 
+        <div>
+
+            <!-- country -->
+    <label for="country" class="block font-semibold">{{ __('messages.country') }}</label>
+    <select name="country" id="country" required class="w-full border rounded px-3 py-2">
+        <option value="">{{ __('messages.select_country') }}</option>
+        <option value="GR">Greece</option>
+        <option value="DE">Germany</option>
+        <option value="US">United States</option>
+        <!-- πρόσθεσε όσες χώρες θέλεις -->
+    </select>
+    @error('country') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
+</div>
+
+
         <!-- Categories in 2 columns -->
         <div class="mb-4">
             <label class="block mb-2 font-semibold">Επιλέξτε κατηγορίες:</label>

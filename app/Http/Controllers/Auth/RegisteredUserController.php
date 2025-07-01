@@ -40,6 +40,7 @@ $request->validate([
     'phone' => 'nullable|string|max:50',
     'categories' => 'nullable|array',
     'categories.*' => 'exists:categories,id',
+    'country' => 'required|string|max:255',  // προσθήκη country
 ]);
 
 $user = User::create([
@@ -49,7 +50,9 @@ $user = User::create([
     'bio' => $request->bio,
     'public_email' => $request->public_email,
     'phone' => $request->phone,
+    'country' => $request->country,  // προσθήκη country
 ]);
+
 
 // Αν δόθηκαν κατηγορίες, κάνε sync
 if ($request->has('categories')) {
