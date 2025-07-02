@@ -1,5 +1,5 @@
 <x-guest-layout>
-        <div class="max-w-lg mx-auto px-4 py-6">
+        <div class="max-w-lg mx-auto px-2 py-6">
         <h1 class="text-2xl font-bold text-center mb-6">Register</h1>
     <form method="POST" action="{{ route('register') }}" class="max-w-lg mx-auto px-4">
         @csrf
@@ -49,9 +49,12 @@
     <label for="country" class="block font-semibold">{{ __('messages.country') }}</label>
     <select name="country" id="country" required class="w-full border rounded px-3 py-2">
         <option value="">{{ __('messages.select_country') }}</option>
-        <option value="GR">Greece</option>
-        <option value="DE">Germany</option>
-        <option value="US">United States</option>
+           <option value="UK">England</option>
+           <option value="GR">Greece</option>
+            <option value="CH">Switzerland</option>
+            <option value="DE">Germany</option>        
+        <option value="AT">Austria</option>
+        <option value="OTHER">Οther Countries</option>
         <!-- πρόσθεσε όσες χώρες θέλεις -->
     </select>
     @error('country') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror

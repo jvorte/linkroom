@@ -9,20 +9,27 @@
                 {{ __('messages.footer_description') }}
 
             </p>
+             <p class="mt-5  text-sm text-gray-100">
+        <a href="{{ route('terms', ['lang' => app()->getLocale()]) }}" class="underline hover:text-blue-600">{{ __('messages.terms_of_use') }}</a> |
+        <a href="{{ route('privacy', ['lang' => app()->getLocale()]) }}"class="underline hover:text-blue-600">{{ __('messages.privacy_policy') }}</a>
+    </p>
         </div>
 
         <!-- Quick Links -->
         <div>
             <h3 class="text-white font-semibold mb-4">{{ __('messages.quick_links') }}</h3>
             <ul>
-                <li><a href="{{ url('/') }}" class="hover:underline">{{ __('messages.home') }}</a></li>
-                <li><a href="{{ route('professionals.index') }}"
+                 <a href="{{ url('home/?lang=' . app()->getLocale()) }}"  class="hover:underline">{{ __('messages.home') }}</a></li>
+
+
+
+                <li><a href="{{ route('professionals.index', ['lang' => app()->getLocale()]) }}"
                         class="hover:underline">{{ __('messages.find_professionals') }}</a></li>
                 @auth
                     <li><a href="{{ route('profile.edit') }}" class="hover:underline">{{ __('messages.my_profile') }}</a>
                     </li>
                 @endauth
-                <li><a href="{{ route('contact') }}" class="hover:underline">{{ __('messages.contact_us') }}</a></li>
+                <li><a href="{{ route('contact', ['lang' => app()->getLocale()]) }}" class="hover:underline">{{ __('messages.contact_us') }}</a></li>
             </ul>
         </div>
 
@@ -36,10 +43,12 @@
                 <button type="submit"
                     class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md">{{ __('messages.subscribe') }}</button>
             </form>
+            
             @if(session('newsletter_status'))
                 <p class="mt-2 text-sm text-green-400">{{ session('newsletter_status') }}</p>
             @endif
         </div>
+        
     </div>
 
     <div class="mt-8 border-t border-gray-700 pt-4 text-center text-gray-500 text-sm">

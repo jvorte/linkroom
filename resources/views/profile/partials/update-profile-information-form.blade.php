@@ -105,10 +105,12 @@
 
         {{-- Bio --}}
         <div>
-            <x-input-label for="bio" :value="__('messages.bio')" />
-            <textarea id="bio" name="bio" rows="3"
-                class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-400">{{ old('bio', $user->bio) }}</textarea>
-            <x-input-error class="mt-2" :messages="$errors->get('bio')" />
+           <x-input-label for="bio" :value="__('messages.bio')" />
+<p class="text-sm text-gray-500 mb-1">{{ __('messages.bio_helper') }}</p>
+
+<textarea id="bio" name="bio" rows="3"
+    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-400">{{ old('bio', $user->bio) }}</textarea>
+ <x-input-error class="mt-2" :messages="$errors->get('bio')" />
         </div>
         {{-- Remote work --}}
 <div class="flex items-center mt-4">
@@ -137,7 +139,7 @@
             
     <x-input-label for="country" :value="__('messages.country')" />
     <select id="country" name="country" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-400">
-        @foreach(['GR' => 'Greece', 'DE' => 'Germany', 'US' => 'USA', 'FR' => 'France'] as $code => $name)
+        @foreach(['GR' => 'Greece','UK' => 'England',  'DE' => 'Germany', 'CH' => 'Switzerland', 'AT' => 'Austria', 'OTHER' => 'Οther Countries'] as $code => $name)
             <option value="{{ $code }}" {{ old('country', $user->country) == $code ? 'selected' : '' }}>
                 {{ $name }}
             </option>

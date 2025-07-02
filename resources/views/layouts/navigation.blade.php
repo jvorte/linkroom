@@ -16,27 +16,27 @@
                 <!-- Desktop Menu -->
                 <div class="hidden sm:flex sm:space-x-2">
                     <a href="{{ url('home/?lang=' . app()->getLocale()) }}"
-                        class="inline-flex text-base items-center px-1 pt-1 border-b-2 border-transparent  text-gray-800 hover:border-stone-500 hover:text-gray-700">
+                        class="inline-flex text-sm items-center px-1 pt-1 border-b-2 border-transparent  text-gray-800 hover:border-stone-500 hover:text-gray-700">
                         <i class="fa-solid fa-house-chimney mr-1"></i>
                         {{ __('messages.home') }}
                     </a>
 
                     <a href="{{ route('professionals.index', ['lang' => app()->getLocale()]) }}"
-                        class="inline-flex text-base items-center px-1 pt-1 border-b-2 border-transparent  text-gray-800 hover:border-stone-500 hover:text-gray-700">
+                        class="inline-flex text-sm items-center px-1 pt-1 border-b-2 border-transparent  text-gray-800 hover:border-stone-500 hover:text-gray-700">
                         <i class="fa-solid fa-user-doctor mr-1"></i>
                         {{ __('messages.find_professionals') }}
                     </a>
 
                     @auth
                         <a href="{{ route('profile.edit', ['lang' => app()->getLocale()]) }}"
-                            class="inline-flex text-base items-center px-1 pt-1 border-b-2 border-transparent text-gray-800 hover:border-stone-500 hover:text-gray-700">
+                            class="inline-flex text-sm items-center px-1 pt-1 border-b-2 border-transparent text-gray-800 hover:border-stone-500 hover:text-gray-700">
                             <i class="fa-solid fa-address-card mr-1"></i>
                             {{ __('messages.my_profile') }}
                         </a>
                     @endauth
 
                     <a href="{{ route('contact', ['lang' => app()->getLocale()]) }}"
-                        class="inline-flex text-base items-center px-1 pt-1 border-b-2 border-transparent  text-gray-800 hover:border-stone-500 hover:text-gray-700">
+                        class="inline-flex text-sm items-center px-1 pt-1 border-b-2 border-transparent  text-gray-800 hover:border-stone-500 hover:text-gray-700">
                         <i class="fa-solid fa-address-card mr-1"></i>
                         {{ __('messages.contact') }}
                     </a>
@@ -44,7 +44,7 @@
                     @auth
                         @if(auth()->user()->role === 'admin')
                             <a href="{{ route('admin.index', ['lang' => app()->getLocale()]) }}"
-                                class="inline-flex text-base items-center px-1 pt-1 border-b-2 border-transparent font-medium text-gray-800 hover:border-stone-500 hover:text-gray-700">
+                                class="inline-flex text-sm items-center px-1 pt-1 border-b-2 border-transparent font-medium text-gray-800 hover:border-stone-500 hover:text-gray-700">
                                 <i class="fa-solid fa-user-tie"></i>
                                 {{ __('messages.admin') }}
                             </a>
@@ -111,9 +111,9 @@
                 <!-- Language switcher -->
                 <div x-data="{ open: false }" class="relative">
                     <button @click="open = !open"
-                        class="flex items-center text-gray-800 hover:text-gray-900 focus:outline-none">
+                        class="flex items-center text-sm text-gray-800 hover:text-gray-900 focus:outline-none">
                       <i class="fa-solid fa-earth-americas"></i>
-                        <span class="ml-1">{{ strtoupper(app()->getLocale()) }}</span>
+                        <span class="ml-1 ">{{ strtoupper(app()->getLocale()) }}</span>
                     </button>
                     <div x-show="open" @click.away="open = false" x-transition
                         class="absolute right-0 mt-2 w-24 bg-white border rounded shadow-md z-20">

@@ -53,4 +53,9 @@ Route::middleware(['auth'])->group(function () {
         ->name('professionals.favorite.toggle');
 });
 
+
+Route::view('/terms', 'legal.terms')->name('terms');
+Route::view('/privacy', 'legal.privacy')->name('privacy');
+
+
 require __DIR__ . '/auth.php';

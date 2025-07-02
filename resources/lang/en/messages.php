@@ -98,5 +98,106 @@ return [
 'all_countries' => 'All countries', 
    'country' => 'Country',
     'only_favorites' => 'Only favorites',
+  'select_country' => 'Select Country',
+  'bio_helper' => 'Optional: Briefly describe who you are, your experience, or the services you offer.',
 
+
+   'update_password' => 'Update Password',
+    'ensure_your_account' => 'Ensure your account is using a long, random password to stay secure',
+
+        'update_password' => 'Update Password',
+    'ensure_your_account' => 'Ensure your account is using a long, random password to stay secure.',
+    'current_password' => 'Current Password',
+    'new_password' => 'New Password',
+    'confirm_password' => 'Confirm Password',
+    'save' => 'Save',
+    'saved' => 'Saved.',
+       'delete_account' => 'Delete Account',
+    'delete_account_warning_1' => 'Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.',
+    'delete_account_warning_2' => 'Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.',
+    'confirm_deletion_title' => 'Are you sure you want to delete your account?',
+    'password' => 'Password',
+    'cancel' => 'Cancel',
+    'delete_account' => 'Konto löschen',
+'delete_account_warning_1' => 'Sobald Ihr Konto gelöscht ist, werden alle darin enthaltenen Ressourcen und Daten dauerhaft gelöscht. Laden Sie vor dem Löschen bitte alle Daten und Informationen herunter, die Sie behalten möchten.',
+'delete_account_warning_2' => 'Sobald Ihr Konto gelöscht ist, werden alle darin enthaltenen Ressourcen und Daten dauerhaft gelöscht. Bitte geben Sie Ihr Passwort ein, um die endgültige Löschung Ihres Kontos zu bestätigen.',
+'confirm_deletion_title' => 'Möchten Sie Ihr Konto wirklich löschen?',
+'password' => 'Passwort',
+'cancel' => 'Abbrechen',
+
+    'terms_of_use' => 'Terms of Use: By using this website you agree to our terms and conditions. Please read them carefully.',
+    'privacy_policy' => 'Privacy Policy: We care about your privacy and data protection. Please review our privacy practices.',
+
+ 'terms_of_use' => 'Nutzungsbedingungen',
+    'privacy_policy' => 'Datenschutzrichtlinie',
+
+
+    'terms_of_use' => 'Terms of Use',
+'privacy_policy' => 'Privacy Policy',
+
+'terms_of_use_full' => "Last updated: 02.07.2025
+
+Welcome to our website. By accessing and using this website, you agree to the following terms of use:
+
+General
+
+This website provides information and services to registered and non-registered users.
+
+The site owner reserves the right to modify or discontinue services at any time without notice.
+
+User Responsibility
+
+You must not use the website for any illegal or malicious purpose.
+
+You are responsible for the accuracy of the information you provide.
+
+Intellectual Property
+
+All content (texts, images, code) belongs to the site owner unless otherwise stated.
+
+Disclaimer
+
+The site owner is not responsible for any losses or damages arising from use of the website.
+
+Changes
+
+These terms may change at any time. Continued use of the website means acceptance of the new terms.
+
+",
+
+
+
+'privacy_policy_full' => "Last updated: 02.07.2025
+
+Protecting your personal data is important to us. This policy explains how we collect, use, and store your information.
+
+ Data We Collect
+
+Name, email, country, bio, links, IP address.
+
+Any other information you voluntarily provide.
+
+Why We Collect Data
+
+To create and manage your account.
+
+To provide personalized services.
+
+Data Sharing
+
+We do not share your data with third parties unless required by law or with your consent.
+
+Data Retention
+
+We keep your data as long as you have an account. You may request deletion anytime.
+
+Your Rights
+
+You have the right to access, correct, delete, and object to the processing of your personal data.
+
+Contact
+
+For privacy questions, contact us.
+
+",
 ];

@@ -1,11 +1,11 @@
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Update Password') }}
+            {{ __('messages.update_password') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            {{ __('Ensure your account is using a long, random password to stay secure.') }}
+            {{ __('messages.ensure_your_account') }}
         </p>
     </header>
 
@@ -15,7 +15,7 @@
 
         <!-- Current Password -->
         <div>
-            <x-input-label for="current_password" :value="__('Current Password')" />
+           <x-input-label for="current_password" :value="__('messages.current_password')" />
             <x-text-input id="current_password" name="current_password" type="password"
                 class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-400"
                 autocomplete="current-password" />
@@ -24,7 +24,7 @@
 
         <!-- New Password -->
         <div>
-            <x-input-label for="password" :value="__('New Password')" />
+           <x-input-label for="password" :value="__('messages.new_password')" />
             <x-text-input id="password" name="password" type="password"
                 class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-400"
                 autocomplete="new-password" />
@@ -33,7 +33,7 @@
 
         <!-- Confirm Password -->
         <div>
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+           <x-input-label for="password_confirmation" :value="__('messages.confirm_password')" />
             <x-text-input id="password_confirmation" name="password_confirmation" type="password"
                 class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-400"
                 autocomplete="new-password" />
@@ -42,12 +42,12 @@
 
         <!-- Submit -->
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+         <x-primary-button>{{ __('messages.save') }}</x-primary-button>
 
             @if (session('status') === 'password-updated')
-                <p x-data="{ show: true }" x-show="show" x-transition
-                    x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600">{{ __('Saved.') }}</p>
+            <p x-data="{ show: true }" x-show="show" x-transition
+   x-init="setTimeout(() => show = false, 2000)"
+   class="text-sm text-gray-600">{{ __('messages.saved') }}</p>
             @endif
         </div>
     </form>

@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="relative h-80 md:h-96 overflow-hidden shadow mb-12">
+    <div class="relative h-80 md:h-85 overflow-hidden shadow mb-12">
         <img src="{{ asset('storage/images/prof3.jpg') }}" alt="Banner" class="absolute inset-0 w-full h-full object-cover brightness-75">
         <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent"></div>
         <div class="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-6 md:px-12">
