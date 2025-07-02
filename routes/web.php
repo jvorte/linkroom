@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\{ProfileController, DashboardController, ProfessionalController, NewsletterController, LocaleController, ContactFormController};
+use App\Http\Controllers\AdminMessageController;
+use App\Http\Controllers\AdminSubscriptionController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\FavoriteController;
@@ -56,6 +58,13 @@ Route::middleware(['auth'])->group(function () {
 
 Route::view('/terms', 'legal.terms')->name('terms');
 Route::view('/privacy', 'legal.privacy')->name('privacy');
+
+Route::middleware(['web'])->group(function () {
+   Route::delete('/admin/messages/{id}', [AdminMessageController::class, 'destroy'])->name('admin.messages.destroy');
+Route::delete('/admin/subscriptions/{id}', [AdminSubscriptionController::class, 'destroy'])->name('admin.subscriptions.destroy');
+});
+
+
 
 
 require __DIR__ . '/auth.php';
