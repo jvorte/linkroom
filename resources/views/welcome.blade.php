@@ -4,12 +4,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{ __('messages.app_title') }}</title>
+    <title>LinkRoom</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net" />
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
-
+   <link rel="icon" class="" href="{{ asset('storage\icons\paperclip-solid.svg') }}?v=2">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <style>
