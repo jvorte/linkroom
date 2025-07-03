@@ -135,6 +135,16 @@ return [
   'terms_of_use' => 'Terms of Use',
   'privacy_policy' => 'Privacy Policy',
 
+
+'main_category' => 'Main Category',
+'subcategories' => 'Subcategories',
+'select_main_category' => 'Select a category',
+'no_subcategories' => 'There are no subcategories',
+
+
+
+
+
   'terms_of_use_full' => "Last updated: 02.07.2025
 
 Welcome to our website. By accessing and using this website, you agree to the following terms of use:

@@ -122,7 +122,10 @@ $user->save();
         }
     }
 
-    return redirect()->route('profile.edit')->with('success', 'Profile updated.');
+return redirect()->route('profile.edit', ['locale' => app()->getLocale()])
+                 ->with('status', 'profile-updated');
+
 }
+
 
 }

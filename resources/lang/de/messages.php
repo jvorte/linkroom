@@ -120,6 +120,13 @@ return [
   'terms_of_use' => 'Nutzungsbedingungen',
   'privacy_policy' => 'Datenschutzerklärung',
 
+  'main_category' => 'Hauptkategorie',
+  'subcategories' => 'Unterkategorien',
+  'select_main_category' => 'Kategorie auswählen',
+  'no_subcategories' => 'Es sind keine Unterkategorien vorhanden',
+
+
+
   'terms_of_use_full' => "Letzte Aktualisierung: 02.07.2025
 
 Willkommen auf unserer Webseite. Mit der Nutzung dieser Webseite stimmen Sie folgenden Nutzungsbedingungen zu:

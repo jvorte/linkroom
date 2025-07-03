@@ -16,6 +16,7 @@
     <form method="post" enctype="multipart/form-data" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
         @csrf
         @method('put')
+<input type="hidden" name="lang" value="{{ app()->getLocale() }}">
 
         {{-- Avatar --}}
         <div>
@@ -122,31 +123,65 @@
 
 
         {{-- Categories --}}
-        <div>
-            <x-input-label for="categories" :value="__('messages.categories')" />
-            <select name="categories[]" id="categories" multiple
-                class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-400">
-                @foreach(App\Models\Category::all() as $category)
-                    <option value="{{ $category->id }}"
-                        {{ $user->categories->contains($category->id) ? 'selected' : '' }}>
-                        {{ $category->name }}
-                    </option>
-                @endforeach
-            </select>
-            <x-input-error class="mt-2" :messages="$errors->get('categories')" />
-        </div>
-        <div>
-            
-    <x-input-label for="country" :value="__('messages.country')" />
-    <select id="country" name="country" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-400">
-        @foreach(['GR' => 'Greece','UK' => 'England',  'DE' => 'Germany', 'CH' => 'Switzerland', 'AT' => 'Austria', 'OTHER' => 'Οther Countries'] as $code => $name)
-            <option value="{{ $code }}" {{ old('country', $user->country) == $code ? 'selected' : '' }}>
-                {{ $name }}
-            </option>
+  {{-- Main Category --}}
+<div>
+    <x-input-label for="main_category" :value="__('messages.main_category')" />
+    <select id="main_category" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-400">
+        <option value="">{{ __('messages.select_main_category') }}</option>
+        @foreach(App\Models\Category::whereNull('parent_id')->get() as $mainCategory)
+            <option value="{{ $mainCategory->id }}">{{ $mainCategory->name }}</option>
         @endforeach
     </select>
-    <x-input-error class="mt-2" :messages="$errors->get('country')" />
 </div>
+
+{{-- Subcategories --}}
+<div class="mt-4">
+    <x-input-label for="subcategories" :value="__('messages.subcategories')" />
+    <select id="subcategories" name="categories[]" multiple
+        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-400">
+        {{-- Εμφάνιση αποθηκευμένων υποκατηγοριών --}}
+        @foreach($user->categories as $cat)
+            @if($cat->parent_id !== null)
+                <option value="{{ $cat->id }}" selected>{{ $cat->name }}</option>
+            @endif
+        @endforeach
+    </select>
+    <x-input-error class="mt-2" :messages="$errors->get('categories')" />
+</div>
+
+{{-- AJAX Script --}}
+<script>
+document.getElementById('main_category').addEventListener('change', function () {
+    const mainCategoryId = this.value;
+    const subcategorySelect = document.getElementById('subcategories');
+    subcategorySelect.innerHTML = ''; // Καθαρισμός
+
+    if (!mainCategoryId) return;
+
+    fetch(`/categories/${mainCategoryId}/subcategories`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.length === 0) {
+                const option = document.createElement('option');
+                option.disabled = true;
+                option.textContent = "{{ __('messages.no_subcategories') }}";
+                subcategorySelect.appendChild(option);
+                return;
+            }
+
+            data.forEach(sub => {
+                const option = document.createElement('option');
+                option.value = sub.id;
+                option.textContent = sub.name;
+                subcategorySelect.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error('Error loading subcategories:', error);
+        });
+});
+</script>
+
 
 
         {{-- Submit --}}

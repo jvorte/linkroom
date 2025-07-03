@@ -61,15 +61,17 @@
                     <div class="mb-4 flex flex-wrap gap-2">
                         @foreach($mainCategories as $mainCat)
                             <button type="button"
-                                class="main-category-btn bg-blue-600 text-white px-4 py-2 rounded"
+                                class="main-category-btn bg-slate-800 text-white px-3 py-1 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300 ease-in-out"
                                 data-id="{{ $mainCat->id }}">
                                 {{ $mainCat->name }}
                             </button>
+
                         @endforeach
                     </div>
 
                     <!-- Subcategories checkboxes will be loaded here -->
-                    <div id="subcategories-container" class="mb-4 grid grid-cols-2 sm:grid-cols-3 gap-2 max-h-48 overflow-y-auto"></div>
+                    <div id="subcategories-container"
+                        class="mb-4 grid grid-cols-2 sm:grid-cols-3 gap-2 max-h-48 overflow-y-auto"></div>
 
                     <!-- Remote only filter -->
                     <div class="mt-4 border-t pt-4">
@@ -88,20 +90,20 @@
                     </div>
 
                     @auth
-                    <!-- Favorites only filter -->
-                    <div class="mt-4 border-t pt-4">
-                        <label class="flex items-center space-x-2">
-                            <input type="checkbox" name="favorites_only" value="1" {{ request('favorites_only') ? 'checked' : '' }} class="form-checkbox text-pink-600">
-                            <span class="text-sm text-gray-700">{{ __('messages.only_favorites') }}</span>
-                        </label>
-                    </div>
+                        <!-- Favorites only filter -->
+                        <div class="mt-4 border-t pt-4">
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" name="favorites_only" value="1" {{ request('favorites_only') ? 'checked' : '' }} class="form-checkbox text-pink-600">
+                                <span class="text-sm text-gray-700">{{ __('messages.only_favorites') }}</span>
+                            </label>
+                        </div>
                     @endauth
 
                     <!-- Country select filter -->
                     <div class="mt-4 border-t pt-4">
                         <select name="country" class="border rounded px-3 py-2 w-full">
                             <option value="">{{ __('messages.all_countries') }}</option>
-                            @foreach(['GR' => 'Greece','UK' => 'England',  'DE' => 'Germany', 'CH' => 'Switzerland', 'AT' => 'Austria', 'OTHER' => 'Other Countries'] as $code => $name)
+                            @foreach(['GR' => 'Greece', 'UK' => 'England', 'DE' => 'Germany', 'CH' => 'Switzerland', 'AT' => 'Austria', 'OTHER' => 'Other Countries'] as $code => $name)
                                 <option value="{{ $code }}" {{ request('country') == $code ? 'selected' : '' }}>
                                     {{ $name }}
                                 </option>
@@ -126,11 +128,15 @@
         @if($professionals->count())
             <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach($professionals as $user)
-                    <li class="relative border rounded-lg p-5 shadow-xl bg-white hover:shadow-md transition fade-in-up min-h-[200px] pb-12">
+                    <li
+                        class="relative border rounded-lg p-5 shadow-xl bg-white hover:shadow-md transition fade-in-up min-h-[200px] pb-12">
                         @if($user->is_verified)
-                            <div class="absolute top-2 right-2 bg-green-200 text-black text-[13px] px-1.5 py-0.5 rounded-full font-semibold shadow flex items-center gap-1" style="animation: pulse 2s infinite;">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+                            <div class="absolute top-2 right-2 bg-green-200 text-black text-[13px] px-1.5 py-0.5 rounded-full font-semibold shadow flex items-center gap-1"
+                                style="animation: pulse 2s infinite;">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                    stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
                                 </svg>
                                 {{ __('messages.verified_badge') }}
                             </div>
@@ -141,18 +147,17 @@
                                 <img src="{{ asset('storage/' . $user->avatar) }}" alt="Avatar" class="w-20 h-20 rounded-full">
 
                                 @auth
-                                <button
-                                    class="favorite-btn absolute bottom-0 right-0 bg-white rounded-full p-1 hover:bg-red-100 text-red-500 transition"
-                                    data-id="{{ $user->id }}"
-                                    aria-pressed="{{ auth()->user()->favoriteProfessionals->contains($user->id) ? 'true' : 'false' }}"
-                                    style="width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;"
-                                >
-                                    @if(auth()->user()->favoriteProfessionals->contains($user->id))
-                                        ❤️
-                                    @else
-                                        🤍
-                                    @endif
-                                </button>
+                                    <button
+                                        class="favorite-btn absolute bottom-0 right-0 bg-white rounded-full p-1 hover:bg-red-100 text-red-500 transition"
+                                        data-id="{{ $user->id }}"
+                                        aria-pressed="{{ auth()->user()->favoriteProfessionals->contains($user->id) ? 'true' : 'false' }}"
+                                        style="width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;">
+                                        @if(auth()->user()->favoriteProfessionals->contains($user->id))
+                                            ❤️
+                                        @else
+                                            🤍
+                                        @endif
+                                    </button>
                                 @endauth
                             </div>
                         @endif
@@ -167,11 +172,12 @@
                         @endif
 
                         @if($user->remote)
-                            <p class="text-gray-600 mt-2 text-sm italic"><i class="fa-solid fa-satellite-dish"></i> {{ __('messages.available_remote') }}</p>
+                            <p class="text-gray-600 mt-2 text-sm italic"><i class="fa-solid fa-satellite-dish"></i>
+                                {{ __('messages.available_remote') }}</p>
                         @endif
 
                         @php
-                            $countries = ['GR' => 'Greece','UK' => 'England',  'DE' => 'Germany', 'CH' => 'Switzerland', 'AT' => 'Austria', 'OTHER' => __('messages.other_countries')];
+                            $countries = ['GR' => 'Greece', 'UK' => 'England', 'DE' => 'Germany', 'CH' => 'Switzerland', 'AT' => 'Austria', 'OTHER' => __('messages.other_countries')];
                         @endphp
                         <p class="text-gray-600 mt-2 text-sm italic">
                             {{ __('messages.country') }}: {{ $countries[$user->country] ?? $user->country ?? '-' }}
@@ -198,7 +204,7 @@
     <!-- Favorite button AJAX logic -->
     <script>
         document.querySelectorAll('.favorite-btn').forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 const professionalId = this.dataset.id;
                 const token = '{{ csrf_token() }}';
                 const self = this;
@@ -212,20 +218,20 @@
                     },
                     body: JSON.stringify({})
                 })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 'added') {
-                        self.innerHTML = '❤️';
-                        self.setAttribute('aria-pressed', 'true');
-                    } else if (data.status === 'removed') {
-                        self.innerHTML = '🤍';
-                        self.setAttribute('aria-pressed', 'false');
-                    }
-                })
-                .catch(err => {
-                    alert('Something went wrong.');
-                    console.error(err);
-                });
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'added') {
+                            self.innerHTML = '❤️';
+                            self.setAttribute('aria-pressed', 'true');
+                        } else if (data.status === 'removed') {
+                            self.innerHTML = '🤍';
+                            self.setAttribute('aria-pressed', 'false');
+                        }
+                    })
+                    .catch(err => {
+                        alert('Something went wrong.');
+                        console.error(err);
+                    });
             });
         });
 

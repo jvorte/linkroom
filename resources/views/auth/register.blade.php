@@ -61,7 +61,7 @@
 </div>
 
 
-        <!-- Categories in 2 columns -->
+        {{-- <!-- Categories in 2 columns -->
         <div class="mb-4">
             <label class="block mb-2 font-semibold">Επιλέξτε κατηγορίες:</label>
             <div class="grid grid-cols-2 gap-4 max-h-48 overflow-y-auto border border-gray-300 rounded p-3">
@@ -74,7 +74,7 @@
                     </label>
                 @endforeach
             </div>
-        </div>
+        </div> --}}
 
         <!-- Password -->
         <div class="mb-4">
