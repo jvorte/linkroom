@@ -51,153 +51,135 @@
                     onclick="document.getElementById('filterModal').classList.add('hidden')">&times;</button>
 
                 <!-- Filter form -->
-        <form method="GET" action="{{ request()->url() }}">
-    {{-- ✅ Προσθήκη του lang στο query string --}}
-    <input type="hidden" name="lang" value="{{ app()->getLocale() }}">
+                <form method="GET" action="{{ request()->url() }}">
+                    {{-- Keep lang param --}}
+                    <input type="hidden" name="lang" value="{{ app()->getLocale() }}">
 
-    <h2 class="text-lg font-bold mb-4 text-center">{{ __('messages.filter_categories') }}</h2>
+                    <h2 class="text-lg font-bold mb-4 text-center">{{ __('messages.filter_categories') }}</h2>
 
-    <!-- Categories checkboxes -->
-    <div class="mb-4 grid grid-cols-2 sm:grid-cols-3 gap-2 max-h-48 overflow-y-auto">
-        @foreach($allCategories as $category)
-            <label class="flex items-center space-x-2">
-                <input type="checkbox" name="categories[]" value="{{ $category->slug }}"
-                    {{ request()->input('categories') && in_array($category->slug, request()->input('categories')) ? 'checked' : '' }}
-                    class="form-checkbox text-blue-600">
-                <span class="text-sm">{{ $category->name }}</span>
-            </label>
-        @endforeach
-    </div>
+                    <!-- Main categories buttons -->
+                    <div class="mb-4 flex flex-wrap gap-2">
+                        @foreach($mainCategories as $mainCat)
+                            <button type="button"
+                                class="main-category-btn bg-blue-600 text-white px-4 py-2 rounded"
+                                data-id="{{ $mainCat->id }}">
+                                {{ $mainCat->name }}
+                            </button>
+                        @endforeach
+                    </div>
 
-    <!-- Remote only filter -->
-    <div class="mt-4 border-t pt-4">
-        <label class="flex items-center space-x-2">
-            <input type="checkbox" name="remote_only" value="1" {{ request('remote_only') ? 'checked' : '' }} class="form-checkbox text-blue-600">
-            <span class="text-sm text-gray-700">{{ __('messages.only_remote') }}</span>
-        </label>
-    </div>
+                    <!-- Subcategories checkboxes will be loaded here -->
+                    <div id="subcategories-container" class="mb-4 grid grid-cols-2 sm:grid-cols-3 gap-2 max-h-48 overflow-y-auto"></div>
 
-    <!-- Verified only filter -->
-    <div class="mt-4 border-t pt-4">
-        <label class="flex items-center space-x-2">
-            <input type="checkbox" name="verified_only" value="1" {{ request('verified_only') ? 'checked' : '' }} class="form-checkbox text-green-600">
-            <span class="text-sm text-gray-700">{{ __('messages.only_verified') }}</span>
-        </label>
-    </div>
+                    <!-- Remote only filter -->
+                    <div class="mt-4 border-t pt-4">
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" name="remote_only" value="1" {{ request('remote_only') ? 'checked' : '' }} class="form-checkbox text-blue-600">
+                            <span class="text-sm text-gray-700">{{ __('messages.only_remote') }}</span>
+                        </label>
+                    </div>
 
-    @auth
-    <!-- Favorites only filter -->
-    <div class="mt-4 border-t pt-4">
-        <label class="flex items-center space-x-2">
-            <input type="checkbox" name="favorites_only" value="1" {{ request('favorites_only') ? 'checked' : '' }} class="form-checkbox text-pink-600">
-            <span class="text-sm text-gray-700">{{ __('messages.only_favorites') }}</span>
-        </label>
-    </div>
-    @endauth
+                    <!-- Verified only filter -->
+                    <div class="mt-4 border-t pt-4">
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" name="verified_only" value="1" {{ request('verified_only') ? 'checked' : '' }} class="form-checkbox text-green-600">
+                            <span class="text-sm text-gray-700">{{ __('messages.only_verified') }}</span>
+                        </label>
+                    </div>
 
-    <!-- Country select filter -->
-    <div class="mt-4 border-t pt-4">
-        <select name="country" class="border rounded px-3 py-2 w-full">
-            <option value="">{{ __('messages.all_countries') }}</option>
-            @foreach(['GR' => 'Greece','UK' => 'England',  'DE' => 'Germany', 'CH' => 'Switzerland', 'AT' => 'Austria', 'OTHER' => 'Οther Countries'] as $code => $name)
-                <option value="{{ $code }}" {{ request('country') == $code ? 'selected' : '' }}>
-                    {{ $name }}
-                </option>
-            @endforeach
-        </select>
-    </div>
+                    @auth
+                    <!-- Favorites only filter -->
+                    <div class="mt-4 border-t pt-4">
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" name="favorites_only" value="1" {{ request('favorites_only') ? 'checked' : '' }} class="form-checkbox text-pink-600">
+                            <span class="text-sm text-gray-700">{{ __('messages.only_favorites') }}</span>
+                        </label>
+                    </div>
+                    @endauth
 
-    <!-- Filter form buttons -->
-    <div class="flex justify-between mt-4">
-        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-            {{ __('messages.apply_filters') }}
-        </button>
-        <button type="button" onclick="resetFilters()" class="text-red-500 hover:underline text-sm">
-            {{ __('messages.reset_filters') }}
-        </button>
-    </div>
-</form>
+                    <!-- Country select filter -->
+                    <div class="mt-4 border-t pt-4">
+                        <select name="country" class="border rounded px-3 py-2 w-full">
+                            <option value="">{{ __('messages.all_countries') }}</option>
+                            @foreach(['GR' => 'Greece','UK' => 'England',  'DE' => 'Germany', 'CH' => 'Switzerland', 'AT' => 'Austria', 'OTHER' => 'Other Countries'] as $code => $name)
+                                <option value="{{ $code }}" {{ request('country') == $code ? 'selected' : '' }}>
+                                    {{ $name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
 
+                    <!-- Filter form buttons -->
+                    <div class="flex justify-between mt-4">
+                        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                            {{ __('messages.apply_filters') }}
+                        </button>
+                        <button type="button" onclick="resetFilters()" class="text-red-500 hover:underline text-sm">
+                            {{ __('messages.reset_filters') }}
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
-
-        <script>
-            // Reset all filters in the modal
-            function resetFilters() {
-                document.querySelectorAll('#filterModal input[type=checkbox]').forEach(cb => cb.checked = false);
-                document.querySelector('#filterModal select[name="country"]').value = '';
-            }
-        </script>
 
         <!-- Professionals list -->
         @if($professionals->count())
             <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach($professionals as $user)
                     <li class="relative border rounded-lg p-5 shadow-xl bg-white hover:shadow-md transition fade-in-up min-h-[200px] pb-12">
-                        <!-- Verified badge -->
                         @if($user->is_verified)
-                            <div class="absolute top-2 right-2 bg-green-200 text-black text-[13px] px-1.5 py-0.5 rounded-full font-semibold shadow flex items-center gap-1"
-                                style="animation: pulse 2s infinite;">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                    stroke="currentColor" class="w-5 h-5">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+                            <div class="absolute top-2 right-2 bg-green-200 text-black text-[13px] px-1.5 py-0.5 rounded-full font-semibold shadow flex items-center gap-1" style="animation: pulse 2s infinite;">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
                                 </svg>
                                 {{ __('messages.verified_badge') }}
                             </div>
                         @endif
 
-                        <!-- User avatar and favorite button -->
                         @if($user->avatar)
                             <div class="relative inline-block">
                                 <img src="{{ asset('storage/' . $user->avatar) }}" alt="Avatar" class="w-20 h-20 rounded-full">
-                                
-                                {{-- Favorite button (bottom right) --}}
+
                                 @auth
-                                    <button
-                                        class="favorite-btn absolute bottom-0 right-0 bg-white rounded-full p-1 hover:bg-red-100 text-red-500 transition"
-                                        data-id="{{ $user->id }}"
-                                        aria-pressed="{{ auth()->user()->favoriteProfessionals->contains($user->id) ? 'true' : 'false' }}"
-                                        style="width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;"
-                                    >
-                                        @if(auth()->user()->favoriteProfessionals->contains($user->id))
-                                            ❤️
-                                        @else
-                                            🤍
-                                        @endif
-                                    </button>
+                                <button
+                                    class="favorite-btn absolute bottom-0 right-0 bg-white rounded-full p-1 hover:bg-red-100 text-red-500 transition"
+                                    data-id="{{ $user->id }}"
+                                    aria-pressed="{{ auth()->user()->favoriteProfessionals->contains($user->id) ? 'true' : 'false' }}"
+                                    style="width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;"
+                                >
+                                    @if(auth()->user()->favoriteProfessionals->contains($user->id))
+                                        ❤️
+                                    @else
+                                        🤍
+                                    @endif
+                                </button>
                                 @endauth
                             </div>
                         @endif
 
-                        <!-- User profile link -->
                         <a href="{{ route('profile.show', ['slug' => $user->slug, 'lang' => app()->getLocale()]) }}"
                             class="block text-xl font-semibold text-slate-700 hover:underline my-3">
                             {{ $user->name }} <i class="fa-solid fa-eye"></i>
                         </a>
 
-                        <!-- User bio -->
                         @if($user->bio)
                             <p class="text-gray-600 mt-2 text-sm">{{ Str::limit($user->bio, 100) }}</p>
                         @endif
 
-                        <!-- Remote work info -->
                         @if($user->remote)
-                            <p class="text-gray-600 mt-2 text-sm italic "><i class="fa-solid fa-satellite-dish"></i>Available for remote work</p>
+                            <p class="text-gray-600 mt-2 text-sm italic"><i class="fa-solid fa-satellite-dish"></i> {{ __('messages.available_remote') }}</p>
                         @endif
 
-                        <!-- Country info -->
                         @php
-                            $countries = ['GR' => 'Greece','UK' => 'England',  'DE' => 'Germany', 'CH' => 'Switzerland', 'AT' => 'Austria', 'OTHER' => 'Οther Countries'];
+                            $countries = ['GR' => 'Greece','UK' => 'England',  'DE' => 'Germany', 'CH' => 'Switzerland', 'AT' => 'Austria', 'OTHER' => __('messages.other_countries')];
                         @endphp
-                        <p class="text-gray-600 mt-2 text-sm italic ">
+                        <p class="text-gray-600 mt-2 text-sm italic">
                             {{ __('messages.country') }}: {{ $countries[$user->country] ?? $user->country ?? '-' }}
                         </p>
 
-                        <!-- User categories -->
                         <div class="absolute bottom-2 left-5 right-5 flex flex-wrap gap-1">
                             @foreach($user->categories as $cat)
-                                <span class="bg-slate-900  text-white text-sm px-2 py-1 rounded">{{ $cat->name }}</span>
+                                <span class="bg-slate-900 text-white text-sm px-2 py-1 rounded">{{ $cat->name }}</span>
                             @endforeach
                         </div>
                     </li>
@@ -209,7 +191,6 @@
                 {{ $professionals->appends(request()->except('page'))->links() }}
             </div>
         @else
-            <!-- No results message -->
             <p class="text-gray-600">{{ __('messages.no_results') }}</p>
         @endif
     </div>
@@ -247,6 +228,46 @@
                 });
             });
         });
-    </script>
 
+        // Categories and subcategories filter logic
+        const selectedCategories = @json(request('categories', []));
+
+        document.querySelectorAll('.main-category-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const categoryId = button.getAttribute('data-id');
+                const container = document.getElementById('subcategories-container');
+                container.innerHTML = '<p>Φόρτωση...</p>';
+
+                fetch(`/categories/${categoryId}/subcategories`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.length === 0) {
+                            container.innerHTML = '<p>Δεν βρέθηκαν υποκατηγορίες.</p>';
+                            return;
+                        }
+
+                        let html = '';
+                        data.forEach(subcat => {
+                            const checked = selectedCategories.includes(subcat.slug) ? 'checked' : '';
+                            html += `
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" name="categories[]" value="${subcat.slug}" class="form-checkbox text-blue-600" ${checked}>
+                                    <span class="text-sm">${subcat.name}</span>
+                                </label>
+                            `;
+                        });
+                        container.innerHTML = html;
+                    })
+                    .catch(() => {
+                        container.innerHTML = '<p>Σφάλμα φόρτωσης υποκατηγοριών.</p>';
+                    });
+            });
+        });
+
+        // Reset all filters in the modal
+        function resetFilters() {
+            document.querySelectorAll('#filterModal input[type=checkbox]').forEach(cb => cb.checked = false);
+            document.querySelector('#filterModal select[name="country"]').value = '';
+        }
+    </script>
 </x-app-layout>

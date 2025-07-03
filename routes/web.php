@@ -7,6 +7,13 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\FavoriteController;
 
+
+Route::get('/categories/{parentId}/subcategories', function ($parentId) {
+    return response()->json(['parentId' => $parentId, 'message' => 'Route is working']);
+});
+
+
+Route::get('/categories/{parentId}/subcategories', [ProfessionalController::class, 'getSubcategories']);
 // Δημόσιες Σελίδες
 Route::get('/', fn() => view('welcome'));
 Route::get('/home', [DashboardController::class, 'home'])->name('home');

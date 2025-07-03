@@ -19,5 +19,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        // Κλήση για τον CategorySeeder
+        $this->call(CategorySeeder::class);
     }
 }

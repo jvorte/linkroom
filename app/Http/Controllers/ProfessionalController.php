@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfessionalController extends Controller
-{
-  public function index(Request $request)
+{public function index(Request $request)
 {
     $categories = Category::all();
+    $mainCategories = $categories->whereNull('parent_id');
 
     $query = User::with('categories');
 
@@ -37,17 +38,17 @@ class ProfessionalController extends Controller
         $query->where('is_verified', true);
     }
 
-        // Φίλτρο για favorites μόνο
+    // Φίλτρο favorites μόνο αν ζητηθεί
     if ($request->boolean('favorites_only')) {
         $user = auth()->user();
         if ($user) {
             $favoriteIds = $user->favoriteProfessionals()->pluck('professional_id')->toArray();
             $query->whereIn('id', $favoriteIds);
         } else {
-            // Αν δεν υπάρχει login user, δεν επιστρέφουμε κανένα
             $query->whereRaw('0=1');
         }
     }
+
     if ($request->filled('search')) {
         $searchTerm = $request->input('search');
         $query->where(function ($q) use ($searchTerm) {
@@ -61,9 +62,15 @@ class ProfessionalController extends Controller
 
     return view('professionals.index', [
         'professionals' => $professionals,
-              'categories' => $categories,
         'allCategories' => $categories,
+        'mainCategories' => $mainCategories,
     ]);
+}
+
+ public function getSubcategories($parentId)
+{
+    $subcategories = Category::where('parent_id', $parentId)->get();
+    return response()->json($subcategories);
 }
 
 }
