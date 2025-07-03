@@ -3,40 +3,40 @@
         <div class="flex justify-between h-16">
 
             <!-- Αριστερό μέρος: Logo + Menu -->
-            <div class="flex items-center space-x-10">
+            <div class="flex items-center space-x-10 ">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center space-x-2">
                     <a href="{{ url('/?lang=' . app()->getLocale()) }}" class="inline-flex items-center">
-                        <i class="fa-solid fa-paperclip text-2xl text-gray-600"></i>
-                        <img src="{{ asset('storage/images/back.png') }}" alt="{{ __('messages.logo_alt') }}"
-                            class="h-10 w-auto ml-2">
+                        {{-- <i class="fa-solid fa-paperclip text-2xl text-gray-600"></i> --}}
+                          <img src="{{ asset('storage/icons/paperclip.png') }}" alt="{{ __('messages.logo_alt') }}" class="h-10 w-auto ml-2">
+                        <img src="{{ asset('storage/images/back.png') }}" alt="{{ __('messages.logo_alt') }}" class="h-10 w-auto ">
                     </a>
                 </div>
 
                 <!-- Desktop Menu -->
                 <div class="hidden sm:flex sm:space-x-2">
                     <a href="{{ url('home/?lang=' . app()->getLocale()) }}"
-                        class="inline-flex text-sm items-center px-1 pt-1 border-b-2 border-transparent  text-gray-800 hover:border-stone-500 hover:text-gray-700">
-                        <i class="fa-solid fa-house-chimney mr-1"></i>
+                        class="inline-flex text-base  items-center px-1 pt-1 border-b-2 border-transparent  text-gray-800 hover:border-stone-500 hover:text-gray-700">
+                        <i class="fa-solid fa-house-chimney mr-1 text-sm"></i>
                         {{ __('messages.home') }}
                     </a>
 
                     <a href="{{ route('professionals.index', ['lang' => app()->getLocale()]) }}"
-                        class="inline-flex text-sm items-center px-1 pt-1 border-b-2 border-transparent  text-gray-800 hover:border-stone-500 hover:text-gray-700">
+                        class="inline-flex text-base  items-center px-1 pt-1 border-b-2 border-transparent  text-gray-800 hover:border-stone-500 hover:text-gray-700">
                         <i class="fa-solid fa-user-doctor mr-1"></i>
                         {{ __('messages.find_professionals') }}
                     </a>
 
                     @auth
                         <a href="{{ route('profile.edit', ['lang' => app()->getLocale()]) }}"
-                            class="inline-flex text-sm items-center px-1 pt-1 border-b-2 border-transparent text-gray-800 hover:border-stone-500 hover:text-gray-700">
+                            class="inline-flex text-base  items-center px-1 pt-1 border-b-2 border-transparent text-gray-800 hover:border-stone-500 hover:text-gray-700">
                             <i class="fa-solid fa-address-card mr-1"></i>
                             {{ __('messages.my_profile') }}
                         </a>
                     @endauth
 
                     <a href="{{ route('contact', ['lang' => app()->getLocale()]) }}"
-                        class="inline-flex text-sm items-center px-1 pt-1 border-b-2 border-transparent  text-gray-800 hover:border-stone-500 hover:text-gray-700">
+                        class="inline-flex text-base  items-center px-1 pt-1 border-b-2 border-transparent  text-gray-800 hover:border-stone-500 hover:text-gray-700">
                         <i class="fa-solid fa-address-card mr-1"></i>
                         {{ __('messages.contact') }}
                     </a>
@@ -44,7 +44,7 @@
                     @auth
                         @if(auth()->user()->role === 'admin')
                             <a href="{{ route('admin.index', ['lang' => app()->getLocale()]) }}"
-                                class="inline-flex text-sm items-center px-1 pt-1 border-b-2 border-transparent font-medium text-gray-800 hover:border-stone-500 hover:text-gray-700">
+                                class="inline-flex text-base  items-center px-1 pt-1 border-b-2 border-transparent font-medium text-gray-800 hover:border-stone-500 hover:text-gray-700">
                                 <i class="fa-solid fa-user-tie"></i>
                                 {{ __('messages.admin') }}
                             </a>
@@ -96,12 +96,12 @@
                 @guest
                     <div class="flex space-x-2">
                         <a href="{{ route('login') }}"
-                            class="inline-block px-5 py-1.5 text-[#1b1b18] hover:border-[#19140035] rounded-sm text-sm leading-normal">
+                            class="inline-block px-5 py-1.5 text-[#1b1b18] hover:border-[#19140035] rounded-sm text-base  leading-normal">
                             {{ __('messages.login') }}
                         </a>
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}"
-                                class="inline-block px-5 py-1.5 border-[#19140035] hover:border-[#1915014a] text-[#1b1b18] rounded-sm text-sm leading-normal">
+                                class="inline-block px-5 py-1.5 border-[#19140035] hover:border-[#1915014a] text-[#1b1b18] rounded-sm text-base  leading-normal">
                                 {{ __('messages.register') }}
                             </a>
                         @endif

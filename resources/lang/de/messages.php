@@ -64,9 +64,9 @@ return [
   'saved' => 'Gespeichert.',
 
   'footer_description' => 'Die beste Plattform, um Fachleute in Ihrer Nähe zu finden.',
-
-
   'quick_links' => 'Quick Links',
+
+  'filter_categories' => 'Filtern nach Kategorien',
   'newsletter_title' => 'Newsletter',
   'subscribe' => 'Subscribe',
   'email_placeholder' => 'Your email',

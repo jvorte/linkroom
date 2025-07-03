@@ -7,11 +7,16 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'LinkRoom') }}</title>
-    <link rel="icon" class="" href="{{ asset('storage\icons\paperclip-solid.svg') }}?v=2">
+    <link rel="icon" class="" href="{{ asset('storage\icons\paperclip_s.png') }}?v=2">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+
+{{-- σε περιπτωδη που crashαρει το vite --}}        
+{{-- <link rel="stylesheet" href="{{ asset('build/assets/app-AW7BQ634.css') }}">
+<script src="{{ asset('build/assets/app-DaBYqt0m.js') }}" defer></script> --}}
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])

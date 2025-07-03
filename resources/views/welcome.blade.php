@@ -12,6 +12,12 @@
    <link rel="icon" class="" href="{{ asset('storage\icons\paperclip-solid.svg') }}?v=2">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+
+ 
+{{-- σε περιπτωδη που crashαρει το vite --}}        
+{{-- <link rel="stylesheet" href="{{ asset('build/assets/app-AW7BQ634.css') }}">
+<script src="{{ asset('build/assets/app-DaBYqt0m.js') }}" defer></script> --}}
+
     <style>
         /* Fade-in animation για το βίντεο */
         @keyframes fadeIn {

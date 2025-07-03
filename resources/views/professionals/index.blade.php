@@ -51,63 +51,73 @@
                     onclick="document.getElementById('filterModal').classList.add('hidden')">&times;</button>
 
                 <!-- Filter form -->
-                <form method="GET" action="{{ route('professionals.index', ['lang' => app()->getLocale()]) }}">
-                    <h2 class="text-lg font-bold mb-4 text-center">Filter by Categories</h2>
-                    <!-- Categories checkboxes -->
-                    <div class="mb-4 grid grid-cols-2 sm:grid-cols-3 gap-2 max-h-48 overflow-y-auto">
-                        @foreach($allCategories as $category)
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" name="categories[]" value="{{ $category->slug }}"
-                                    {{ request()->input('categories') && in_array($category->slug, request()->input('categories')) ? 'checked' : '' }}
-                                    class="form-checkbox text-blue-600">
-                                <span class="text-sm">{{ $category->name }}</span>
-                            </label>
-                        @endforeach
-                    </div>
+        <form method="GET" action="{{ request()->url() }}">
+    {{-- ✅ Προσθήκη του lang στο query string --}}
+    <input type="hidden" name="lang" value="{{ app()->getLocale() }}">
 
-                    <!-- Remote only filter -->
-                    <div class="mt-4 border-t pt-4">
-                        <label class="flex items-center space-x-2">
-                            <input type="checkbox" name="remote_only" value="1" {{ request('remote_only') ? 'checked' : '' }} class="form-checkbox text-blue-600">
-                            <span class="text-sm text-gray-700">{{ __('messages.only_remote') }}</span>
-                        </label>
-                    </div>
+    <h2 class="text-lg font-bold mb-4 text-center">{{ __('messages.filter_categories') }}</h2>
 
-                    <!-- Verified only filter -->
-                    <div class="mt-4 border-t pt-4">
-                        <label class="flex items-center space-x-2">
-                            <input type="checkbox" name="verified_only" value="1" {{ request('verified_only') ? 'checked' : '' }} class="form-checkbox text-green-600">
-                            <span class="text-sm text-gray-700">{{ __('messages.only_verified') }}</span>
-                        </label>
-                    </div>
+    <!-- Categories checkboxes -->
+    <div class="mb-4 grid grid-cols-2 sm:grid-cols-3 gap-2 max-h-48 overflow-y-auto">
+        @foreach($allCategories as $category)
+            <label class="flex items-center space-x-2">
+                <input type="checkbox" name="categories[]" value="{{ $category->slug }}"
+                    {{ request()->input('categories') && in_array($category->slug, request()->input('categories')) ? 'checked' : '' }}
+                    class="form-checkbox text-blue-600">
+                <span class="text-sm">{{ $category->name }}</span>
+            </label>
+        @endforeach
+    </div>
 
-                    @auth
-                    <!-- Favorites only filter -->
-                    <div class="mt-4 border-t pt-4">
-                        <label class="flex items-center space-x-2">
-                            <input type="checkbox" name="favorites_only" value="1" {{ request('favorites_only') ? 'checked' : '' }} class="form-checkbox text-pink-600">
-                            <span class="text-sm text-gray-700">{{ __('messages.only_favorites') }}</span>
-                        </label>
-                    </div>
-                    @endauth
-                    <!-- Country select filter -->
-                    <div class="mt-4 border-t pt-4">
-                        <select name="country" class="border rounded px-3 py-2 w-full">
-                            <option value="">{{ __('messages.all_countries') }}</option>
-                            @foreach(['GR' => 'Greece','UK' => 'England',  'DE' => 'Germany', 'CH' => 'Switzerland', 'AT' => 'Austria', 'OTHER' => 'Οther Countries'] as $code => $name)
-                                <option value="{{ $code }}" {{ request('country') == $code ? 'selected' : '' }}>
-                                    {{ $name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
+    <!-- Remote only filter -->
+    <div class="mt-4 border-t pt-4">
+        <label class="flex items-center space-x-2">
+            <input type="checkbox" name="remote_only" value="1" {{ request('remote_only') ? 'checked' : '' }} class="form-checkbox text-blue-600">
+            <span class="text-sm text-gray-700">{{ __('messages.only_remote') }}</span>
+        </label>
+    </div>
 
-                    <!-- Filter form buttons -->
-                    <div class="flex justify-between mt-4">
-                        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">{{ __('messages.apply_filters') }}</button>
-                        <button type="button" onclick="resetFilters()" class="text-red-500 hover:underline text-sm">{{ __('messages.reset_filters') }}</button>
-                    </div>
-                </form>
+    <!-- Verified only filter -->
+    <div class="mt-4 border-t pt-4">
+        <label class="flex items-center space-x-2">
+            <input type="checkbox" name="verified_only" value="1" {{ request('verified_only') ? 'checked' : '' }} class="form-checkbox text-green-600">
+            <span class="text-sm text-gray-700">{{ __('messages.only_verified') }}</span>
+        </label>
+    </div>
+
+    @auth
+    <!-- Favorites only filter -->
+    <div class="mt-4 border-t pt-4">
+        <label class="flex items-center space-x-2">
+            <input type="checkbox" name="favorites_only" value="1" {{ request('favorites_only') ? 'checked' : '' }} class="form-checkbox text-pink-600">
+            <span class="text-sm text-gray-700">{{ __('messages.only_favorites') }}</span>
+        </label>
+    </div>
+    @endauth
+
+    <!-- Country select filter -->
+    <div class="mt-4 border-t pt-4">
+        <select name="country" class="border rounded px-3 py-2 w-full">
+            <option value="">{{ __('messages.all_countries') }}</option>
+            @foreach(['GR' => 'Greece','UK' => 'England',  'DE' => 'Germany', 'CH' => 'Switzerland', 'AT' => 'Austria', 'OTHER' => 'Οther Countries'] as $code => $name)
+                <option value="{{ $code }}" {{ request('country') == $code ? 'selected' : '' }}>
+                    {{ $name }}
+                </option>
+            @endforeach
+        </select>
+    </div>
+
+    <!-- Filter form buttons -->
+    <div class="flex justify-between mt-4">
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            {{ __('messages.apply_filters') }}
+        </button>
+        <button type="button" onclick="resetFilters()" class="text-red-500 hover:underline text-sm">
+            {{ __('messages.reset_filters') }}
+        </button>
+    </div>
+</form>
+
             </div>
         </div>
 
