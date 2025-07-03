@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <div class="relative h-64 overflow-hidden shadow-lg mb-8">
-        <img src="{{ asset('storage/images/profile2.jpg') }}" alt="Header background" class="absolute inset-0 w-full h-full object-cover brightness-75">
+        <img src="{{ asset('storage/images/prof10.jpg') }}" alt="Header background" class="absolute inset-0 w-full h-full object-cover brightness-75">
         <div class="relative z-10 flex flex-col items-center justify-center h-full text-white text-center">
             <h1 class="text-5xl font-bold">{{ __('messages.profile') }}</h1>
             <p class="mt-2 text-xl">{{ __('messages.discover_profile') }}</p>

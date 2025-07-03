@@ -1,1 +1,2 @@
-<img src="https://icons.iconarchive.com/icons/rafiqul-hassan/blogger/128/Paperclip-icon.png" width="128" height="128">
+<img src="https://icons.iconarchive.com/icons/rafiqul-hassan/blogger/128/Paperclip-icon.png" width="85" height="78">
+ <img src="{{ asset('storage/images/back.png') }}" alt="{{ __('messages.logo_alt') }}" class="h-10 w-auto ">

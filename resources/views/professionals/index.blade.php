@@ -113,9 +113,10 @@
 
                     <!-- Filter form buttons -->
                     <div class="flex justify-between mt-4">
-                        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                            {{ __('messages.apply_filters') }}
-                        </button>
+                            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        {{ __('messages.apply_filters') }}
+    </button>
+
                         <button type="button" onclick="resetFilters()" class="text-red-500 hover:underline text-sm">
                             {{ __('messages.reset_filters') }}
                         </button>
