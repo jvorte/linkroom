@@ -8,8 +8,10 @@
                 <div class="flex-shrink-0 flex items-center space-x-2">
                     <a href="{{ url('/?lang=' . app()->getLocale()) }}" class="inline-flex items-center">
                         {{-- <i class="fa-solid fa-paperclip text-2xl text-gray-600"></i> --}}
-                          <img src="{{ asset('storage/icons/paperclip.png') }}" alt="{{ __('messages.logo_alt') }}" class="h-10 w-auto ml-2">
-                        <img src="{{ asset('storage/images/back.png') }}" alt="{{ __('messages.logo_alt') }}" class="h-10 w-auto ">
+                        <img src="{{ asset('storage/icons/paperclip.png') }}" alt="{{ __('messages.logo_alt') }}"
+                            class="h-10 w-auto ml-2">
+                        <img src="{{ asset('storage/images/back.png') }}" alt="{{ __('messages.logo_alt') }}"
+                            class="h-10 w-auto ">
                     </a>
                 </div>
 
@@ -112,7 +114,7 @@
                 <div x-data="{ open: false }" class="relative">
                     <button @click="open = !open"
                         class="flex items-center text-sm text-gray-800 hover:text-gray-900 focus:outline-none">
-                      <i class="fa-solid fa-earth-americas"></i>
+                        <i class="fa-solid fa-earth-americas"></i>
                         <span class="ml-1 ">{{ strtoupper(app()->getLocale()) }}</span>
                     </button>
                     <div x-show="open" @click.away="open = false" x-transition
@@ -164,16 +166,16 @@
                     </a>
                 @endif
             @endauth
-
-            <a href="{{ url('/') }}"
+            <a href="{{ url('/?lang=' . app()->getLocale()) }}"
                 class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800">
                 {{ __('messages.home') }}
             </a>
 
-            <a href="{{ route('professionals.index') }}"
+            <a href="{{ route('professionals.index', ['lang' => app()->getLocale()]) }}"
                 class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800">
                 {{ __('messages.find_professionals') }}
             </a>
+
 
             @auth
                 <a href="{{ route('profile.edit', ['lang' => app()->getLocale()]) }}"
@@ -214,7 +216,7 @@
         <div class="border-t border-gray-200 mt-4 pt-4 px-4">
             <p class="text-gray-600 text-sm mb-2 font-semibold">{{ __('messages.language_switcher') }}</p>
             <div class="flex space-x-4">
-                <i class="fa-solid fa-earth-americas"></i>
+                {{-- <i class="fa-solid fa-earth-americas"></i> --}}
                 <a href="?lang=en"
                     class="px-3 py-1 rounded border border-gray-300 hover:bg-blue-500 hover:text-white transition">
                     EN

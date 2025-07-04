@@ -48,6 +48,7 @@ select {
   /* pl-3 */
   padding-right: 0.75rem;
   /* pr-3 */
+  border: #080e17 2px solid;
 }
 
 @keyframes pulse {

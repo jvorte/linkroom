@@ -19,6 +19,7 @@ class CategorySeeder extends Seeder
 
         $mainCategories = [
             'IT / Technology',
+            'Pets',
             'Technical Trades / Construction',
             'Health & Care',
             'Education',
@@ -47,6 +48,18 @@ class CategorySeeder extends Seeder
                 'Mobile Development',
                 'UI/UX Design',
             ],
+                  'Pets' => [
+                'Dog Trainers',
+                'Cat Trainers',
+                'Pet Groomers',
+                'Pet Sitters',
+                'Animal Caretakers',
+                'Veterinarians',
+                'Pet Boarding / Kennels',
+                'Pet Nutritionists',
+                'Pet Behaviorists',
+                'Exotic Animal Specialists',
+            ],
             'Technical Trades / Construction' => [
                 'Electricians',
                 'Plumbers',
@@ -71,6 +84,11 @@ class CategorySeeder extends Seeder
                 'Pharmacists',
                 'Medical Assistants',
                 'Emergency Medical Technicians (EMTs)',
+                'Speech Therapists',
+                
+                'Caregivers / Home Health Aides',
+                'Nutrition Coaches',
+                'Fitness Coaches',
             ],
             'Education' => [
                 'Primary School Teachers',
@@ -103,6 +121,14 @@ class CategorySeeder extends Seeder
                 'Writers / Authors',
                 'Illustrators',
                 'Animators',
+                'Tattoo Artists',
+                'Personal Trainers',
+                'Pet Trainers',
+                'Makeup Artists',
+                'Hair Stylists',
+                'Yoga Instructors',
+                'Dance Instructors',
+                'Massage Therapists',
             ],
             'Commerce & Marketing' => [
                 'Sales',
@@ -146,6 +172,11 @@ class CategorySeeder extends Seeder
                 'Consultant',
                 'Volunteer',
                 'Intern',
+                'Freelance Writers',
+                'Freelance Developers',
+                'Influencers / Content Creators',
+                'Startup Founders',
+                'Remote Workers',
             ],
         ];
 

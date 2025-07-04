@@ -6,7 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'LinkRoom') }}</title>
-
+    <link rel="icon" class="" href="{{ asset('storage\icons\paperclip_s.png') }}?v=2">
 
 {{-- σε περιπτωδη που crashαρει το vite --}}        
 {{-- <link rel="stylesheet" href="{{ asset('build/assets/app-AW7BQ634.css') }}">

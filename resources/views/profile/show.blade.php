@@ -40,12 +40,15 @@
                 <img src="{{ asset('storage/' . $user->avatar) }}"
                     alt="{{ __('messages.avatar_of', ['name' => $user->name]) }}" title="{{ $user->name }}"
                     class="w-24 h-24 rounded-full object-cover border-2 border-gray-300" />
+                    
             @else
                 <!-- Εμφάνιση αρχικού γράμματος αν δεν υπάρχει avatar -->
                 <div class="w-24 h-24 rounded-full bg-gradient-to-tr from-indigo-400 to-blue-500 text-white flex items-center justify-center text-3xl font-semibold uppercase border-2 border-gray-300"
                     title="{{ $user->name }}">
                     {{ substr($user->name, 0, 1) }}
+                    
                 </div>
+                
             @endif
 
             <div class="flex flex-col text-center sm:text-left">
@@ -64,11 +67,8 @@
                         </span>
                     @endif
                 </h1>
+               {{-- <h2 class="ms-1">{{ $primaryCategoryName }}</h2> --}}
 
-                @if($user->bio)
-                    <!-- Εμφάνιση βιογραφικού -->
-                    <p class="text-gray-600 mt-2 whitespace-pre-line max-w-xl">{{ $user->bio }}</p>
-                @endif
 
                 @if($user->categories->count())
                     <!-- Εμφάνιση κατηγοριών -->
@@ -80,12 +80,17 @@
                         @endforeach
                     </div>
                 @endif
+                
+                @if($user->bio)
+                    <!-- Εμφάνιση βιογραφικού -->
+                    <p class="text-gray-600 mt-4 whitespace-pre-line max-w-xl">{{ $user->bio }}</p>
+                @endif
             </div>
         </div>
 
         {{-- Links --}}
         <section class="mb-8">
-            <h2 class="text-2xl font-semibold mb-4 text-gray-800">{{ __('messages.links') }}</h2>
+            <h2 class="text-1xl font-semibold mb-4 text-gray-800">{{ __('messages.links') }}</h2>
 
             @if($links->count())
                 <!-- Εμφάνιση λίστας links -->
@@ -145,7 +150,7 @@
             @php
                 $countries = ['GR' => 'Greece', 'UK' => 'England', 'DE' => 'Germany', 'CH' => 'Switzerland', 'AT' => 'Austria', 'OTHER' => 'Οther Countries'];
             @endphp
-            <p class="text-gray-600 mt-2 text-sm italic ">
+            <p class="text-gray-600 mt-2 text-md italic ">
                 {{ __('messages.country') }}: {{ $countries[$user->country] ?? $user->country ?? '-' }}
             </p>
         </section>
