@@ -38,11 +38,10 @@
 
         <!-- CTA -->
         <div class="text-center m-12 ">
-            <a href="{{ route('professionals.index') }}"
-               aria-label="{{ __('messages.explore_now') }}"
-               class="inline-block bg-slate-800 hover:bg-slate-900 text-white text-lg font-semibold py-2 px-6 rounded-md transition">
-                {{ __('messages.explore_now') }}
-            </a>
+         <a href="{{ route('professionals.index', ['lang' => app()->getLocale()]) }}"
+         class="inline-block bg-slate-800 hover:bg-slate-900 text-white text-lg font-semibold py-2 px-6 rounded-md transition">
+            {{ __('messages.find_professionals') }}
+        </a>
         </div>
     </div>
 </x-app-layout>

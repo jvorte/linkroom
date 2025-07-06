@@ -119,7 +119,7 @@ return [
 
   'terms_of_use' => 'Nutzungsbedingungen',
   'privacy_policy' => 'Datenschutzerklärung',
-
+ 'public_email' => 'Öffentliche E-Mail',
   'main_category' => 'Hauptkategorie',
   'subcategories' => 'Unterkategorien',
   'select_main_category' => 'Kategorie auswählen',

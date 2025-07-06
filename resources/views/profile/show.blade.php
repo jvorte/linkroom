@@ -15,7 +15,7 @@
     </style>
 
     <!-- Header με background εικόνα και τίτλο -->
-    <div class="relative h-64 rounded-lg overflow-hidden shadow-lg mb-8 ">
+    <div class="relative pt-10  h-70 rounded-lg overflow-hidden shadow-lg mb-8 ">
         <img src="{{ asset('storage/images/profile1.jpg') }}" alt="{{ __('messages.header_background') }}"
             class="absolute inset-0 w-full h-full object-cover brightness-75">
 
@@ -41,15 +41,10 @@
                     alt="{{ __('messages.avatar_of', ['name' => $user->name]) }}" title="{{ $user->name }}"
                     class="w-24 h-24 rounded-full object-cover border-2 border-gray-300" />
                     
-            @else
-                <!-- Εμφάνιση αρχικού γράμματος αν δεν υπάρχει avatar -->
-                <div class="w-24 h-24 rounded-full bg-gradient-to-tr from-indigo-400 to-blue-500 text-white flex items-center justify-center text-3xl font-semibold uppercase border-2 border-gray-300"
-                    title="{{ $user->name }}">
-                    {{ substr($user->name, 0, 1) }}
-                    
-                </div>
-                
-            @endif
+       @else
+    <img src="{{ asset('storage/images/avatar.png') }}" alt="Default Avatar" class="w-24 h-24 rounded-full object-cover  border-gray-300" />
+@endif
+
 
             <div class="flex flex-col text-center sm:text-left">
                 <h1 class="text-3xl font-bold text-gray-900 flex items-center gap-2">

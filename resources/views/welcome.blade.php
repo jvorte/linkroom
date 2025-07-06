@@ -56,7 +56,7 @@
 
     <!-- Περιεχόμενο -->
     <main
-        class="relative z-10 max-w-7xl mx-auto px-6 py-20 text-center text-white flex flex-col items-center justify-center min-h-[300px] lg:min-h-[500px]">
+        class="relative z-10 max-w-7xl mx-auto  py-20 text-center text-white flex flex-col items-center justify-center min-h-[300px] lg:min-h-[500px]">
 
         <img class="w-40 md:w-60 mb-8" src="{{ asset('storage/images/14.png') }}" alt="Front image" />
 
@@ -64,10 +64,16 @@
             {{ __('messages.tagline') }}
         </p>
 
-        <a href="{{ route('professionals.index', ['lang' => app()->getLocale()]) }}"
-            class="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-md text-white font-semibold transition">
-            {{ __('messages.find_professionals') }}
-        </a>
+
+<div class="wrap">
+  <a href="{{ route('professionals.index', ['lang' => app()->getLocale()]) }}"
+     class="button ">
+     {{ __('messages.find_professionals') }}
+  </a>
+</div>
+
+
+
     </main>
 
     @if (Route::has('login'))

@@ -53,7 +53,7 @@ return [
   'title_placeholder' => 'Title',
   'url_placeholder' => 'URL',
   'add_link' => 'Your Website',
-  'bio' => 'Short Bio',
+  'bio' => 'Short CV',
   'categories' => 'Categories',
   'save' => 'Save',
   'saved' => 'Saved.',
@@ -141,7 +141,7 @@ return [
 'select_main_category' => 'Select a category',
 'no_subcategories' => 'There are no subcategories',
 
-
+'public_email' => 'Public email',
 
 
 
