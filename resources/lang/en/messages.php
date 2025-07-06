@@ -20,7 +20,7 @@ return [
   'logo_alt' => 'Logo',
   'language_switcher' => 'Choose Language',
   'app_title' => 'Laravel',
-  'tagline' => 'Find trusted professionals. Get the job done.',
+
   'no_video_support' => 'Your browser does not support the video tag.',
   'discover_title' => 'Discover Skilled Professionals',
   'discover_subtitle' => 'Connect with experts across industries — fast and easy.',
@@ -66,6 +66,7 @@ return [
   'all_rights_reserved' => 'All rights reserved.',
 
   'footer_description' => 'The best platform to find professionals near you.',
+'tagline' => 'Find trusted professionals of every specialty – quickly and easily. Whether you need a developer, electrician or accountant, you’ll find them here.',
 
 
   'contact_us' => 'Contact',

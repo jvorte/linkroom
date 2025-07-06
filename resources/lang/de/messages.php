@@ -22,7 +22,8 @@ return [
   'discover_profile' => 'Erstellen Sie Ihr Profil – lassen Sie die Welt Sie besser kennenlernen!',
   'app_title' => 'Laravel',
 
-  'tagline' => 'Finden Sie vertrauenswürdige Fachleute. Auftrag erledigt.',
+
+
 
   'no_video_support' => 'Ihr Browser unterstützt das Video-Tag nicht.',
   'discover_title' => 'Finden Sie qualifizierte Fachkräfte',
@@ -125,6 +126,7 @@ return [
   'select_main_category' => 'Kategorie auswählen',
   'no_subcategories' => 'Es sind keine Unterkategorien vorhanden',
 
+'tagline' => 'Finde zuverlässige Fachkräfte aller Branchen – schnell und einfach . Ob Entwickler, Elektriker oder Buchhalter – hier wirst du fündig.',
 
 
   'terms_of_use_full' => "Letzte Aktualisierung: 02.07.2025
