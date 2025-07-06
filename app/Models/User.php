@@ -76,6 +76,7 @@ public function favoritedByUsers()
         'remote',
         'is_verified',
         'country',
+          'is_active',
     ];
 
 

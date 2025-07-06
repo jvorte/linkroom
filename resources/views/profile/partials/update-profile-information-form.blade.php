@@ -1,5 +1,6 @@
 <section>
     <header>
+        
         <a href="{{ route('profile.show', auth()->user()->slug) }}" target="_blank" class="text-blue-600 hover:underline">
             {{ __('messages.view_public_profile') }}
         </a>
@@ -11,13 +12,25 @@
         <p class="mt-1 text-sm text-gray-600">
             {{ __('messages.update_profile') }}
         </p>
-    </header>
-
-    <form method="post" enctype="multipart/form-data" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
-        @csrf
-        @method('put')
-<input type="hidden" name="lang" value="{{ app()->getLocale() }}">
-
+    </header><form method="post" action="{{ route('profile.update', ['lang' => app()->getLocale()]) }}" enctype="multipart/form-data" class="mt-6 space-y-6">
+  @csrf
+    @method('put')
+    <input type="hidden" name="lang" value="{{ app()->getLocale() }}">
+    
+    <!-- checkbox is_active -->
+    <div class="flex items-center space-x-4 mt-4">
+        <span class="text-gray-700">{{ __('messages.active_profile') }}</span>
+        <label for="is_active" class="relative inline-flex items-center cursor-pointer">
+            <input type="hidden" name="is_active" value="0" />
+            <input type="checkbox" id="is_active" name="is_active" value="1"
+                class="sr-only peer"
+                {{ old('is_active', $user->is_active) ? 'checked' : '' }} />
+            <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300
+                peer-checked:bg-blue-600 transition-colors duration-300"></div>
+            <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full shadow
+                peer-checked:translate-x-5 transform transition-transform duration-300"></div>
+        </label>
+    </div>
         {{-- Avatar --}}
         <div>
             
@@ -186,7 +199,7 @@ document.getElementById('main_category').addEventListener('change', function () 
 
         {{-- Submit --}}
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('messages.save') }}</x-primary-button>
+            <x-primary-button>{{ __('messages.save', ['lang' => app()->getLocale()]) }}</x-primary-button>
 
             @if (session('status') === 'profile-updated')
                 <p x-data="{ show: true }" x-show="show" x-transition

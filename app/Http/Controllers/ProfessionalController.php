@@ -13,7 +13,9 @@ class ProfessionalController extends Controller
     $categories = Category::all();
     $mainCategories = $categories->whereNull('parent_id');
 
-    $query = User::with('categories');
+    $query = User::with('categories')->where('is_active', true);
+
+// $users = User::where('is_active', true)->get();
 
     if ($request->has('categories')) {
         $selectedSlugs = $request->input('categories', []);

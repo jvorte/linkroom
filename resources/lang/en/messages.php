@@ -67,7 +67,7 @@ return [
 
   'footer_description' => 'The best platform to find professionals near you.',
 'tagline' => 'Find trusted professionals of every specialty – quickly and easily. Whether you need a developer, electrician or accountant, you’ll find them here.',
-
+'active_profile' => 'Profile active (visible to other users)',
 
   'contact_us' => 'Contact',
   'contact_success' => 'Your message was sent successfully!',

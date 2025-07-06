@@ -127,7 +127,7 @@ return [
   'no_subcategories' => 'Es sind keine Unterkategorien vorhanden',
 
 'tagline' => 'Finde zuverlässige Fachkräfte aller Branchen – schnell und einfach . Ob Entwickler, Elektriker oder Buchhalter – hier wirst du fündig.',
-
+'active_profile' => 'Profil aktiv (für andere Benutzer sichtbar)',
 
   'terms_of_use_full' => "Letzte Aktualisierung: 02.07.2025
 

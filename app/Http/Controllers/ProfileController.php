@@ -71,39 +71,44 @@ public function updateProfile(Request $request)
         'categories.*' => 'exists:categories,id',
         'public_email' => 'nullable|email|max:255',
         'phone' => 'nullable|string|max:50',
-           'remote' => 'sometimes|boolean',
+        'remote' => 'sometimes|boolean',
         'links' => 'nullable|array',
         'links.*.id' => 'nullable|exists:links,id',
         'links.*.title' => 'required_with:links.*.url|string|max:255',
         'links.*.url' => 'required_with:links.*.title|url|max:255',
-          'country' => 'nullable|string|max:255',
+        'country' => 'nullable|string|max:255',
+        'is_active' => 'nullable|boolean',
+        'lang' => 'nullable|string',
     ]);
 
+    // Χειρισμός avatar
     if ($request->hasFile('avatar')) {
         $path = $request->file('avatar')->store('avatars', 'public');
         $data['avatar'] = $path;
     }
 
+    // Ορισμός boolean πεδίων με ασφάλεια
+    $data['is_active'] = $request->boolean('is_active');
+    $data['remote'] = $request->has('remote');
+
     $user->update($data);
 
     // Sync categories
     $user->categories()->sync($request->categories ?? []);
-$user->remote = $request->has('remote') ? true : false;
-$user->save();
+
     // Handle links
     $existingLinkIds = $user->links()->pluck('id')->toArray();
     $submittedLinkIds = collect($request->links ?? [])->pluck('id')->filter()->toArray();
 
-    // Delete removed links
+    // Διαγραφή links που αφαιρέθηκαν
     $linksToDelete = array_diff($existingLinkIds, $submittedLinkIds);
     if (!empty($linksToDelete)) {
         $user->links()->whereIn('id', $linksToDelete)->delete();
     }
 
-    // Update or create links
+    // Ενημέρωση ή δημιουργία links
     foreach ($request->links ?? [] as $linkData) {
         if (!empty($linkData['id'])) {
-            // Update existing link
             $link = $user->links()->where('id', $linkData['id'])->first();
             if ($link) {
                 $link->update([
@@ -112,7 +117,6 @@ $user->save();
                 ]);
             }
         } else {
-            // Create new link
             if (!empty($linkData['title']) && !empty($linkData['url'])) {
                 $user->links()->create([
                     'title' => $linkData['title'],
@@ -122,10 +126,14 @@ $user->save();
         }
     }
 
-return redirect()->route('profile.edit', ['locale' => app()->getLocale()])
-                 ->with('status', 'profile-updated');
+    // Πάρε το lang από το request για το redirect
+    $lang = $request->input('lang', app()->getLocale());
+
+return redirect()->route('profile.edit', ['lang' => $lang])
+    ->with('status', 'profile-updated');
 
 }
+
 
 
 }

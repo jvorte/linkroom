@@ -7,6 +7,12 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\FavoriteController;
 
+use App\Http\Controllers\Auth\GoogleLoginController;
+
+Route::get('/auth/google', [GoogleLoginController::class, 'redirect'])->name('auth.google');
+Route::get('/auth/google/callback', [GoogleLoginController::class, 'callback']);
+
+
 
 Route::get('/categories/{parentId}/subcategories', function ($parentId) {
     return response()->json(['parentId' => $parentId, 'message' => 'Route is working']);
