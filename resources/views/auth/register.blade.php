@@ -14,7 +14,7 @@
             <path fill="#EA4335" d="M12 5.44c1.33 0 2.52.46 3.46 1.36l2.6-2.6C16.46 2.85 14.42 2 12 2A11 11 0 0 0 2.56 6.75l2.86 3.04c.93-2.77 3.52-4.84 6.58-4.84z"/>
             <path fill="none" d="M0 0h24v24H0z"/>
         </svg>
-        Login with Google
+        Register with Google
     </a>
 </div>
 

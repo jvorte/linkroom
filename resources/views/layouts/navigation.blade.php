@@ -156,6 +156,30 @@
 
     <!-- Mobile menu -->
     <div x-show="mobileMenuOpen" id="mobile-menu" class="sm:hidden" @click.away="mobileMenuOpen = false" x-transition>
+
+
+
+
+         <div class="flex items-center space-x-2 p-1"> 
+    @if(Auth::check())
+        @if(Auth::user()->avatar)
+            <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="Avatar"
+                class="w-8 h-8 rounded-full">
+        @else
+            <div
+                class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-gray-700 text-sm">
+                {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+            </div>
+        @endif
+        <span class="px-3 font-medium">{{ Auth::user()->name }}</span>
+    @endif
+</div>
+
+
+
+
+
+
         <div class="pt-2 pb-3 space-y-1">
             @auth
                 @if(auth()->user()->role === 'admin')
