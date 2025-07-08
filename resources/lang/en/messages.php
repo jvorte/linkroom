@@ -150,6 +150,13 @@ return [
   'card_verify_text' => 'See professionals with verified credentials.',
   'card_verify_extra' => 'Reviews, CV and real work presentation.',
 
+
+  
+    'privacy_policy_title' => 'Privacy Policy',
+    'privacy_policy_text_1' => 'Our website collects personal data only for registration and service provision purposes. Data are not shared with third parties and are stored securely according to GDPR.',
+    'privacy_policy_text_2' => 'For any questions or data deletion requests, please contact us.',
+
+
   'professional_card_title' => 'Are you a Professional?',
   'professional_cta' => 'Create your profile to be visible and found by clients.',
   'create_profile' => 'Create your profile',
@@ -160,7 +167,8 @@ return [
   'no_subcategories' => 'There are no subcategories',
 
   'public_email' => 'Public email',
-
+'privacy_policy' => 'Privacy Policy',
+    'i_consent_to_data_processing' => 'I agree to the storage and processing of my personal data according to the',
 
 
   'terms_of_use_full' => "Last updated: 02.07.2025

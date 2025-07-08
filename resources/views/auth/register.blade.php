@@ -4,19 +4,24 @@
         <form method="POST" action="{{ route('register') }}" class="max-w-lg mx-auto px-4">
             @csrf
 
-        {{-- <div class="mt-6 text-center">
-    <a href="{{ route('auth.google') }}"
-       class="px-4 py-2 inline-flex items-center justify-center gap-2 mx-auto bg-white border border-gray-300 rounded shadow hover:bg-gray-100">
-        <svg class="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h6.13a5.24 5.24 0 0 1-2.26 3.44v2.86h3.66c2.14-1.97 3.38-4.88 3.38-8.31z"/>
-            <path fill="#34A853" d="M12 23c2.43 0 4.48-.8 5.97-2.17l-3.66-2.86c-1.02.68-2.34 1.08-3.99 1.08-3.06 0-5.65-2.07-6.58-4.84H2.56v3.04A11 11 0 0 0 12 23z"/>
-            <path fill="#FBBC05" d="M5.42 14.21a6.57 6.57 0 0 1 0-4.42V6.75H2.56a11 11 0 0 0 0 10.5l2.86-3.04z"/>
-            <path fill="#EA4335" d="M12 5.44c1.33 0 2.52.46 3.46 1.36l2.6-2.6C16.46 2.85 14.42 2 12 2A11 11 0 0 0 2.56 6.75l2.86 3.04c.93-2.77 3.52-4.84 6.58-4.84z"/>
-            <path fill="none" d="M0 0h24v24H0z"/>
-        </svg>
-        Register with Google
-    </a>
-</div> --}}
+            {{-- <div class="mt-6 text-center">
+                <a href="{{ route('auth.google') }}"
+                    class="px-4 py-2 inline-flex items-center justify-center gap-2 mx-auto bg-white border border-gray-300 rounded shadow hover:bg-gray-100">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                        focusable="false">
+                        <path fill="#4285F4"
+                            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h6.13a5.24 5.24 0 0 1-2.26 3.44v2.86h3.66c2.14-1.97 3.38-4.88 3.38-8.31z" />
+                        <path fill="#34A853"
+                            d="M12 23c2.43 0 4.48-.8 5.97-2.17l-3.66-2.86c-1.02.68-2.34 1.08-3.99 1.08-3.06 0-5.65-2.07-6.58-4.84H2.56v3.04A11 11 0 0 0 12 23z" />
+                        <path fill="#FBBC05"
+                            d="M5.42 14.21a6.57 6.57 0 0 1 0-4.42V6.75H2.56a11 11 0 0 0 0 10.5l2.86-3.04z" />
+                        <path fill="#EA4335"
+                            d="M12 5.44c1.33 0 2.52.46 3.46 1.36l2.6-2.6C16.46 2.85 14.42 2 12 2A11 11 0 0 0 2.56 6.75l2.86 3.04c.93-2.77 3.52-4.84 6.58-4.84z" />
+                        <path fill="none" d="M0 0h24v24H0z" />
+                    </svg>
+                    Register with Google
+                </a>
+            </div> --}}
 
 
             <!-- Name -->
@@ -95,6 +100,28 @@
                     type="password" name="password_confirmation" required autocomplete="new-password" />
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
             </div>
+
+
+            <div class="mt-4">
+                <label class="inline-flex items-start">
+                    <input type="checkbox" name="consent" required class="mt-1">
+                    <span class="ml-2 text-sm text-gray-700">
+                        {{ __('messages.i_consent_to_data_processing') }}
+                        <a href="{{ url('privacy-policy?lang=' . app()->getLocale()) }}" class="text-blue-500 underline"
+                            target="_blank">
+                            {{ __('messages.privacy_policy') }}
+                        </a>
+
+                        .
+                    </span>
+                </label>
+                @error('consent')
+                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+
+
+
 
             <div class="flex items-center justify-end mt-4 space-x-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"

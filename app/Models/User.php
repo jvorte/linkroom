@@ -77,6 +77,8 @@ public function favoritedByUsers()
         'is_verified',
         'country',
           'is_active',
+            'consent',
+    'consent_given_at',
     ];
 
 

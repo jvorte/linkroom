@@ -116,6 +116,22 @@
                 :value="old('phone', $user->phone)" />
             <x-input-error class="mt-2" :messages="$errors->get('phone')" />
         </div>
+ {{-- Country --}}
+<div>
+    <x-input-label for="country" :value="__('messages.country')" />
+    <select id="country" name="country" required
+        class="mt-1 p-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-400">
+        <option value="">{{ __('messages.select_country') }}</option>
+        <option value="UK" {{ old('country', $user->country) === 'UK' ? 'selected' : '' }}>England</option>
+        <option value="GR" {{ old('country', $user->country) === 'GR' ? 'selected' : '' }}>Greece</option>
+        <option value="CH" {{ old('country', $user->country) === 'CH' ? 'selected' : '' }}>Switzerland</option>
+        <option value="DE" {{ old('country', $user->country) === 'DE' ? 'selected' : '' }}>Germany</option>
+        <option value="AT" {{ old('country', $user->country) === 'AT' ? 'selected' : '' }}>Austria</option>
+        <option value="OTHER" {{ old('country', $user->country) === 'OTHER' ? 'selected' : '' }}>Other Countries</option>
+    </select>
+    <x-input-error class="mt-2" :messages="$errors->get('country')" />
+</div>
+
 
         {{-- Short CV --}}
         <div>

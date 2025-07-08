@@ -9,6 +9,8 @@ use App\Http\Controllers\FavoriteController;
 
 use App\Http\Controllers\Auth\GoogleLoginController;
 
+Route::view('/privacy-policy', 'privacy-policy')->name('privacy.policy');
+
 
 // routes/web.php
 Route::any('/profile/delete-cv', [ProfileController::class, 'deleteCv'])->middleware('auth')->name('profile.delete_cv');

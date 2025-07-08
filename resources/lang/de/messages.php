@@ -131,6 +131,15 @@ return [
   'create_profile' => 'Profil erstellen',
   'register_now' => 'Registrieren & Profil erstellen',
 
+   'privacy_policy' => 'Datenschutzrichtlinie',
+    'i_consent_to_data_processing' => 'Ich stimme der Speicherung und Verarbeitung meiner persönlichen Daten gemäß der',
+
+
+    'privacy_policy_title' => 'Datenschutzrichtlinie',
+    'privacy_policy_text_1' => 'Unsere Webseite erhebt personenbezogene Daten nur zum Zweck der Registrierung und Dienstleistungserbringung. Daten werden nicht an Dritte weitergegeben und gemäß DSGVO sicher gespeichert.',
+    'privacy_policy_text_2' => 'Bei Fragen oder Löschungsanfragen kontaktieren Sie uns bitte.',
+
+
 
   'upload_cv' => 'Lebenslauf hochladen',
   'download_cv' => 'Lebenslauf herunterladen',

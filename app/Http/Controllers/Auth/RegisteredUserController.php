@@ -35,6 +35,7 @@ $request->validate([
     'name' => 'required|string|max:255',
     'email' => 'required|string|email|max:255|unique:users',
     'password' => ['required', 'confirmed', Rules\Password::defaults()],
+       'consent' => 'accepted', // <-- αυτό
     // 'bio' => 'nullable|string',
     // 'public_email' => 'nullable|email|max:255|unique:users,public_email',
     // 'phone' => 'nullable|string|max:50',
@@ -47,6 +48,8 @@ $user = User::create([
     'name' => $request->name,
     'email' => $request->email,
     'password' => Hash::make($request->password),
+      'consent' => true,
+    'consent_given_at' => now(),
     // 'bio' => $request->bio,
     // 'public_email' => $request->public_email,
     // 'phone' => $request->phone,
