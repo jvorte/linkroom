@@ -9,8 +9,15 @@ use App\Http\Controllers\FavoriteController;
 
 use App\Http\Controllers\Auth\GoogleLoginController;
 
-Route::get('/auth/google', [GoogleLoginController::class, 'redirect'])->name('auth.google');
-Route::get('/auth/google/callback', [GoogleLoginController::class, 'callback']);
+
+// routes/web.php
+Route::any('/profile/delete-cv', [ProfileController::class, 'deleteCv'])->middleware('auth')->name('profile.delete_cv');
+
+Route::get('/download-cv', [ProfileController::class, 'downloadCv'])->name('download.cv');
+
+
+// Route::get('/auth/google', [GoogleLoginController::class, 'redirect'])->name('auth.google');
+// Route::get('/auth/google/callback', [GoogleLoginController::class, 'callback']);
 
 
 
@@ -73,8 +80,8 @@ Route::view('/terms', 'legal.terms')->name('terms');
 Route::view('/privacy', 'legal.privacy')->name('privacy');
 
 Route::middleware(['web'])->group(function () {
-   Route::delete('/admin/messages/{id}', [AdminMessageController::class, 'destroy'])->name('admin.messages.destroy');
-Route::delete('/admin/subscriptions/{id}', [AdminSubscriptionController::class, 'destroy'])->name('admin.subscriptions.destroy');
+    Route::delete('/admin/messages/{id}', [AdminMessageController::class, 'destroy'])->name('admin.messages.destroy');
+    Route::delete('/admin/subscriptions/{id}', [AdminSubscriptionController::class, 'destroy'])->name('admin.subscriptions.destroy');
 });
 
 

@@ -118,6 +118,11 @@ return [
   'save' => 'Speichern',
   'saved' => 'Gespeichert.',
 
+  'upload_cv' => 'Lebenslauf hochladen',
+'download_cv' => 'Lebenslauf herunterladen',
+'current_cv' => 'Aktueller Lebenslauf',
+
+  'delete_cv' => 'Delete CV',
   'terms_of_use' => 'Nutzungsbedingungen',
   'privacy_policy' => 'Datenschutzerklärung',
  'public_email' => 'Öffentliche E-Mail',

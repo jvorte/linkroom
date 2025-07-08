@@ -1,3 +1,12 @@
+@php
+    $primaryCategoryName = $user->categories->first()->name ?? __('messages.professional');
+@endphp
+
+@section('title', $user->name . ' — ' . $primaryCategoryName)
+@section('meta_description', Str::limit($user->bio, 150))
+@section('og_title', $user->name . ' — ' . $primaryCategoryName)
+@section('og_description', Str::limit($user->bio, 150))
+@section('og_image', url(asset('storage/' . ($user->avatar ?? 'images/avatar.png'))))
 <x-app-layout>
     <!-- Custom CSS για το animation του verified badge -->
     <style>
@@ -82,6 +91,26 @@
                 @endif
             </div>
         </div>
+
+     {{-- Download CV     --}}
+
+{{-- @if($user->cv_path)
+    <div class="my-4">
+        <a href="{{ asset('storage/' . $user->cv_path) }}" target="_blank"
+           class="inline-block bg-slate-800 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+         <i class="fa-solid fa-file-arrow-down" style="color: #e8e8e8;"></i>{{ __('messages.download_cv') }}
+
+        </a>
+    </div>
+@endif --}}
+
+<a href="{{ route('download.cv') }}" class="inline-flex items-center text-white bg-slate-800 hover:bg-slate-700 px-4 py-2 mb-2 rounded text-sm">
+  <i class="fa-solid fa-file-arrow-down" style="color: #e8e8e8;"></i> {{ __('messages.download_cv') }}
+</a>
+
+
+
+
 
         {{-- Links --}}
         <section class="mb-8">

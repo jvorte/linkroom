@@ -66,8 +66,8 @@ return [
   'all_rights_reserved' => 'All rights reserved.',
 
   'footer_description' => 'The best platform to find professionals near you.',
-'tagline' => 'Find trusted professionals of every specialty – quickly and easily. Whether you need a developer, electrician or accountant, you’ll find them here.',
-'active_profile' => 'Profile active (visible to other users)',
+  'tagline' => 'Find trusted professionals of every specialty – quickly and easily. Whether you need a developer, electrician or accountant, you’ll find them here.',
+  'active_profile' => 'Profile active (visible to other users)',
 
   'contact_us' => 'Contact',
   'contact_success' => 'Your message was sent successfully!',
@@ -135,14 +135,19 @@ return [
 
   'terms_of_use' => 'Terms of Use',
   'privacy_policy' => 'Privacy Policy',
+'delete_cv' => 'Lebenslauf löschen',
+  'upload_cv' => 'Upload your CV',
+  'download_cv' => 'Download CV',
+  'current_cv' => 'Current CV',
 
 
-'main_category' => 'Main Category',
-'subcategories' => 'Subcategories',
-'select_main_category' => 'Select a category',
-'no_subcategories' => 'There are no subcategories',
 
-'public_email' => 'Public email',
+  'main_category' => 'Main Category',
+  'subcategories' => 'Subcategories',
+  'select_main_category' => 'Select a category',
+  'no_subcategories' => 'There are no subcategories',
+
+  'public_email' => 'Public email',
 
 
 

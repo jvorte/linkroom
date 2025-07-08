@@ -117,7 +117,7 @@
             <x-input-error class="mt-2" :messages="$errors->get('phone')" />
         </div>
 
-        {{-- Bio --}}
+        {{-- Short CV --}}
         <div>
            <x-input-label for="bio" :value="__('messages.bio')" />
 <p class="text-sm text-gray-500 mb-1">{{ __('messages.bio_helper') }}</p>
@@ -126,6 +126,46 @@
     class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-400">{{ old('bio', $user->bio) }}</textarea>
  <x-input-error class="mt-2" :messages="$errors->get('bio')" />
         </div>
+
+        {{-- Upload your CV --}}
+
+
+    <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700">{{ __('messages.upload_cv') }}</label>
+        <input type="file" name="cv" accept=".pdf,.doc,.docx"
+               class="mt-1 block w-full text-sm text-gray-600 border border-gray-300 rounded p-2" />
+        @if($user->cv_path)
+            <p class="text-sm mt-1">
+                {{ __('messages.current_cv') }}:
+                <a href="{{ asset('storage/' . $user->cv_path) }}" target="_blank" class="text-blue-600 underline">
+                    {{ __('messages.download_cv') }}
+                </a>
+            </p>
+        @endif
+
+
+@if($user->cv_path)
+    <div class="mt-1">
+        <a href="{{ route('profile.delete_cv', ['lang' => app()->getLocale()]) }}"
+           onclick="return confirm('Are you sure you want to delete your resume?')"
+           class="text-red-600 hover:underline text-sm">
+            {{ __('messages.delete_cv') }}
+        </a>
+    </div>
+@endif
+
+
+
+
+        
+    </div>
+
+    
+
+
+
+
+
         {{-- Remote work --}}
 <div class="flex items-center mt-4">
     <input type="checkbox" id="remote" name="remote" value="1" {{ old('remote', $user->remote) ? 'checked' : '' }} class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500">

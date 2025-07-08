@@ -46,7 +46,7 @@
             </div>
         </form>
 
-<div class="mt-6 text-center">
+{{-- <div class="mt-6 text-center">
     <a href="{{ route('auth.google') }}"
        class="px-4 py-2 inline-flex items-center justify-center gap-2 mx-auto bg-white border border-gray-300 rounded shadow hover:bg-gray-100">
         <svg class="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
@@ -58,7 +58,7 @@
         </svg>
         Login with Google
     </a>
-</div>
+</div> --}}
 
 
     </div>
