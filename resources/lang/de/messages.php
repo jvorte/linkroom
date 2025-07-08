@@ -118,21 +118,35 @@ return [
   'save' => 'Speichern',
   'saved' => 'Gespeichert.',
 
+
+  'card_search' => 'Experten suchen',
+  'card_search_text' => 'Finden Sie ganz einfach den passenden Experten für Ihre Bedürfnisse.',
+  'card_search_extra' => 'Filtern Sie nach Fähigkeiten, Kategorien oder Remote-Verfügbarkeit.',
+  'card_verify' => 'Verifizierte Profile',
+  'card_verify_text' => 'Finden Sie Experten mit verifizierten Referenzen.',
+  'card_verify_extra' => 'Bewertungen, Lebenslauf und Präsentation Ihrer Arbeit.',
+  'professional_card_title' => 'Sind Sie ein Experte?',
+  'professional_cta' => 'Erstellen Sie Ihr Profil, damit Kunden Sie sehen und finden können.',
+  'create_profile' => 'Profil erstellen',
+  'create_profile' => 'Profil erstellen',
+  'register_now' => 'Registrieren & Profil erstellen',
+
+
   'upload_cv' => 'Lebenslauf hochladen',
-'download_cv' => 'Lebenslauf herunterladen',
-'current_cv' => 'Aktueller Lebenslauf',
+  'download_cv' => 'Lebenslauf herunterladen',
+  'current_cv' => 'Aktueller Lebenslauf',
 
   'delete_cv' => 'Delete CV',
   'terms_of_use' => 'Nutzungsbedingungen',
   'privacy_policy' => 'Datenschutzerklärung',
- 'public_email' => 'Öffentliche E-Mail',
+  'public_email' => 'Öffentliche E-Mail',
   'main_category' => 'Hauptkategorie',
   'subcategories' => 'Unterkategorien',
   'select_main_category' => 'Kategorie auswählen',
   'no_subcategories' => 'Es sind keine Unterkategorien vorhanden',
 
-'tagline' => 'Finde zuverlässige Fachkräfte aller Branchen – schnell und einfach . Ob Entwickler, Elektriker oder Buchhalter – hier wirst du fündig.',
-'active_profile' => 'Profil aktiv (für andere Benutzer sichtbar)',
+  'tagline' => 'Finde zuverlässige Fachkräfte aller Branchen – schnell und einfach . Ob Entwickler, Elektriker oder Buchhalter – hier wirst du fündig.',
+  'active_profile' => 'Profil aktiv (für andere Benutzer sichtbar)',
 
   'terms_of_use_full' => "Letzte Aktualisierung: 02.07.2025
 

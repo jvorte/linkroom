@@ -35,35 +35,35 @@ $request->validate([
     'name' => 'required|string|max:255',
     'email' => 'required|string|email|max:255|unique:users',
     'password' => ['required', 'confirmed', Rules\Password::defaults()],
-    'bio' => 'nullable|string',
-    'public_email' => 'nullable|email|max:255|unique:users,public_email',
-    'phone' => 'nullable|string|max:50',
-    'categories' => 'nullable|array',
-    'categories.*' => 'exists:categories,id',
-    'country' => 'required|string|max:255',  // προσθήκη country
+    // 'bio' => 'nullable|string',
+    // 'public_email' => 'nullable|email|max:255|unique:users,public_email',
+    // 'phone' => 'nullable|string|max:50',
+    // 'categories' => 'nullable|array',
+    // 'categories.*' => 'exists:categories,id',
+    // 'country' => 'required|string|max:255',  
 ]);
 
 $user = User::create([
     'name' => $request->name,
     'email' => $request->email,
     'password' => Hash::make($request->password),
-    'bio' => $request->bio,
-    'public_email' => $request->public_email,
-    'phone' => $request->phone,
-    'country' => $request->country,  // προσθήκη country
+    // 'bio' => $request->bio,
+    // 'public_email' => $request->public_email,
+    // 'phone' => $request->phone,
+    // 'country' => $request->country,  // προσθήκη country
 ]);
 
 
 // Αν δόθηκαν κατηγορίες, κάνε sync
-if ($request->has('categories')) {
-    $user->categories()->sync($request->categories);
-}
+// if ($request->has('categories')) {
+//     $user->categories()->sync($request->categories);
+// }
 
 
     // Αν έχεις κατηγορίες, μετά μπορείς να κάνεις sync
 
     Auth::login($user);
-      return redirect()->route('profile.edit')->with('success', 'Ο λογαριασμός δημιουργήθηκε! Συμπλήρωσε το προφίλ σου για να εμφανίζεσαι στους επισκέπτες.');
+      return redirect()->route('home')->with('success', 'Account created! Complete your profile to appear to visitors.');
 
 
 

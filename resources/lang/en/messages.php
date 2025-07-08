@@ -135,12 +135,24 @@ return [
 
   'terms_of_use' => 'Terms of Use',
   'privacy_policy' => 'Privacy Policy',
-'delete_cv' => 'Lebenslauf löschen',
+  'delete_cv' => 'Lebenslauf löschen',
   'upload_cv' => 'Upload your CV',
   'download_cv' => 'Download CV',
   'current_cv' => 'Current CV',
 
+  'create_profile' => 'Create your profile',
+  'register_now' => 'Sign up & create a profile',
 
+  'card_search' => 'Search for Professionals',
+  'card_search_text' => 'Easily find the right professional for your every need.',
+  'card_search_extra' => 'Filter by skills, categories or remote availability.',
+  'card_verify' => 'Verified Profiles',
+  'card_verify_text' => 'See professionals with verified credentials.',
+  'card_verify_extra' => 'Reviews, CV and real work presentation.',
+
+  'professional_card_title' => 'Are you a Professional?',
+  'professional_cta' => 'Create your profile to be visible and found by clients.',
+  'create_profile' => 'Create your profile',
 
   'main_category' => 'Main Category',
   'subcategories' => 'Subcategories',

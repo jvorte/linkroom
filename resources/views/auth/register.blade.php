@@ -38,30 +38,30 @@
             </div>
 
             <!-- Bio -->
-            <div class="mb-4">
+            {{-- <div class="mb-4">
                 <label for="bio" class="block mb-1 font-medium text-gray-700">Bio</label>
                 <textarea name="bio" id="bio" rows="3"
                     class="block w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">{{ old('bio') }}</textarea>
-            </div>
+            </div> --}}
 
             <!-- Public Email -->
-            <div class="mb-4">
+            {{-- <div class="mb-4">
                 <label for="public_email" class="block mb-1 font-medium text-gray-700">Public Email</label>
                 <input type="email" name="public_email" id="public_email" value="{{ old('public_email') }}"
                     class="block w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-            </div>
+            </div> --}}
 
             <!-- Phone -->
-            <div class="mb-4">
+            {{-- <div class="mb-4">
                 <label for="phone" class="block mb-1 font-medium text-gray-700">Phone</label>
                 <input type="text" name="phone" id="phone" value="{{ old('phone') }}"
                     class="block w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-            </div>
+            </div> --}}
 
             <div>
 
                 <!-- country -->
-                <label for="country" class="block font-semibold">{{ __('messages.country') }}</label>
+                {{-- <label for="country" class="block font-semibold">{{ __('messages.country') }}</label>
                 <select name="country" id="country" required class="w-full border rounded px-3 py-2">
                     <option value="">{{ __('messages.select_country') }}</option>
                     <option value="UK">England</option>
@@ -73,7 +73,7 @@
                     <!-- πρόσθεσε όσες χώρες θέλεις -->
                 </select>
                 @error('country') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
-            </div>
+            </div> --}}
 
 
 

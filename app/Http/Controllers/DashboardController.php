@@ -17,14 +17,7 @@ class DashboardController extends Controller
 {
     use AuthorizesRequests;
 
-    public function index()
-    {
-        $user = Auth::user();
-        $links = $user->links()->orderBy('order')->get();
-        $allCategories = Category::all();
 
-        return view('dashboard.index', compact('links', 'allCategories'));
-    }
     public function home()
     {
       

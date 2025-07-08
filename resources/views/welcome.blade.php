@@ -66,7 +66,7 @@
 
 
 <div class="wrap">
-  <a href="{{ route('professionals.index', ['lang' => app()->getLocale()]) }}"
+  <a href="{{ route('home', ['lang' => app()->getLocale()]) }}"
      class="button ">
      {{ __('messages.find_professionals') }}
   </a>

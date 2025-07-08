@@ -54,6 +54,7 @@ Route::middleware(['auth'])->group(function () {
     // Dashboard
     Route::prefix('dashboard')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        
         Route::post('/links', [DashboardController::class, 'store'])->name('dashboard.links.store');
         Route::put('/links/{link}', [DashboardController::class, 'update'])->name('dashboard.links.update');
         Route::delete('/links/{link}', [DashboardController::class, 'destroy'])->name('dashboard.links.destroy');
