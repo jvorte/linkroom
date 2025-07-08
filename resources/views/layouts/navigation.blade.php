@@ -97,12 +97,12 @@
 
                 @guest
                     <div class="flex space-x-2">
-                        <a href="{{ route('login') }}"
+                         <a href="{{ route('login', ['lang' => app()->getLocale()]) }}"
                             class="inline-block px-5 py-1.5 text-[#1b1b18] hover:border-[#19140035] rounded-sm text-base  leading-normal">
                             {{ __('messages.login') }}
                         </a>
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}"
+                           <a href="{{ route('register', ['lang' => app()->getLocale()]) }}"
                                 class="inline-block px-5 py-1.5 border-[#19140035] hover:border-[#1915014a] text-[#1b1b18] rounded-sm text-base  leading-normal">
                                 {{ __('messages.register') }}
                             </a>
