@@ -138,7 +138,7 @@
            <x-input-label for="bio" :value="__('messages.bio')" />
 <p class="text-sm text-gray-500 mb-1">{{ __('messages.bio_helper') }}</p>
 
-<textarea id="bio" name="bio" rows="3"
+<textarea id="bio" name="bio" rows="18"
     class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-400">{{ old('bio', $user->bio) }}</textarea>
  <x-input-error class="mt-2" :messages="$errors->get('bio')" />
         </div>
@@ -160,19 +160,101 @@
         @endif
 
 
-@if($user->cv_path)
-    <div class="mt-1">
-        <a href="{{ route('profile.delete_cv', ['lang' => app()->getLocale()]) }}"
-           onclick="return confirm('Are you sure you want to delete your resume?')"
-           class="text-red-600 hover:underline text-sm">
-            {{ __('messages.delete_cv') }}
-        </a>
-    </div>
-@endif
+        @if($user->cv_path)
+            <div class="mt-1">
+                <a href="{{ route('profile.delete_cv', ['lang' => app()->getLocale()]) }}"
+                onclick="return confirm('Are you sure you want to delete your resume?')"
+                class="text-red-600 hover:underline text-sm">
+                    {{ __('messages.delete_cv') }}
+                </a>
+            </div>
+        @endif 
 
- 
-    </div>
+        {{-- <div class="flex items-center gap-4">
+            <x-primary-button>{{ __('messages.save', ['lang' => app()->getLocale()]) }}</x-primary-button>
+            @if (session('status') === 'profile-updated')
+                <p x-data="{ show: true }" x-show="show" x-transition
+                    x-init="setTimeout(() => show = false, 2000)"
+                    class="text-sm text-gray-600">{{ __('messages.saved') }}</p>
+            @endif
+        </div> --}}
 
+
+</div>
+
+
+
+
+    
+
+<button id="generate-bio-cv-btn" type="button"
+    class="mt-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 flex items-center justify-center gap-2"
+    aria-live="polite">
+    <svg id="btn-spinner" class="animate-spin h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+    </svg>
+    <span id="btn-text">📝 Generate Bio from CV</span>
+</button>
+
+<p id="cv-bio-status" class="mt-2 text-sm" role="alert"></p>
+
+
+
+
+<script>
+document.getElementById('generate-bio-cv-btn').addEventListener('click', async () => {
+    const btn = document.getElementById('generate-bio-cv-btn');
+    const spinner = document.getElementById('btn-spinner');
+    const btnText = document.getElementById('btn-text');
+    const status = document.getElementById('cv-bio-status');
+    const bioTextarea = document.getElementById('bio');
+
+    btn.disabled = true;
+    spinner.classList.remove('hidden');
+    btnText.textContent = 'Generating bio from your CV... ⏳';
+    status.textContent = '';
+    status.className = 'mt-2 text-sm';
+
+    try {
+        const response = await fetch('{{ route('profile.generate_bio_from_cv') }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+            }
+        });
+        const data = await response.json();
+
+        if (data.bio) {
+            bioTextarea.value = data.bio;
+            status.textContent = '✅ Bio generated! You can edit it before saving.';
+            status.classList.add('text-green-600', 'font-semibold');
+            // Αυτόματο scroll στο bio
+            bioTextarea.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else if (data.error) {
+            status.textContent = `⚠️ ${data.error}`;
+            status.classList.add('text-red-600', 'font-semibold');
+        } else {
+            status.textContent = '⚠️ Failed to generate bio.';
+            status.classList.add('text-red-600', 'font-semibold');
+        }
+    } catch (err) {
+        status.textContent = '⚠️ Error generating bio.';
+        status.classList.add('text-red-600', 'font-semibold');
+        console.error(err);
+    } finally {
+        btn.disabled = false;
+        spinner.classList.add('hidden');
+        btnText.textContent = '📝 Generate Bio from CV';
+    }
+});
+</script>
+
+
+
+
+    
 
         {{-- Remote work --}}
 <div class="flex items-center mt-4">

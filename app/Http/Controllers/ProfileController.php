@@ -12,6 +12,13 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 use App\Models\User;
+use OpenAI;
+
+
+
+use Smalot\PdfParser\Parser as PdfParser;
+use PhpOffice\PhpWord\IOFactory as WordIOFactory;
+use OpenAI\Client as OpenAIClient;
 
 class ProfileController extends Controller
 {
@@ -212,6 +219,84 @@ public function downloadCv()
     $downloadName = 'cv.' . $extension;
 
     return Storage::disk('public')->download($user->cv_path, $downloadName);
+}
+
+
+
+
+
+public function generateBioFromCv(Request $request)
+{
+    $user = auth()->user();
+
+    
+
+    // Φόρτωσε το path του ανέβασμένου CV
+    $cvPath = storage_path('app/public/' . $user->cv_path);
+
+    if (!file_exists($cvPath)) {
+        return response()->json(['error' => 'No CV found for user.'], 404);
+    }
+
+    // Ανάγνωση περιεχομένου ανάλογα με τύπο αρχείου
+    $extension = pathinfo($cvPath, PATHINFO_EXTENSION);
+
+    try {
+        if (strtolower($extension) === 'pdf') {
+            $parser = new PdfParser();
+            $pdf = $parser->parseFile($cvPath);
+            $text = $pdf->getText();
+        } elseif (in_array(strtolower($extension), ['doc', 'docx'])) {
+            $phpWord = WordIOFactory::load($cvPath);
+            $text = '';
+            foreach ($phpWord->getSections() as $section) {
+                $elements = $section->getElements();
+                foreach ($elements as $element) {
+                    if (method_exists($element, 'getText')) {
+                        $text .= $element->getText() . "\n";
+                    }
+                }
+            }
+        } else {
+            return response()->json(['error' => 'Unsupported CV format.'], 400);
+        }
+
+        if (trim($text) === '') {
+            return response()->json(['error' => 'CV text is empty or could not be extracted.'], 400);
+        }
+
+    } catch (\Exception $e) {
+        return response()->json(['error' => 'Error reading CV: ' . $e->getMessage()], 500);
+    }
+
+    // Δημιουργία πελάτη OpenAI
+$openai = OpenAI::client(env('OPENAI_API_KEY'));
+
+
+    // Prompt για σύντομο bio
+    $prompt = "Please create a short professional bio based on the following CV text:\n\n" . $text;
+
+    try {
+        $response = $openai->chat()->create([
+            'model' => 'gpt-4o-mini',
+            'messages' => [
+                ['role' => 'user', 'content' => $prompt]
+            ],
+            'max_tokens' => 300,
+            'temperature' => 0.7,
+        ]);
+
+        $bio = trim($response->choices[0]->message->content ?? '');
+
+        if (!$bio) {
+            return response()->json(['error' => 'Failed to generate bio.'], 500);
+        }
+
+    } catch (\Exception $e) {
+        return response()->json(['error' => 'OpenAI API error: ' . $e->getMessage()], 500);
+    }
+
+    return response()->json(['bio' => $bio]);
 }
 
 
