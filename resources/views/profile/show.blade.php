@@ -103,11 +103,11 @@
         </a>
     </div>
 @endif --}}
-
+@if($user->cv_path)
 <a href="{{ route('download.cv') }}" class="inline-flex items-center text-white bg-slate-800 hover:bg-slate-700 px-4 py-2 mb-2 rounded text-sm">
   <i class="fa-solid fa-file-arrow-down" style="color: #e8e8e8;"></i> {{ __('messages.download_cv') }}
 </a>
-
+@endif
 
 
 

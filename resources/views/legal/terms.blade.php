@@ -10,7 +10,7 @@
     <div class="max-w-3xl mx-auto px-4 py-6">
         
     <h1 class="text-2xl font-bold mb-4">{{ __('messages.terms_of_use') }}</h1>
-    <p>{!! nl2br(e(__('messages.terms_of_use_full'))) !!}</p>
+    <p>{!! __('messages.terms_of_use_full') !!}</p>
     
     </div>    
 </x-app-layout>

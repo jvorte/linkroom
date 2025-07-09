@@ -130,7 +130,7 @@ return [
   'create_profile' => 'Profil erstellen',
   'create_profile' => 'Profil erstellen',
   'register_now' => 'Registrieren & Profil erstellen',
-
+'other_countries' => 'Andere Länder',
    'privacy_policy' => 'Datenschutzrichtlinie',
     'i_consent_to_data_processing' => 'Ich stimme der Speicherung und Verarbeitung meiner persönlichen Daten gemäß der',
 
@@ -157,67 +157,57 @@ return [
   'tagline' => 'Finde zuverlässige Fachkräfte aller Branchen – schnell und einfach . Ob Entwickler, Elektriker oder Buchhalter – hier wirst du fündig.',
   'active_profile' => 'Profil aktiv (für andere Benutzer sichtbar)',
 
-  'terms_of_use_full' => "Letzte Aktualisierung: 02.07.2025
+'terms_of_use_full' => '
+<p><strong>Letzte Aktualisierung:</strong> 02.07.2025</p>
 
-Willkommen auf unserer Webseite. Mit der Nutzung dieser Webseite stimmen Sie folgenden Nutzungsbedingungen zu:
+<p><strong>Willkommen auf unserer Webseite.</strong><br>
+Mit der Nutzung dieser Webseite stimmen Sie folgenden Nutzungsbedingungen zu.</p>
 
-Allgemeines
+<h3 class="font-bold text-lg mt-8 mb-3">1. Allgemeines</h3>
+<p class="mb-6">Diese Webseite bietet Informationen und Dienste für registrierte und nicht registrierte Nutzer.<br>
+Der Betreiber behält sich das Recht vor, Dienste jederzeit ohne Vorankündigung zu ändern oder einzustellen.</p>
 
-Diese Webseite bietet Informationen und Dienste für registrierte und nicht registrierte Nutzer.
+<h3 class="font-bold text-lg mt-8 mb-3">2. Verantwortung des Nutzers</h3>
+<p class="mb-6">Die Nutzung der Webseite zu illegalen oder schädlichen Zwecken ist verboten.<br>
+Sie sind für die Richtigkeit der von Ihnen bereitgestellten Informationen verantwortlich.</p>
 
-Der Betreiber behält sich das Recht vor, Dienste jederzeit ohne Vorankündigung zu ändern oder einzustellen.
+<h3 class="font-bold text-lg mt-8 mb-3">3. Urheberrecht</h3>
+<p class="mb-6">Alle Inhalte (Texte, Bilder, Code) gehören dem Betreiber, sofern nicht anders angegeben.</p>
 
-Verantwortung des Nutzers
+<h3 class="font-bold text-lg mt-8 mb-3">4. Haftungsausschluss</h3>
+<p class="mb-6">Der Betreiber haftet nicht für Verluste oder Schäden, die durch die Nutzung der Webseite entstehen.</p>
 
-Die Nutzung der Webseite zu illegalen oder schädlichen Zwecken ist verboten.
-
-Sie sind für die Richtigkeit der von Ihnen bereitgestellten Informationen verantwortlich.
-
-Urheberrecht
-
-Alle Inhalte (Texte, Bilder, Code) gehören dem Betreiber, sofern nicht anders angegeben.
-
-Haftungsausschluss
-
-Der Betreiber haftet nicht für Verluste oder Schäden, die durch die Nutzung der Webseite entstehen.
-
-Änderungen
-
-Diese Bedingungen können jederzeit geändert werden. Die fortgesetzte Nutzung bedeutet Akzeptanz der neuen Bedingungen.
-
-",
+<h3 class="font-bold text-lg mt-8 mb-3">5. Änderungen</h3>
+<p class="mb-6">Diese Bedingungen können jederzeit geändert werden.<br>
+Die fortgesetzte Nutzung bedeutet Akzeptanz der neuen Bedingungen.</p>
+',
 
 
 
-  'privacy_policy_full' => "Letzte Aktualisierung: 02.07.2025
+'privacy_policy_full' => '
+<p><strong>Letzte Aktualisierung:</strong> 02.07.2025</p>
 
-Der Schutz Ihrer persönlichen Daten ist uns wichtig. Diese Erklärung erklärt, wie wir Ihre Daten erfassen, verwenden und speichern.
+<p>Der Schutz Ihrer persönlichen Daten ist uns wichtig. Diese Erklärung erklärt, wie wir Ihre Daten erfassen, verwenden und speichern.</p>
 
-Welche Daten wir erfassen
+<h3 class="font-bold text-lg mt-8 mb-3">Welche Daten wir erfassen</h3>
+<p class="mb-6">Name, E-Mail, Land, Bio, Links, IP-Adresse.<br>
+Weitere freiwillig bereitgestellte Informationen.</p>
 
-Name, E-Mail, Land, Bio, Links, IP-Adresse.
+<h3 class="font-bold text-lg mt-8 mb-3">Warum wir Daten erfassen</h3>
+<p class="mb-6">Zur Erstellung und Verwaltung Ihres Kontos.<br>
+Zur Bereitstellung personalisierter Dienste.</p>
 
-Weitere freiwillig bereitgestellte Informationen.
+<h3 class="font-bold text-lg mt-8 mb-3">Datenweitergabe</h3>
+<p class="mb-6">Ihre Daten werden nicht an Dritte weitergegeben, außer gesetzlich vorgeschrieben oder mit Ihrer Zustimmung.</p>
 
-Warum wir Daten erfassen
+<h3 class="font-bold text-lg mt-8 mb-3">Datenaufbewahrung</h3>
+<p class="mb-6">Wir speichern Ihre Daten solange Sie ein Konto haben. Sie können jederzeit Löschung beantragen.</p>
 
-Zur Erstellung und Verwaltung Ihres Kontos.
+<h3 class="font-bold text-lg mt-8 mb-3">Ihre Rechte</h3>
+<p class="mb-6">Sie haben das Recht auf Zugriff, Berichtigung, Löschung und Widerspruch gegen die Verarbeitung Ihrer Daten.</p>
 
-Zur Bereitstellung personalisierter Dienste.
+<h3 class="font-bold text-lg mt-8 mb-3">Kontakt</h3>
+<p class="mb-6">Bei Fragen zum Datenschutz kontaktieren Sie uns.</p>
+',
 
-Datenweitergabe
-
-Ihre Daten werden nicht an Dritte weitergegeben, außer gesetzlich vorgeschrieben oder mit Ihrer Zustimmung.
-
-Datenaufbewahrung
-
-Wir speichern Ihre Daten solange Sie ein Konto haben. Sie können jederzeit Löschung beantragen.
-
-Ihre Rechte
-
-Sie haben das Recht auf Zugriff, Berichtigung, Löschung und Widerspruch gegen die Verarbeitung Ihrer Daten.
-
-Kontakt
-
-Bei Fragen zum Datenschutz kontaktieren Sie uns.",
 ];

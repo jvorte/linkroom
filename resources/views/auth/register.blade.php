@@ -107,12 +107,7 @@
                     <input type="checkbox" name="consent" required class="mt-1">
                     <span class="ml-2 text-sm text-gray-700">
                         {{ __('messages.i_consent_to_data_processing') }}
-                        <a href="{{ url('privacy-policy?lang=' . app()->getLocale()) }}" class="text-blue-500 underline"
-                            target="_blank">
-                            {{ __('messages.privacy_policy') }}
-                        </a>
-
-                        .
+                         <a href="{{ route('privacy', ['lang' => app()->getLocale()]) }}"class="underline hover:text-blue-600">{{ __('messages.privacy_policy') }}</a>.
                     </span>
                 </label>
                 @error('consent')

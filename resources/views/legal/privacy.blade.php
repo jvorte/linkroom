@@ -13,7 +13,7 @@
         <div class="max-w-3xl mx-auto px-4 py-6">
         
     <h1 class="text-2xl font-bold mb-4">{{ __('messages.privacy_policy') }}</h1>
-    <p>{!! nl2br(e(__('messages.privacy_policy_full'))) !!}</p>
+    <p>{!! __('messages.privacy_policy_full')!!}</p>
     
     </div>   
 

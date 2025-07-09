@@ -150,7 +150,7 @@ return [
   'card_verify_text' => 'See professionals with verified credentials.',
   'card_verify_extra' => 'Reviews, CV and real work presentation.',
 
-
+'other_countries' => 'Other Countries',
   
     'privacy_policy_title' => 'Privacy Policy',
     'privacy_policy_text_1' => 'Our website collects personal data only for registration and service provision purposes. Data are not shared with third parties and are stored securely according to GDPR.',
@@ -171,69 +171,53 @@ return [
     'i_consent_to_data_processing' => 'I agree to the storage and processing of my personal data according to the',
 
 
-  'terms_of_use_full' => "Last updated: 02.07.2025
+ 'terms_of_use_full' => '
+<p><strong>Last updated:</strong> 02.07.2025</p>
 
-Welcome to our website. By accessing and using this website, you agree to the following terms of use:
+<p>Welcome to our website. By accessing and using this website, you agree to the following terms of use:</p>
 
-General
+<h3 class="font-bold text-lg mt-8 mb-3">General</h3>
+<p class="mb-6">This website provides information and services to registered and non-registered users.<br>
+The site owner reserves the right to modify or discontinue services at any time without notice.</p>
 
-This website provides information and services to registered and non-registered users.
+<h3 class="font-bold text-lg mt-8 mb-3">User Responsibility</h3>
+<p class="mb-6">You must not use the website for any illegal or malicious purpose.<br>
+You are responsible for the accuracy of the information you provide.</p>
 
-The site owner reserves the right to modify or discontinue services at any time without notice.
+<h3 class="font-bold text-lg mt-8 mb-3">Intellectual Property</h3>
+<p class="mb-6">All content (texts, images, code) belongs to the site owner unless otherwise stated.</p>
 
-User Responsibility
+<h3 class="font-bold text-lg mt-8 mb-3">Disclaimer</h3>
+<p class="mb-6">The site owner is not responsible for any losses or damages arising from use of the website.</p>
 
-You must not use the website for any illegal or malicious purpose.
+<h3 class="font-bold text-lg mt-8 mb-3">Changes</h3>
+<p class="mb-6">These terms may change at any time. Continued use of the website means acceptance of the new terms.</p>
+',
 
-You are responsible for the accuracy of the information you provide.
+'privacy_policy_full' => '
+<p><strong>Last updated:</strong> 02.07.2025</p>
 
-Intellectual Property
+<p>Protecting your personal data is important to us. This policy explains how we collect, use, and store your information.</p>
 
-All content (texts, images, code) belongs to the site owner unless otherwise stated.
+<h3 class="font-bold text-lg mt-8 mb-3">Data We Collect</h3>
+<p class="mb-6">Name, email, country, bio, links, IP address.<br>
+Any other information you voluntarily provide.</p>
 
-Disclaimer
+<h3 class="font-bold text-lg mt-8 mb-3">Why We Collect Data</h3>
+<p class="mb-6">To create and manage your account.<br>
+To provide personalized services.</p>
 
-The site owner is not responsible for any losses or damages arising from use of the website.
+<h3 class="font-bold text-lg mt-8 mb-3">Data Sharing</h3>
+<p class="mb-6">We do not share your data with third parties unless required by law or with your consent.</p>
 
-Changes
+<h3 class="font-bold text-lg mt-8 mb-3">Data Retention</h3>
+<p class="mb-6">We keep your data as long as you have an account. You may request deletion anytime.</p>
 
-These terms may change at any time. Continued use of the website means acceptance of the new terms.
+<h3 class="font-bold text-lg mt-8 mb-3">Your Rights</h3>
+<p class="mb-6">You have the right to access, correct, delete, and object to the processing of your personal data.</p>
 
-",
+<h3 class="font-bold text-lg mt-8 mb-3">Contact</h3>
+<p class="mb-6">For privacy questions, contact us.</p>
+',
 
-
-
-  'privacy_policy_full' => "Last updated: 02.07.2025
-
-Protecting your personal data is important to us. This policy explains how we collect, use, and store your information.
-
- Data We Collect
-
-Name, email, country, bio, links, IP address.
-
-Any other information you voluntarily provide.
-
-Why We Collect Data
-
-To create and manage your account.
-
-To provide personalized services.
-
-Data Sharing
-
-We do not share your data with third parties unless required by law or with your consent.
-
-Data Retention
-
-We keep your data as long as you have an account. You may request deletion anytime.
-
-Your Rights
-
-You have the right to access, correct, delete, and object to the processing of your personal data.
-
-Contact
-
-For privacy questions, contact us.
-
-",
 ];

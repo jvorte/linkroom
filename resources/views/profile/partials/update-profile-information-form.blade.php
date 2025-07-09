@@ -170,16 +170,8 @@
     </div>
 @endif
 
-
-
-
-        
+ 
     </div>
-
-    
-
-
-
 
 
         {{-- Remote work --}}
@@ -206,7 +198,7 @@
 {{-- Subcategories --}}
 <div class="mt-4">
     <x-input-label for="subcategories" :value="__('messages.subcategories')" />
-    <select id="subcategories" name="categories[]" multiple
+    <select id="subcategories" name="categories[]"  multiple size="7"
         class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-400">
         {{-- Εμφάνιση αποθηκευμένων υποκατηγοριών --}}
         @foreach($user->categories as $cat)
