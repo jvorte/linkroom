@@ -141,65 +141,49 @@
 <textarea id="bio" name="bio" rows="18"
     class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-400">{{ old('bio', $user->bio) }}</textarea>
  <x-input-error class="mt-2" :messages="$errors->get('bio')" />
+    <p id="cv-bio-status" class="mt-2 text-sm" role="alert"></p>
         </div>
 
         {{-- Upload your CV --}}
 
 
-    <div class="mb-4">
-        <label class="block text-sm font-medium text-gray-700">{{ __('messages.upload_cv') }}</label>
-        <input type="file" name="cv" accept=".pdf,.doc,.docx"
-               class="mt-1 block w-full text-sm text-gray-600 border border-gray-300 rounded p-2" />
-        @if($user->cv_path)
-            <p class="text-sm mt-1">
-                {{ __('messages.current_cv') }}:
-                <a href="{{ asset('storage/' . $user->cv_path) }}" target="_blank" class="text-blue-600 underline">
-                    {{ __('messages.download_cv') }}
-                </a>
-            </p>
-        @endif
-
-
-        @if($user->cv_path)
-            <div class="mt-1">
-                <a href="{{ route('profile.delete_cv', ['lang' => app()->getLocale()]) }}"
-                onclick="return confirm('Are you sure you want to delete your resume?')"
-                class="text-red-600 hover:underline text-sm">
-                    {{ __('messages.delete_cv') }}
-                </a>
-            </div>
-        @endif 
-
-        {{-- <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('messages.save', ['lang' => app()->getLocale()]) }}</x-primary-button>
-            @if (session('status') === 'profile-updated')
-                <p x-data="{ show: true }" x-show="show" x-transition
-                    x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600">{{ __('messages.saved') }}</p>
-            @endif
-        </div> --}}
-
-
+    <div class="mb-4 p-4 border border-gray-300 rounded-lg bg-gray-50">
+    <label class="block text-sm font-medium text-gray-700">{{ __('messages.upload_cv') }}</label>
+<div class="flex items-center space-x-3 mt-1">
+  <input type="file" name="cv" accept=".pdf,.doc,.docx"
+         class="block w-full text-sm text-gray-600 border border-gray-300 rounded p-2" />
+  
+  @if($user->cv_path)
+    <a href="{{ route('profile.delete_cv', ['lang' => app()->getLocale()]) }}"
+       onclick="return confirm('Are you sure you want to delete your resume?')"
+       class="text-red-600 hover:underline text-sm flex items-center">
+      <i class="fa-solid fa-trash"></i>
+    </a>
+  @endif
 </div>
 
 
+    <div class="flex items-center gap-4 mt-4">
+        <x-primary-button>{{ __('messages.save', ['lang' => app()->getLocale()]) }}</x-primary-button>
+        @if (session('status') === 'profile-updated')
+            <p x-data="{ show: true }" x-show="show" x-transition
+               x-init="setTimeout(() => show = false, 2000)"
+               class="text-sm text-gray-600">{{ __('messages.saved') }}</p>
+        @endif
 
-
-    
-
-<button id="generate-bio-cv-btn" type="button"
-    class="mt-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 flex items-center justify-center gap-2"
+            <button id="generate-bio-cv-btn" type="button"
+    class=" px-4 py-1 bg-green-600 text-white rounded hover:bg-green-700 flex items-center justify-center gap-2"
     aria-live="polite">
     <svg id="btn-spinner" class="animate-spin h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
     </svg>
-    <span id="btn-text">📝 Generate Bio from CV</span>
+    <span id="btn-text">Generate short CV from your CV</span>
 </button>
+    
 
-<p id="cv-bio-status" class="mt-2 text-sm" role="alert"></p>
-
-
+</div>
+</div>
 
 
 <script>

@@ -11,7 +11,10 @@ use App\Http\Controllers\Auth\GoogleLoginController;
 
 
 
-Route::post('/profile/generate-bio-from-cv', [ProfileController::class, 'generateBioFromCv'])->name('profile.generate_bio_from_cv');
+Route::post('/profile/generate-bio-from-cv', [ProfileController::class, 'generateBioFromCv'])
+    ->middleware('auth')
+    ->name('profile.generate_bio_from_cv');
+
 
 Route::view('/privacy-policy', 'privacy-policy')->name('privacy.policy');
 

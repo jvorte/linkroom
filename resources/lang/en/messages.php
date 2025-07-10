@@ -135,7 +135,7 @@ return [
 
   'terms_of_use' => 'Terms of Use',
   'privacy_policy' => 'Privacy Policy',
-  'delete_cv' => 'Lebenslauf löschen',
+  'delete_cv' => 'Delete CV',
   'upload_cv' => 'Upload your CV',
   'download_cv' => 'Download CV',
   'current_cv' => 'Current CV',
@@ -150,11 +150,11 @@ return [
   'card_verify_text' => 'See professionals with verified credentials.',
   'card_verify_extra' => 'Reviews, CV and real work presentation.',
 
-'other_countries' => 'Other Countries',
-  
-    'privacy_policy_title' => 'Privacy Policy',
-    'privacy_policy_text_1' => 'Our website collects personal data only for registration and service provision purposes. Data are not shared with third parties and are stored securely according to GDPR.',
-    'privacy_policy_text_2' => 'For any questions or data deletion requests, please contact us.',
+  'other_countries' => 'Other Countries',
+
+  'privacy_policy_title' => 'Privacy Policy',
+  'privacy_policy_text_1' => 'Our website collects personal data only for registration and service provision purposes. Data are not shared with third parties and are stored securely according to GDPR.',
+  'privacy_policy_text_2' => 'For any questions or data deletion requests, please contact us.',
 
 
   'professional_card_title' => 'Are you a Professional?',
@@ -167,11 +167,11 @@ return [
   'no_subcategories' => 'There are no subcategories',
 
   'public_email' => 'Public email',
-'privacy_policy' => 'Privacy Policy',
-    'i_consent_to_data_processing' => 'I agree to the storage and processing of my personal data according to the',
+  'privacy_policy' => 'Privacy Policy',
+  'i_consent_to_data_processing' => 'I agree to the storage and processing of my personal data according to the',
 
 
- 'terms_of_use_full' => '
+  'terms_of_use_full' => '
 <p><strong>Last updated:</strong> 02.07.2025</p>
 
 <p>Welcome to our website. By accessing and using this website, you agree to the following terms of use:</p>
@@ -194,7 +194,7 @@ You are responsible for the accuracy of the information you provide.</p>
 <p class="mb-6">These terms may change at any time. Continued use of the website means acceptance of the new terms.</p>
 ',
 
-'privacy_policy_full' => '
+  'privacy_policy_full' => '
 <p><strong>Last updated:</strong> 02.07.2025</p>
 
 <p>Protecting your personal data is important to us. This policy explains how we collect, use, and store your information.</p>

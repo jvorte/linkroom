@@ -274,7 +274,8 @@ $openai = OpenAI::client(env('OPENAI_API_KEY'));
 
 
     // Prompt για σύντομο bio
-    $prompt = "Please create a short professional bio based on the following CV text:\n\n" . $text;
+  $prompt = "Please create a short professional bio written in the first person, as if the person is describing themselves, based on the following CV text :\n\n" . $text;
+
 
     try {
         $response = $openai->chat()->create([
@@ -298,6 +299,8 @@ $openai = OpenAI::client(env('OPENAI_API_KEY'));
 
     return response()->json(['bio' => $bio]);
 }
+
+
 
 
 }
