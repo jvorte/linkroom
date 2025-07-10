@@ -1,4 +1,5 @@
-<section>
+
+<section class="">
     <header>
         
         <a href="{{ route('profile.show', auth()->user()->slug) }}" target="_blank" class="text-blue-600 hover:underline">
@@ -150,7 +151,7 @@
     <div class="mb-4 p-4 border border-gray-300 rounded-lg bg-gray-50">
     <label class="block text-sm font-medium text-gray-700">{{ __('messages.upload_cv') }}</label>
 <div class="flex items-center space-x-3 mt-1">
-  <input type="file" name="cv" accept=".pdf,.doc,.docx"
+  <input type="file" name="cv"  accept=".pdf,.doc,.docx"
          class="block w-full text-sm text-gray-600 border border-gray-300 rounded p-2" />
   
   @if($user->cv_path)

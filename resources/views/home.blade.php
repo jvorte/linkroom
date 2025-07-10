@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="relative h-80 md:h-85 overflow-hidden shadow mb-12">
+    <div class="relative h-48 md:h-85 overflow-hidden shadow mb-3">
         <img src="{{ asset('storage/images/prof3.jpg') }}" alt="Banner"
             class="absolute inset-0 w-full h-full object-cover brightness-75">
         <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent"></div>
@@ -10,71 +10,81 @@
         </div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
         <!-- Section 1 -->
         <div class="text-center">
             <h2 class="text-3xl font-semibold text-gray-900">{{ __('messages.section_discover_title') }}</h2>
             <p class="mt-2 text-lg text-gray-600">{{ __('messages.section_discover_sub') }}</p>
         </div>
 
-        <!-- Section 2 --> 
-   <div class="grid md:grid-cols-3 gap-8">
+        <!-- Section 2 -->
+        <div class="grid md:grid-cols-3 gap-8">
 
-        <!-- Card 1 -->
+            <!-- Card 1 -->
     <div class="p-6 bg-white rounded shadow hover:shadow-lg hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-between h-full">
-        <div>
-          
-            <h3 class="font-bold text-xl mb-2"><i class="fa-solid fa-briefcase text-3xl text-blue-700 mb-3"></i> {{ __('messages.professional_card_title') }}</h3>
-            <p class="text-md text-gray-700"><i class="fa-solid fa-check"></i> {{ __('messages.professional_cta') }}</p>
-        </div>
-     <a 
-    href="{{ auth()->check() ? route('profile.edit', ['lang' => app()->getLocale()]) : route('register', ['lang' => app()->getLocale()]) }}"
-    class="inline-block bg-slate-800 hover:bg-slate-900 text-white text-lg text-center font-semibold mt-6 py-2 px-6 rounded-md transition"
->
-    {{ auth()->check() ? __('messages.create_profile') : __('messages.register_now') }}
-</a>
+    <div>
+        <h3 class="font-bold text-xl mb-4">
+            <i class="fa-solid fa-briefcase text-3xl text-blue-700 mb-3"></i>
+            {{ __('messages.professional_card_title') }}
+        </h3>
 
-    </div>
-    <!-- Card 2 -->    
-    <div class="p-6 bg-white rounded shadow hover:shadow-lg hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-between h-full">
-        <div>
-           
-            <h3 class="font-bold text-xl mb-2"> <i class="fa-solid fa-magnifying-glass text-3xl text-blue-600 mb-3"></i> {{ __('messages.card_search') }}</h3>
-            <p class="text-md text-gray-600"><i class="fa-solid fa-check"></i>{{ __('messages.card_search_text') }}</p>
-            <p class="text-md text-gray-500 mt-2"><i class="fa-solid fa-check"></i>{{ __('messages.card_search_extra') }}</p>
-        </div>
-        <a href="{{ route('professionals.index', ['lang' => app()->getLocale()]) }}"
-           class="inline-block bg-slate-800 hover:bg-slate-900 text-white text-lg text-center font-semibold mt-6 py-2 px-6 rounded-md transition">
-            {{ __('messages.find_professionals') }}
-        </a>
+        <ul class="space-y-2 text-gray-700 text-md leading-relaxed">
+            <li><i class="fa-solid fa-check text-green-600 mr-2"></i> Create your free professional profile</li>
+      
+            <li><i class="fa-solid fa-check text-green-600 mr-2"></i> Get discovered by clients across Europe</li>
+            <li><i class="fa-solid fa-check text-green-600 mr-2"></i> Update and share your link anytime</li>
+        </ul>
     </div>
 
-    <!-- Card 3 -->
-    <div class="p-6 bg-white rounded shadow hover:shadow-lg hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-between h-full">
-        <div>
-         
-            <h3 class="font-bold text-xl mb-2"><i class="fa-solid fa-user-check text-3xl text-blue-600 mb-3"></i> {{ __('messages.card_verify') }}</h3>
-            <p class="text-md text-gray-600"><i class="fa-solid fa-check"></i>{{ __('messages.card_verify_text') }}</p>
-            <p class="text-md text-gray-500 mt-2"><i class="fa-solid fa-check"></i>{{ __('messages.card_verify_extra') }}</p>
-        </div>
-        <div class="h-10 mt-6"></div> <!-- Κενό για ευθυγράμμιση με τα άλλα CTAs -->
-    </div>
-
-
-
+    <a href="{{ auth()->check() ? route('profile.edit', ['lang' => app()->getLocale()]) : route('join', ['lang' => app()->getLocale()]) }}"
+       class="inline-block bg-slate-800 hover:bg-slate-900 text-white text-lg text-center font-semibold mt-6 py-2 px-6 rounded-md transition">
+        {{ auth()->check() ? __('messages.create_profile') : __('messages.register_now') }}
+    </a>
 </div>
 
 
-        <!-- CTA -->
-        {{-- <div class="text-center m-12 ">
-            <a href="{{ route('professionals.index', ['lang' => app()->getLocale()]) }}"
-                class="inline-block bg-slate-800 hover:bg-slate-900 text-white text-lg font-semibold py-2 px-6 rounded-md transition">
-                {{ __('messages.find_professionals') }}
-            </a>
-        </div>
-    </div> --}}
+            <!-- Card 2 -->
+            <div
+                class="p-6 bg-white rounded shadow hover:shadow-lg hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-between h-full">
+                <div>
 
+                    <h3 class="font-bold text-xl mb-2"> <i
+                            class="fa-solid fa-magnifying-glass text-3xl text-blue-600 mb-3"></i>
+                        {{ __('messages.card_search') }}</h3>
+                    <p class="text-md text-gray-600"><i
+                            class="fa-solid fa-check"></i>{{ __('messages.card_search_text') }}</p>
+                    <p class="text-md text-gray-500 mt-2"><i
+                            class="fa-solid fa-check"></i>{{ __('messages.card_search_extra') }}</p>
+                </div>
+                <a href="{{ route('professionals.index', ['lang' => app()->getLocale()]) }}"
+                    class="inline-block bg-slate-800 hover:bg-slate-900 text-white text-lg text-center font-semibold mt-6 py-2 px-6 rounded-md transition">
+                    {{ __('messages.find_professionals') }}
+                </a>
+            </div>
+
+            <!-- Card 3 -->
+   <div class="p-6 bg-white rounded shadow hover:shadow-lg hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-between h-full">
+    <div>
+        <h3 class="font-bold text-xl mb-4">
+            <i class="fa-solid fa-user-check text-3xl text-blue-600 mb-3"></i>
+            {{ __('messages.card_verify') }}
+        </h3>
+
+        <ul class="space-y-2 text-gray-700 text-md leading-relaxed">
+            <li><i class="fa-solid fa-check text-green-600 mr-2"></i> Stand out as a verified professional</li>
+            <li><i class="fa-solid fa-check text-green-600 mr-2"></i> Build trust with new clients</li>
+            <li><i class="fa-solid fa-check text-green-600 mr-2"></i> Verified badge appears on your profile</li>
+            <li><i class="fa-solid fa-check text-green-600 mr-2"></i> Quick and easy verification process</li>
+        </ul>
+    </div>
+
+    <div class="h-10 mt-6"></div> <!-- Συνεχίζει να κρατά ευθυγράμμιση -->
 </div>
+
+        </div>
+
+        
+    </div>
 
 
     <style>

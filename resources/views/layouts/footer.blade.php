@@ -45,7 +45,7 @@
         <input type="email" name="email" required placeholder="{{ __('messages.email_placeholder') }}"
                class="w-full px-3 py-2 rounded-md text-gray-900 focus:outline-none" />
         <button type="submit"
-                class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded-md transform hover:scale-105 transition-transform duration-300">
+                class="bg-blue-600 hover:bg-pink-700 text-white px-4 py-2 rounded-md transform hover:scale-105 transition-transform duration-300">
           {{ __('messages.subscribe') }}
         </button>
       </form>

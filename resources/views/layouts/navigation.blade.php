@@ -23,6 +23,12 @@
                         {{ __('messages.home') }}
                     </a>
 
+                           <a href="{{ route('join', ['lang' => app()->getLocale()]) }}"
+                        class="inline-flex text-base  items-center px-1 pt-1 border-b-2 border-transparent  text-gray-800 hover:border-stone-500 hover:text-gray-700">
+                       <i class="fa-solid fa-file-lines"></i>
+                        {{ __('messages.how_it_works') }}
+                    </a>
+
                     <a href="{{ route('professionals.index', ['lang' => app()->getLocale()]) }}"
                         class="inline-flex text-base  items-center px-1 pt-1 border-b-2 border-transparent  text-gray-800 hover:border-stone-500 hover:text-gray-700">
                         <i class="fa-solid fa-user-doctor mr-1"></i>
@@ -32,7 +38,7 @@
                     @auth
                         <a href="{{ route('profile.edit', ['lang' => app()->getLocale()]) }}"
                             class="inline-flex text-base  items-center px-1 pt-1 border-b-2 border-transparent text-gray-800 hover:border-stone-500 hover:text-gray-700">
-                            <i class="fa-solid fa-address-card mr-1"></i>
+                           <i class="fa-solid fa-screwdriver-wrench"></i>
                             {{ __('messages.my_profile') }}
                         </a>
                     @endauth
@@ -43,15 +49,7 @@
                         {{ __('messages.contact') }}
                     </a>
 
-                    @auth
-                        @if(auth()->user()->role === 'admin')
-                            <a href="{{ route('admin.index', ['lang' => app()->getLocale()]) }}"
-                                class="inline-flex text-base  items-center px-1 pt-1 border-b-2 border-transparent font-medium text-gray-800 hover:border-stone-500 hover:text-gray-700">
-                                <i class="fa-solid fa-user-tie"></i>
-                                {{ __('messages.admin') }}
-                            </a>
-                        @endif
-                    @endauth
+            
                 </div>
             </div>
 
@@ -80,6 +78,15 @@
                         <div x-show="open" @click.away="open = false" x-transition
                             class="z-50 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
                             role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                                    @auth
+                        @if(auth()->user()->role === 'admin')
+                            <a href="{{ route('admin.index', ['lang' => app()->getLocale()]) }}"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fa-solid fa-user-tie"></i>
+                                {{ __('messages.admin') }}
+                            </a>
+                        @endif
+                    @endauth
                             <a href="{{ route('profile.edit', ['lang' => app()->getLocale()]) }}"
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
                                 {{ __('messages.edit_profile') }}
@@ -91,6 +98,7 @@
                                     {{ __('messages.logout') }}
                                 </button>
                             </form>
+                            
                         </div>
                     </div>
                 @endauth

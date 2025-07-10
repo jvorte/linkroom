@@ -16,6 +16,13 @@ use App\Models\NewsletterSubscription;
 class DashboardController extends Controller
 {
     use AuthorizesRequests;
+public function index()
+{
+    $lang = app()->getLocale();
+
+    return redirect()->route('profile.edit', ['lang' => $lang])
+        ->with('status', 'profile-updated');
+}
 
 
     public function home()

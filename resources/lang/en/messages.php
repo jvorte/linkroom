@@ -21,6 +21,9 @@ return [
   'language_switcher' => 'Choose Language',
   'app_title' => 'Laravel',
 
+
+'how_it_works' => 'How it Works',
+
   'no_video_support' => 'Your browser does not support the video tag.',
   'discover_title' => 'Discover Skilled Professionals',
   'discover_subtitle' => 'Connect with experts across industries — fast and easy.',
@@ -219,5 +222,33 @@ To provide personalized services.</p>
 <h3 class="font-bold text-lg mt-8 mb-3">Contact</h3>
 <p class="mb-6">For privacy questions, contact us.</p>
 ',
+
+
+
+ // Join page
+    'join_title' => 'Create your professional profile with ease — Upload your CV or use AI to craft your bio',
+    'join_subtitle' => 'Add your photo, highlight your skills, and get discovered by clients across Europe — all for free, no hidden fees.',
+    'join_cta' => 'Create My Free Profile',
+
+    'join_how_it_works_title' => 'How It Works',
+    'join_step_1_title' => 'Upload your CV or start from scratch',
+    'join_step_1_desc' => 'Easily upload your existing CV or let our AI help you create a short, professional bio based on it.',
+    'join_step_2_title' => 'Add your photo and customize your profile',
+    'join_step_2_desc' => 'Make your profile stand out by adding a professional photo and detailing your skills and experience.',
+    'join_step_3_title' => 'Publish and share your profile link',
+    'join_step_3_desc' => 'Get discovered by potential clients browsing for professionals like you. Share your personalized LinkRoom URL anywhere.',
+
+    'join_demo_title' => 'See How Others Present Themselves',
+
+    'join_faq_title' => 'Frequently Asked Questions',
+    'join_faq_q1' => 'Can I use my CV to create my profile?',
+    'join_faq_a1' => 'Yes! Upload your CV and our AI will help you craft a concise, professional bio.',
+    'join_faq_q2' => 'Do I need a photo?',
+    'join_faq_a2' => 'A professional photo helps clients get to know you better and increases your chances to be contacted.',
+    'join_faq_q3' => 'Is it free to create and publish my profile?',
+    'join_faq_a3' => 'Absolutely! Creating and sharing your profile is 100% free with no hidden fees.',
+    'join_faq_q4' => 'Can I update my profile later?',
+    'join_faq_a4' => 'Yes, you can update your bio, photo, and links anytime after registration.',
+
 
 ];
