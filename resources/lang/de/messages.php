@@ -211,29 +211,30 @@ Zur Bereitstellung personalisierter Dienste.</p>
 ',
 
 // Beitrittsseite
-'join_title' => 'Erstellen Sie ganz einfach Ihr professionelles Profil – Laden Sie Ihren Lebenslauf hoch oder nutzen Sie die KI, um Ihre Biografie zu erstellen.',
-'join_subtitle' => 'Fügen Sie Ihr Foto hinzu, heben Sie Ihre Fähigkeiten hervor und werden Sie von Kunden in ganz Europa entdeckt – alles kostenlos, ohne versteckte Gebühren.',
-'join_cta' => 'Mein kostenloses Profil erstellen',
+'join_title' => 'Erstellen Sie Ihr professionelles Profil ganz einfach – laden Sie Ihren Lebenslauf hoch oder lassen Sie Ihre Biografie von unserer KI erstellen.',
+    'join_subtitle' => 'Fügen Sie Ihr Foto hinzu, heben Sie Ihre Fähigkeiten hervor und werden Sie von Kunden in ganz Europa entdeckt – alles kostenlos, ohne versteckte Gebühren.',
+    'join_cta' => 'Mein kostenloses Profil erstellen',
 
-'join_how_it_works_title' => 'So funktioniert\'s',
-'join_step_1_title' => 'Laden Sie Ihren Lebenslauf hoch oder erstellen Sie von Grund auf neu.',
-'join_step_1_desc' => 'Laden Sie ganz einfach Ihren vorhandenen Lebenslauf hoch oder lassen Sie sich von unserer KI bei der Erstellung einer kurzen, professionellen Biografie unterstützen.',
-'join_step_2_title' => 'Fügen Sie Ihr Foto hinzu und passen Sie Ihr Profil an.',
-'join_step_2_desc' => 'Heben Sie Ihr Profil mit einem professionellen Foto und detaillierten Beschreibungen Ihrer Fähigkeiten und Erfahrungen hervor.',
-'join_step_3_title' => 'Veröffentlichen und teilen Sie Ihr Profil. Link',
-'join_step_3_desc' => 'Werden Sie von potenziellen Kunden entdeckt, die nach Fachleuten wie Ihnen suchen. Teilen Sie Ihre personalisierte LinkRoom-URL überall.',
+    'join_how_it_works_title' => 'So funktioniert\'s',
+    'join_step_1_title' => 'Laden Sie Ihren Lebenslauf hoch oder starten Sie von Grund auf neu.',
+    'join_step_1_desc' => 'Laden Sie ganz einfach Ihren vorhandenen Lebenslauf hoch oder lassen Sie sich von unserer KI bei der Erstellung einer kurzen, professionellen Biografie unterstützen.',
+    'join_step_2_title' => 'Fügen Sie Ihr Foto hinzu und passen Sie Ihr Profil an.',
+    'join_step_2_desc' => 'Heben Sie Ihr Profil mit einem professionellen Foto und detaillierten Beschreibungen Ihrer Fähigkeiten und Erfahrungen hervor.',
+    'join_step_3_title' => 'Veröffentlichen und teilen Sie Ihren Profil-Link.',
+    'join_step_3_desc' => 'Lassen Sie sich von potenziellen Kunden entdecken, die nach Fachleuten wie Ihnen suchen. Teilen Sie Ihren personalisierten LinkRoom-Link überall.',
 
-'join_demo_title' => 'Sehen Sie, wie sich andere präsentieren.',
+    'join_demo_title' => 'Sehen Sie, wie sich andere präsentieren.',
 
-'join_faq_title' => 'Häufig gestellte Fragen',
-'join_faq_q1' => 'Kann ich meinen Lebenslauf für mein Profil verwenden?',
-'join_faq_a1' => 'Ja! Laden Sie Ihren Lebenslauf hoch, und unsere KI hilft Ihnen, eine prägnante, professionelle Biografie zu erstellen.',
-'join_faq_q2' => 'Brauche ich ein Foto?',
-'join_faq_a2' => 'Ein professionelles Foto hilft Kunden, Sie besser kennenzulernen und erhöht Ihre Chancen, kontaktiert zu werden.',
-'join_faq_q3' => 'Ist die Erstellung und Veröffentlichung meines Profils kostenlos?',
-'join_faq_a3' => 'Absolut! Das Erstellen und Teilen Ihres Profils ist völlig kostenlos und ohne versteckte Gebühren.',
-'join_faq_q4' => 'Kann ich mein Profil später aktualisieren?',
-'join_faq_a4' => 'Ja, Sie können Ihre Biografie, Ihr Foto und Ihre Links jederzeit nach der Registrierung aktualisieren.',
+    'join_faq_title' => 'Häufig gestellte Fragen',
+    'join_faq_q1' => 'Kann ich meinen Lebenslauf für mein Profil verwenden?',
+    'join_faq_a1' => 'Ja! Laden Sie Ihren Lebenslauf hoch, und unsere KI hilft Ihnen, eine prägnante, professionelle Biografie zu erstellen.',
+    'join_faq_q2' => 'Brauche ich ein Foto?',
+    'join_faq_a2' => 'Ein professionelles Foto hilft Kunden, Sie besser kennenzulernen und erhöht Ihre Chancen, kontaktiert zu werden.',
+    'join_faq_q3' => 'Ist die Erstellung und Veröffentlichung meines Profils kostenlos?',
+    'join_faq_a3' => 'Absolut! Das Erstellen und Teilen Ihres Profils ist völlig kostenlos und ohne versteckte Gebühren.',
+    'join_faq_q4' => 'Kann ich mein Profil später aktualisieren?',
+    'join_faq_a4' => 'Ja, Sie können Ihre Biografie, Ihr Foto und Ihre Links jederzeit nach der Registrierung aktualisieren.',
+
 
 
 ];

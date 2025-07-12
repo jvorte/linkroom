@@ -225,8 +225,7 @@ To provide personalized services.</p>
 
 
 
- // Join page
-    'join_title' => 'Create your professional profile with ease — Upload your CV or use AI to craft your bio',
+'join_title' => 'Easily create your professional profile — Upload your CV or let AI craft your bio for you.',
     'join_subtitle' => 'Add your photo, highlight your skills, and get discovered by clients across Europe — all for free, no hidden fees.',
     'join_cta' => 'Create My Free Profile',
 
@@ -236,7 +235,7 @@ To provide personalized services.</p>
     'join_step_2_title' => 'Add your photo and customize your profile',
     'join_step_2_desc' => 'Make your profile stand out by adding a professional photo and detailing your skills and experience.',
     'join_step_3_title' => 'Publish and share your profile link',
-    'join_step_3_desc' => 'Get discovered by potential clients browsing for professionals like you. Share your personalized LinkRoom URL anywhere.',
+    'join_step_3_desc' => 'Be discovered by clients looking for professionals like you. Share your personalized LinkRoom link anywhere.',
 
     'join_demo_title' => 'See How Others Present Themselves',
 
@@ -249,6 +248,7 @@ To provide personalized services.</p>
     'join_faq_a3' => 'Absolutely! Creating and sharing your profile is 100% free with no hidden fees.',
     'join_faq_q4' => 'Can I update my profile later?',
     'join_faq_a4' => 'Yes, you can update your bio, photo, and links anytime after registration.',
+
 
 
 ];

@@ -12,17 +12,10 @@ use Illuminate\Support\Str;
 use App\Models\Category;
 use App\Models\ContactMessage;
 use App\Models\NewsletterSubscription;
-
+use App\Models\User;
 class DashboardController extends Controller
 {
     use AuthorizesRequests;
-public function index()
-{
-    $lang = app()->getLocale();
-
-    return redirect()->route('profile.edit', ['lang' => $lang])
-        ->with('status', 'profile-updated');
-}
 
 
     public function home()
@@ -31,6 +24,20 @@ public function index()
 
         return view('home');
     }
+
+public function showJoinPage()
+{
+    $randomUsers = User::where('is_active', true)
+    ->whereNotNull('avatar')
+    ->inRandomOrder()
+    ->limit(3)
+    ->get();
+
+
+    return view('join', compact('randomUsers'));
+}
+
+
 
 public function admin()
 {
